@@ -1,0 +1,177 @@
+"Title            VIM - Minimal Setup Explained
+"Current URL      http://www.guckes.net/vim/setup.html
+
+" # Into the .bashrc:
+" export LESSEDIT="%E ?lt+%lt. %f"
+" export EDITOR="vim"
+" #export VISUAL="gvim"
+"
+" mc beállítása:
+" Beállítások > alapbeállítások... >
+" Ha a belső szövegszerkesztő elől kivesszük az x-et, akkor az
+" alapértelmezett szövegszerkesztőnket kapjuk F4-re.
+" 
+" Lynx-hez hasonló navigálást érdemes beikszelni, akkor a jobb nyíllal
+" be lehet menni a könyvtárakba, bal nyilakkal szülőkönyvtárba nagyon
+" gyors navigálás.
+
+syntax on
+"set number
+set showcmd
+"set hlsearch
+set mouse=a
+
+" Ezeket hátrébb rakja :n <Tab>-nál.
+set suffixes+=.pdf,.ps,.vrb,.png,.jpg,.nav,.snm,.rtf,.doc,.docx
+
+" Ettől máshogy néz majd ki a syntaxiskiemelés/színek.
+colorscheme delek
+
+" html, php
+"au BufEnter *.template set filetype=html
+autocmd BufEnter *.htm,*.html set smarttab sw=4
+autocmd BufEnter *.php set smartindent smarttab cinwords=if,while,function,class,else,elif,for,foreach sw=4 tw=0
+
+set hidden
+"Allows hiding buffers even though they contain modifications
+"which have not yet been written back to the associated file. (sounds
+"quite technical, eh?)
+
+"set wrapmargin=8
+set textwidth=72
+" This explicitly sets the width of text to 72 characters.
+" After each completion of a word in insert mode Vim checks whether its
+" end is past this width; if so then it will break the word onto the
+" next line. Note that Vim will remove trailing spaces when applying the
+" word wrap - a feature which many editors are missing (and which will
+" leave trailing spaces, of course). NOTE: The word wrap applies only
+" when the *completed* word goes over the line; when you insert a word
+" before that which moves other words over the line then Vim will *not*
+" break the words at the end of the line onto the next line! Programmers
+" certainly don't want that. It's a feature!!
+
+" Ne törjön sort python, bash, sh és c programoknál.
+au Syntax c set textwidth=0
+au Syntax *sh set textwidth=0 "bash, sh, ksh ...
+au Syntax muttrc set textwidth=0
+
+"filetype plugin on
+"let g:pydiction_location = '/home/ha/.vimrc/pydiction-1.2/complete-dict'
+
+"""""""""""""""""""""" VIM-LaTeX begin http://vim-latex.sourceforge.net/
+"REQUIRED. This makes vim invoke latex-suite when you open a tex file.
+filetype plugin on
+
+" IMPORTANT: win32 users will need to have 'shellslash' set so that
+" latex can be called correctly.
+" set shellslash
+
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse latex-suite. Set your grep
+" program to alway generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+" OPTIONAL: This enables automatic indentation as you type.
+filetype indent on
+
+"""""""""""""""""""""" VIM-LaTeX end
+
+" registers for LaTeX
+au BufEnter *.tex let @i = "\\begin{figure}\n\\includegraphics[width=0.7\\textwidth]{kepneve}\n\\caption{x}\n\\label{fig:x}\n\\end{figure}\n"
+au BufEnter *.tex let @t = "\\begin{tabular}{|*{5}{r}|}\n\\hline\n & \\\\\n\\end{tabular}\n"
+au BufEnter *.tex let @e = "\\begin{x}\n\\end{x}\n"
+au BufEnter *.tex let @z = "\\begin{tikzpicture}[scale=1.5]\n\\end{tikzpicture}\n"
+au BufEnter *.tex let @f = "\\begin{feladat}{}\n\\begin{megoldas}\n\\end{megoldas}\n\\end{feladat}\n\n"
+au BufEnter *.tex let @r = "\\begin{frame}%<beamer>\n %[fragile]  % verb/verbatim esetén kell\n {}\n \\begin{itemize}\n  \\item <+-| alert@+>\n \\end{itemize}\n\\end{frame}\n\n"
+
+"""""""""""""" Python """""""""""""""""
+" For python indent
+autocmd BufEnter *.py,*.pyw set smartindent smarttab cinwords=if,while,def,class,else,elif,except,finally,for,try,do,switch sw=4 tw=0
+" For python folding
+au FileType python set foldmethod=indent
+au Syntax python set textwidth=0
+
+au Syntax python let @d = "def fn():\n    pass\n"
+au Syntax python let @c = "class C:\n    def __init__(self):\n        pass"
+au Syntax python let @m = "if __name__ == \"__main__\":\n    pass"
+au Syntax python let @f = "    nev = models.CharField(\"ékezetes név\", max_length=100, blank=True, unique=True)\n"
+au Syntax python let @p = "print(\"\".format())\n"
+au Syntax python let @C = "class C(models.Model):\n    def __unicode__(self):\n        return self.name"
+au Syntax python ab pymain if __name__ == "__main__":
+au Syntax python ab djcol   nev = models.CharField("ékezetes név", max_length=100, blank=True, unique=True)
+"""""""""""""" Python end """""""""""""""""
+
+au BufEnter *.txt set filetype=rst
+
+set expandtab
+"set noexpandtab
+"When inserting text do or do not expand TABs to spaces. While I try
+"to avoid all control characters in text I can make good use of TABs
+"when typing a table. And I know I can always make Vim expand the TABs
+"later (using the ":retab" command). Your mileage may vary.
+
+"set formatoptions=cqrt
+" The formatoptions affect the built-in "text formatting"
+" command. The default value omits the "flag" 'r' which makes Vim insert
+" a "comment leader" of the line when starting a new one. This allows to
+" add text to a comment and still be within the comment after you
+" start a new line. It also allows to break the line within a comment
+" without breaking the comment.
+
+set laststatus=2
+" This makes Vim show a status line even when only one window
+" is shown. Who said a status line is only useful to separate multiple
+" windows?
+
+"set whichwrap=b,s,>,<
+"whichwrap set ww=<,>,h,l There are several commands which move the
+"cursor within
+"the line. When you get to the start/end of a line then these commands
+"will fail as you cannot go on. However, many users expect the cursor
+"to be moved onto the previous/next line. Vim allows you to chose which
+"commands will "wrap" the cursor around the line borders. Here I allow
+"the cursor left/right keys as well as the 'h' and 'l' command to do
+"that.
+
+"set list
+set lcs=tab:»·
+set lcs+=trail:·
+" This option is cool! Or let's say that
+" "other editors don't have that at all."
+" These characters are called "list characters" as they are related to
+" the list option of vanilla vi:
+" This will show the end-of-lines by adding a '$' sign
+" after the last character of each line, and by replacing all TABs by '^I'.
+" However, it is much nicer to still have TABs shown in expanded form.
+" Vim takes it one step further by also making trailing spaces visible.
+" Being able to see EOLs, TABs, and trailing space
+" has become an absolute MUST with every editor.
+
+set wildmenu
+"wildmenu Make use of the "status line" to show possible completions of
+"command line commands, file names, and more. Allows to cycle forward
+"and backward throught the list. This is called the "wild menu".
+
+"set visualbell
+"Chose "visual bell" effect rather than "beeping".
+"set noerrorbell
+
+if version >= 700
+    setlocal spell spelllang=
+    setlocal nospell
+    function ChangeSpellLang()
+        if &spelllang =~ "en,hu"
+            setlocal spell spelllang=hu
+            echo "spelllang: hu"
+        elseif &spelllang =~ "hu"
+            setlocal spell spelllang=
+            setlocal nospell
+            echo "spelllang: off"
+        else
+            setlocal spell spelllang=en,hu
+            echo "spelllang: en,hu"
+        endif
+    endfunc
+
+    map <f12> <esc>:call ChangeSpellLang()<cr>
+endif

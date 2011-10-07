@@ -1,0 +1,1489 @@
+\documentclass[a4paper]{article}
+% 12 (10, 11) pontos betű: \documentclass[a4paper,12pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% PREAMBULUM= A \begin{document}-ig tartó rész
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% A KARAKTEREK KÓDOLÁSÁVAL kapcsolatos csomagok
+% KÓDOLÁSRA FIGYELNI, ALÁBB BEÁLLÍTANI !!! latin2 vagy utf-8 ?
+
+% iso-8859-2 azaz latin-2 kódolás esetén ez a rész kell:
+%\usepackage{t1enc}
+%\usepackage[latin2]{inputenc}
+
+% (utf-8-ra kódolhatjuk az iso-8859-est
+% az enconv paranccsal [enca csomag])
+% utf-8 kódolás esetén ez a rész kell:
+
+\usepackage{ucs}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% A MAGYAR NYELVVEL kapcsolatos csomagok
+\usepackage[magyar]{babel}
+\usepackage{indentfirst}  % Az első bekezdést is behúzza.
+
+\frenchspacing   % A mondatvégek után azonos szóköz van, mint máshol
+ % (Az angolban nagyobb a szokás. Ez az alapbeállítás.)
+
+% A pdf kisebb és olvashatóbb lesz, ha times betűket használok sima
+% (nem pdf-) latex esetén.
+% \usepackage{times}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Az ÁBRÁKHOZ hasznos csomagok
+
+%\usepackage{graphicx} % ábrák beillesztésének bővebb paraméterezése
+% \usepackage{psfrag} % PostScript ábrák feliratainak cserélése TeX-esre
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% MATEKKAL KAPCSOLATOS CSOMAGOK, DEFINÍCIÓK
+
+% Az Amerikai Matematikai Társulat (AMS)
+% hasznos csomagja  (pl. \dfrac)
+%% \usepackage{amsmath}
+
+% Magyar függvénynevek
+%% \DeclareMathOperator{\tg}{tg}
+%% \DeclareMathOperator{\sh}{sh}
+%% \DeclareMathOperator{\ch}{ch}
+%% \DeclareMathOperator{\cth}{cth}
+%% \DeclareMathOperator{\ctg}{ctg}
+%% \DeclareMathOperator{\arctg}{arctg}
+%% \DeclareMathOperator{\arcctg}{arcctg}
+%% \DeclareMathOperator{\arsh}{arsh}
+%% \DeclareMathOperator{\arch}{arch}
+%% \DeclareMathOperator{\arth}{arth}
+%% \DeclareMathOperator{\arcth}{arcth}
+
+% Ezzel a duplaszárú betűk elérhetőek.
+% Pl. valós számok halmazjele:  \mathbb{R}
+% (Nem tökéletes, mert mindkét oldalon dupla.)
+%\usepackage{amssymb}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% KIMONDOTTAN EHHEZ A FÁJLHOZ DEFINIÁLT PARANCSOK
+%\usepackage{html} %html-címekhez hasznos
+
+%pygments-hez
+\usepackage{fancyvrb}
+\usepackage{color}
+\newcommand\at{@}
+\newcommand\lb{[}
+\newcommand\rb{]}
+\newcommand\PYbg[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand\PYbf[1]{\textcolor[rgb]{0.73,0.40,0.53}{\textbf{#1}}}
+\newcommand\PYbe[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand\PYbd[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
+\newcommand\PYbc[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand\PYbb[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand\PYba[1]{\textcolor[rgb]{0.00,0.00,0.50}{\textbf{#1}}}
+\newcommand\PYaJ[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
+\newcommand\PYaK[1]{\textcolor[rgb]{0.00,0.00,1.00}{#1}}
+\newcommand\PYaH[1]{\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{#1}}
+\newcommand\PYaI[1]{\textcolor[rgb]{0.69,0.00,0.25}{#1}}
+\newcommand\PYaN[1]{\textcolor[rgb]{0.00,0.00,1.00}{\textbf{#1}}}
+\newcommand\PYaO[1]{\textcolor[rgb]{0.00,0.00,0.50}{\textbf{#1}}}
+\newcommand\PYaL[1]{\textcolor[rgb]{0.73,0.73,0.73}{#1}}
+\newcommand\PYaM[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand\PYaB[1]{\textcolor[rgb]{0.00,0.25,0.82}{#1}}
+\newcommand\PYaC[1]{\textcolor[rgb]{0.67,0.13,1.00}{#1}}
+\newcommand\PYaA[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand\PYaF[1]{\textcolor[rgb]{1.00,0.00,0.00}{#1}}
+\newcommand\PYaG[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand\PYaD[1]{\textcolor[rgb]{0.25,0.50,0.50}{\textit{#1}}}
+\newcommand\PYaE[1]{\textcolor[rgb]{0.63,0.00,0.00}{#1}}
+\newcommand\PYaZ[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand\PYaX[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand\PYaY[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
+\newcommand\PYaR[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand\PYaS[1]{\textcolor[rgb]{0.25,0.50,0.50}{\textit{#1}}}
+\newcommand\PYaP[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand\PYaQ[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand\PYaV[1]{\textcolor[rgb]{0.00,0.00,1.00}{\textbf{#1}}}
+\newcommand\PYaW[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
+\newcommand\PYaT[1]{\textcolor[rgb]{0.50,0.00,0.50}{\textbf{#1}}}
+\newcommand\PYaU[1]{\textcolor[rgb]{0.82,0.25,0.23}{\textbf{#1}}}
+\newcommand\PYaj[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand\PYak[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand\PYah[1]{\textcolor[rgb]{0.63,0.63,0.00}{#1}}
+\newcommand\PYai[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand\PYan[1]{\textcolor[rgb]{0.67,0.13,1.00}{\textbf{#1}}}
+\newcommand\PYao[1]{\textcolor[rgb]{0.73,0.40,0.13}{\textbf{#1}}}
+\newcommand\PYal[1]{\textcolor[rgb]{0.25,0.50,0.50}{\textit{#1}}}
+\newcommand\PYam[1]{\textbf{#1}}
+\newcommand\PYab[1]{\textit{#1}}
+\newcommand\PYac[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
+\newcommand\PYaa[1]{\textcolor[rgb]{0.50,0.50,0.50}{#1}}
+\newcommand\PYaf[1]{\textcolor[rgb]{0.25,0.50,0.50}{\textit{#1}}}
+\newcommand\PYag[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand\PYad[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
+\newcommand\PYae[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand\PYaz[1]{\textcolor[rgb]{0.00,0.63,0.00}{#1}}
+\newcommand\PYax[1]{\textcolor[rgb]{0.60,0.60,0.60}{\textbf{#1}}}
+\newcommand\PYay[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand\PYar[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand\PYas[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand\PYap[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand\PYaq[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand\PYav[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand\PYaw[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand\PYat[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand\PYau[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+
+
+\usepackage{tabularx}
+\usepackage{url}
+\newcommand{\alapcim}{http://mail.roik.bmf.hu/linux}
+\newcommand{\code}{\texttt}
+\newcommand{\dir}{\code}
+\newcommand{\Esc}{\framebox{\texttt{Esc}}}
+\newcommand{\Ctrl}{\framebox{\texttt{Ctrl}}}
+\newcommand{\Alt}{\framebox{\texttt{Alt}}}
+\newcommand{\Enter}{\framebox{\texttt{Enter}}}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,automata}
+\tikzset{ %inner sep = 0.5mm,
+  %minimum size = 5mm,
+  >=latex,
+  every state/.style={draw=blue!50,thick,fill=blue!20,minimum size=1.8cm},
+  {small point/.style} ={circle,draw=blue!60,fill=blue!30,inner sep=0, minimum size= 1mm},
+  box/.style ={circle,draw=black!60,fill=black!20,inner
+  sep=5pt,fill=blue!30,draw=blue!60,rectangle},
+  {edge/.style} ={thick,draw},
+  {dedge/.style} ={draw,->},
+ }
+
+\begin{document}
+
+\title{Linux alkalmazása}
+\author{Horváth Árpád}
+\maketitle
+
+\section{Előtörténet}
+
+A UNIX-ot 1969-ban fejlesztették ki  AT\&T vállalatnál. 1972-ben
+ugyanitt fejlesztették ki a C programozási nyelvet, és a korábban
+assemblerben írt UNIX-ot újraírták C-ben. Kezdetben szabadon
+terjeszthető volt forráskóddal együtt, majd üzletet látva benne
+zárt kóddal pénzért árulták. Több változata lett System V (V=öt), BSD
+(Berkley Software Distribution, a Berkley egyetemről), HP-UNIX, SUN
+Solaris, Mac OS X. Ezek egy része utóbbi később szabad szoftverré vált:
+*BSD (pl. FreeBSD), OpenSolaris.
+
+A  Szabad Szoftver Alapítvány (FSF) által 1984-ben indított GNU projekt
+célja egy teljes Unix-kompatibilis szoftverrendszer kifejlesztése volt.
+Ebből származik a Linuxra épülő terjesztések fordítóinak,
+szövegszerkesztőinek, parancsértelmezőinek (shell-jeinek) jelentős
+része.  És az olyan UNIX-os parancsok nyílt forráskódú változata, mint
+például az  ls, cp parancsok.
+Az alapítvány alapítója és a mozgalom ,,élharcosa'' Richard Stallman (rms).
+
+1987-ben egy egyetemi tanár, Andy Tanenbaum, kifejlesztett oktatási
+célokra egy minimális operációs rendszert, a MINIX-et. Ennek teljes
+forráskódja megtalálható Tanenbaum: \textit{Operációs rendszerek} című
+könyvében.
+
+Ezt használta fel Linus Torvalds, svéd anyanyelvű finn egyetemi hallgató
+egy operációs rendszer kernelének a kifejlesztéséhez, melyet később
+Linuxnak neveztek el és azóta is Linus fejleszti. A munkát 1991-ben
+kezdte.
+
+Precíz szóhasználatban a Linux a kernelt jelenti. Teljes operációs
+rendszerré a Linuxot a GNU-s programok teszik, ezt az operációs
+rendszert GNU/Linuxnak szokták hívni. A különböző Linux terjesztések
+ezeket a programokat szoftvercsomagokba szervezik és csomagkezelő
+programokat használnak a szoftvercsomagok telepítésének egyszerűbbé
+tételéhez.
+
+A Linuxok (talán kizárólag) az X Window rendszert használják a grafikus
+felületek alapjaként, ez biztosítja az alapvető keretrendszert GUI
+környezetek építéséhez: ablakok kirajzolása és mozgatása a képernyőn,
+együttműködés az egérrel és billentyűzettel. 
+
+Erre épülnek rá az ablakozó rendszerek (pl. IceWM, (Open/Flux)Box) és a
+összetettebb grafikus felhasználói felületek (GNOME, KDE, Xfce). 
+{\small A kettő közötti pontos különbséget megnézhetné valaki, az
+előbbiekben nincs kölcsönhatás az ablakok között (drag-and-drop,
+vágólap).}
+
+A GNU/Linux rendszerek és a UNIX-ok között jelentős hasonlóság van, amit
+több szabvány, például a POSIX nagymértékű betartása tesz lehetővé. Aki
+egy UNIX-rendszert ismer, az nem fog elveszni a Linuxban és fordítva.
+
+\section{A szabad szoftver -- nyílt forrású szoftver}
+
+A Szabad Szoftver Alapítvány a szabad szoftvert nem egyszerűen a szabad
+(jogtisztán ingyenes) felhasználást érti, tehát nem a shareware
+programokat, hanem a következő jogok meglétét:
+\begin{itemize}
+\item 0. szabadság: A program tetszőleges célra \emph{szabadon
+felhasználható}.
+\item 1. szabadság: A program működése \emph{szabadon tanulmányozható,
+és módosítható} a saját célunknak megfelelően.
+\item 2. szabadság: Szabadon \emph{terjeszthető és továbbadható}.
+\item 3. szabadság: Lehetőség van a szoftver \emph{továbbfejlesztésére} és a
+fejlesztés \emph{közreadására}.
+\end{itemize}
+
+Az 1-3. szabadág feltételezi a \emph{forráskód elérhetőségét}.
+
+A szabad szoftver nem jelent feltétlenül ingyenességet. Ha például
+valaki hajlandó azért fizetni, hogy egy szabad szoftvert az ő igényeire
+alakítson valaki, akkor nyugodtan kérhet pénzt a fejlesztő.
+Mindenesetre nem lehet visszaélni annyira vele, mint egy zárt forráskódú
+program esetén, hiszen kidobhatom a fejlesztőt, ha túl sokat kér, és
+másikat vehetek fel.
+
+A szoftverek nagy csoportja a \emph{nyílt forrású szoftverek}, amelyek
+nem feltétlenül szabad szoftverek, mert elképzelhető, hogy a fenti
+feltételeket nem teljesítik. Tehát a nyílt forrású szoftverek
+részhalmaza a szabad szoftverek.
+
+Bővebben itt: \url{http://www.fsf.hu/index.php/Whatis_fs}.
+
+\section{Linux-terjesztések (distribution)}
+
+Grafikus felületek: KDE, talán a leghasználhatóbb kezdőknek, sokan
+jobban szeretik a GNOME-ot, mert nincs annyi felesleges csicsa, az
+előbbi a Qt grafikus könyvtárra (C++), az utóbbi a Gtk grafikus
+könyvtárra (C) épül. Vannak kisebb erőforrásúak is mint például az
+IceWM, LXDE, az XFCE és az FVWM. Nem Windows-szerű, de állítólag nagyon
+használható: *box (Fluxbox, Openbox\dots), Enlightenment.
+
+Linux-terjesztések (distributions):
+\begin{itemize}
+\item Debian: szervernek szeretik (meg a FreeBSD-t), deb csomagok
+\item Ubuntu: egyszerű telepítés és használat (sima: GNOME-os, Xubuntu:
+	gyors Xfce-vel, kubuntu: KDE-vel, edubuntu: oktatási programok)
+	deb csomagok
+\item SuSE, RedHat $\rightarrow$ Fedora, Mandriva (rpm csomag)
+\item Slackware, gentoo, arch: a csomagok a forráskódot vagy a forráskód
+        letöltési helyét tartalmazzák a fordításhoz szükséges információkkal
+\end{itemize}
+
+Érdemes otthon telepíteni Linuxot. Az Ubuntut vagy kitartóbbaknak a
+Debiant ajánlom.  http://ubuntu.hu http://debian.com Szívesen veszem, ha
+valaki másikakkal kísérletezik (Gentoo, Arch, FreeBSD, PC-BSD
+tapasztalatok érdekelnek).
+
+Ha valakinek extra eszköze van, vagy soros egere, akkor Ubuntuból az
+alternatives változatot, amúgy a live változatot töltse le. (Szervernek
+természetesen a server változatot, az alapból grafikus felület nélküli.)
+A live változat telepítés nélkül is elindul CD-ről, így meg lehet nézni,
+szeretne-e ilyet az ember, milyen hardwert ismer fel. Lassú gépekre
+lubuntut telepítsünk, az jóval gyorsabb. Mivel a live CD-re nem fér rá
+minden nyelv csomagja ezért érdemes a magyar változatot letölteni, de
+a magyar nyelvi csomagokat felrakhatjuk hálózatról is.
+
+Ugyan nem Linuxok, de a BSD változatai (FreeBSD, NetBSD, OpenBSD,
+PC-BSD,\ldots) is szabad szotverek. Amíg a Linuxot több összetevőből
+rakják össze (GNU projekt, Linux-kernel), addig a BSD-k teljes alaprendszere
+(kernel+operációs rendszer) együtt kerül fejlesztésre így jobban
+összecsiszolt. A programoknál lehetőség van ugyan a binárisból történő
+telepítésre, de a forráskódból történő telepítés is nagyon egyszerű, a
+gentoo-hoz hasonló. A hardvergyártók egyelőre még kevésbé veszik
+figyelembe a BSD-seket, ezért a harvertámogatottság kisebb mértékű, mint
+a Linux esetén. Végül két érdekesség: 1) a Mac OS X operációs rendszer, az
+Apple Macintoshának 2002-ben bevezetett operációs rendszere szintén
+BSD alapú; 2) hogy a Debian 2011 februárjában kiadott 6.0-ás
+verziójában választható olyan telepítő is, amely Linux kernel helyett a
+FreeBSD kernelt használja.
+
+\newpage
+\section{Vim}
+
+A Vim egy nagyon hatékony szövegszerkesztő (text editor), amely
+karakteres felületen is működik, de van grafikus felületű változata is
+(gvim). Ez utóbbi használható Windowson is, és van változata Mac OS X-re
+is.
+
+A Vim képes több puffert is kezelni, és azokat összehasonlítani
+(vimdiff), azok között másolni. A Vim kezelni tudja az egeret is, de fő
+ereje a billentyűzet használatában van, és Unix/Linux rendszereken
+abban, hogy a pufferek tartalmát külső Unixos szűrőutasításokkal (lásd
+\ref{sub:pipe} alfejezetben) könnyedén lehet szűrni.
+
+A Vi egyik utódja, melytől azonban megkülönbözteti egy halom hasznos
+lehetőség, például több szövegpuffer kezelése, szintaxiskiemelés,
+többszörös visszavonás (undo).
+
+Több fejlesztőkörnyezet és shell, mint például az Eclipse és a bash, nem
+véletlenül tartalmaz olyan lehetőséget, hogy Vim-szerűen lehet velük
+szerkeszteni a szöveget.
+
+A legfontosabb, amit a Vimnél meg kell érteni, a módok. A módok egy
+vázlatos állapotgáfja található alább.
+
+\smallskip
+
+\begin{tikzpicture}[node distance=1.5cm,/tikz/initial text=,
+                initial distance=5ex]
+        \node[state,initial] (n) at (0,0) {normal}; 
+        \node[state] (c) [above=of n]
+                {\parbox[c]{1.5cm}{\small command-line}}; 
+        \node[state] (v) [right=2cm of n] {visual}; 
+        \node[state] (i) [below=1.5cm of n] {insert}; 
+        %\node (h) [below=.5cm of i] {:help vim-modes}; 
+        \path[dedge] (n) edge[bend left=15] node[left,near end] {:,/,?} (c)
+                edge[bend left=15] node[above] {v,V,Ctrl-V} (v)
+                edge[bend right=15] node[left,near end] {iIaAoOc\ldots} (i);
+        %\path[dedge] (-1.5cm,0) -- (n);
+        \path[dedge] (i) edge[bend right=15] node[right,near start] {\Esc} (n);
+        \path[dedge] (v) edge[bend left=15] node[below] {\Esc} (n);
+        \path[dedge] (c) edge[bend left=15] node[right,near start]
+        {\Esc,\Enter} (n);
+\end{tikzpicture}
+
+Általában a Vim normál módban indul. Command-line (parancssori) módba
+kerülünk például, ha :-ot nyomunk, ekkor vim parancsokat írhatunk be,
+amelyet egy \Enter\ után végrehajthatunk (vagy Escape-pel
+megszakíthatunk). A parancs megjelenik az alsó sorban. A vim módokat
+megkereshetjük például a help paranccsal \verb!:help vim-modes!
+
+Szintén a Parancssori módhoz tartozik a keresés is. Előrefelé a keresést
+normál módból /-el indíthatjuk. Ezután egy reguláris kifejezést írhatunk
+be és ezt \Enter\ után megkeresi.
+
+Ha be szeretnénk írni valamit, azt Insert módban tehetjük. Ebbe a módba
+leggyakrabban az \verb!i! paranccsal jutunk. Ha beírtuk a szöveget
+Escape-el juthatunk vissza Normál módba.
+
+A visual módban tudjuk kijelölni a szöveg egy részét (karaktereket,
+sorokat vagy téglalap alakú blokkot), hogy azt például töröljük,
+átírjuk, módosítsuk, szűrjük egy szűrőutasítással, cseréljünk benne
+szövegrészeket vagy köré írjunk valami környezetet.
+
+\subsection{A Vim beállítása, sorok kezelése,
+parancsismétlés, kilépés}
+
+Vegyük végig a vimtutorból az első 3 leckét.
+Lépjünk be a mail.roik.bmf.hu szerverre, futtassuk a vimtutor parancsot.
+
+Tanuljuk meg a blokkok kezelését a vimtutorból.
+Lépjünk be a mail.roik.bmf.hu szerverre, futtassuk a vimtutor parancsot,
+keressünk rá a téglalap szóra ( \code{/téglalap} ) és hajtsuk végre az
+ott található feladatokat (9. lecke).
+
+Hozzunk létre egy másolatot a \code{.bashrc} fájlról \code{tmp.sh} néven és
+gyakoroljunk rajta a vim-mel.
+\begin{Verbatim}
+cp .bashrc tmp.sh
+vim tmp.sh
+\end{Verbatim}
+
+Állítsuk be, hogy színezzen (syntax highlighting): \code{:syntax on}
+
+Állítsuk be, hogy ne kelljen minden alkalommal megadni! Ha nincs
+\verb+~/.vimrc+ hozzuk létre, és írjuk bele, hogy \code{syntax on},
+esetleg a következő fájlt menthetjük \verb+~/.vimrc+ néven:
+\url{http://www.arek.uni-obuda.hu/linux/vim/vimrc}
+
+Még jobb követni a \url{http://github.com/horvatha/vimrc} oldal alján
+levő leírást a tároló klónozásához, a .vimrc létrehozásához és a hasznos
+kiegészítők telepítéséhez.
+
+Sorok törlése (delete): \code{dd}, parancs ismétlése \verb+.+ (pont),
+törölt sor (szó) beillesztése aktuális sor (karakter) után \code{p}
+(paste), elé \code{P}.
+Hogyan lehet leggyorsabban két sort felcserélni?
+
+Szöveg beírása: \code{i} (insert) után lehet, utána \Esc\ a normál módba
+visszatéréshez. Ekkor szerkeszthetjük, ahogy más szerkesztőkben szoktuk.
+(Az \code{i} vált át normál módból beszúrás (insert) módba, amit
+megfelelő beállítások esetén alul láthatunk (\verb+--INSERT--+), az
+\Esc\ tér vissza.)
+
+Parancs n-szeri végrehajtásához előtte beírni a számot. Próbáljuk ki:
+
+\code{3dd5$\downarrow$2p}
+
+\code{22i+-} \Esc
+
+A visszavonásokat az \code{u} -val tehetjük meg. Nyomjuk le többször az
+\code{u}-t. Mi történik?
+
+Mentsük a fájlt \code{:w}, más néven is: \code{:w fajlnev}! Próbáljuk
+meg mégegyszer ugyanolyan néven! De csak azért is mentsük \code{:w! fajlnev}!
+
+\textbf{Fontos:} Kilépési lehetőségek: mentéssel \code{:wq}, mentés nélkül
+\code{:q!}. Ha nem vagyunk biztosak, milyen módban vagyunk, nyomjunk
+előtte két \Esc-et
+
+A \code{d} helyett \code{y}-t (yank=ránt) használva nem törlünk, hanem csak
+másolunk. Próbáljuk ki több sor másolását több példányban!
+
+Ez csak a kezdet. Apránként ismerkedünk majd meg a Vim finomságaival.
+Az eddigiek közül a szintaxiskiemelés nem működik sima vi-jal és az
+\code{i} parancs után kissé nehezebben lehet szerkeszteni a fájlt.
+
+Egyedül tanuláshoz:
+
+Írjuk be a \code{vimtutor} parancsot :-)
+
+magyarul: http://people.inf.elte.hu/birki/ab/gyak/02.txt.html
+
+angolul: \code{vimtutor} parancs végigvezet sok hasznos tudnivalón.
+
+angolul: A vim helpjében sok hasznos dolgot találunk:\\ \verb!:help user-manual!
+
+angolul: fontosabb parancsok http://worldtimzone.com/res/vi.html
+
+A Vim letölthető Windowsra is (gVim): vim.org
+
+\newpage
+\section{Parancsuralom a shell felett}
+
+Töltsük le a Linuxos anyagot a bazaar verziókezelő rendszerrel:
+\begin{Verbatim}[commandchars=@\[\]]
+@PYaD[#] aptitude install bzr    # Ha még nincs bazaar
+@PYaD[$] cd ahova/le/akarom/tölteni
+@PYaD[$] bzr branch http://mail.roik.bmf.hu/linux
+\end{Verbatim}
+
+A bazaar részletesebb használatát lásd a Bazaar szakaszban
+(\ref{seq:bazaar}. szakasz).
+
+Fordítsuk le és nyissuk meg a gyakorlatok leírását
+(F11 teljes képernyő):
+\begin{Verbatim}
+cd segedlet
+make
+evince linalk.pdf&
+\end{Verbatim}
+Az \& háttérbe küldi a folyamatot, és visszakapjuk a promptot, további
+utasításokat írhatunk be az előző folyamat megszakítása nélkül.
+
+\subsection{BASH: fájl- és könyvtárműveletek, jogok, beállításai}
+
+A \code{bash} a Linux/UNIX egyik héja (shellje, parencsértelmezője),
+amely parancsok végrehajtását teszi lehetővé. Van még sh, csh, zsh,
+ksh, dash\dots
+
+Készítsünk részletes listát a fájlokról, könyvtárakról, a rejtetteket is
+beleértve:
+\code{ls -la}
+
+A rejtett fájlok/könyvtárak ponttal kezdődnek, alapból nem jelennek meg
+listázáskor, általában beállításokat tartalmaznak.
+
+A fájllista elején szerepelnek a jogosultságok pl. \code{drwxr-x---}
+első betűje könyvtárat jelöl, a következő három betű a felhasználó
+jogait (olvasás/listázás, írás és végrehajtás/belépés) a következő
+kétszer három a csoport ill. a többi felhasználó jogait.
+
+A következő oszlop még nem érdekes, a hardlinkek számát mutatja.
+Utána áll a fájl/könyvtár tulajdonosa és csoportja, amire a (jogok
+vonatkoznak), majd a méret, módosítási dátum és a fájlnév.
+
+Keressük meg az ls leírásában a \code{-l -A -a -t} és \code{-r} kapcsolókat:
+\begin{Verbatim}
+man ls
+/-l<Enter>
+\end{Verbatim}
+A man-ból q-val léphetünk ki.
+
+Mit jelent az \code{ls -trl}?
+
+Váltsunk könyvtárat \code{cd /}, listázzuk, térjünk vissza \code{cd}
+(call directory)
+
+Ha a \code{manpages-hu} csomag telepítve van, akkor a leggyakoribb
+utasításokról magyarul kapunk leírást.
+
+Nézzük meg a \code{mv} parancs leírását. Mit csinál, milyen formában
+használhatjuk? Mit jelent a forrás... (a három pont) az áttekintésben?
+
+Hozzunk létre és tegyünk futtathatóvá a bin könyvtárban a
+\code{cx} parancsot, melynek tartalma:
+\begin{verbatim}
+chmod 755 $*
+\end{verbatim}
+
+Állítsuk be, hogy a \code{bash} a gép minden indulásakor megtalálja a
+home-könyvtárunkban található \dir{bin} könyvtárat!
+
+Állítsuk be a hasznos \code{ll, la} parancsokat, hogy mindig
+rendelkezésre álljanak (alias)!
+
+Indítsunk új terminált (vagy újból jelentkezzünk be) és próbáljuk ki az
+\code{ll} és \code{cx} parancsainkat! Állapítsuk meg a típusukat!
+\code{type ll cx}
+
+Fontos parancsok: cp (copy), ls (list), mv (move), rmdir, mkdir, pwd,
+chmod, chown, alias, type
+
+Próbáljuk kitalálni a még ismeretlenek jelentését! Hozzunk létre egy
+temp nevű könyvtárat, majd töröljük! Hozzuk létre megint (felfelé
+gomb=előző utasítás), másoljuk bele a tmp fájlunkat! Most töröljük!
+(\code{rm -r}, rekurzív)
+
+Otthoni tanuláshoz magyarul:\\
+\url{http://www.cab.u-szeged.hu/local/doc/UNIX/orlando/bev.html} Orlando
+Unix-iskola
+
+Bevezetés a bashbe angolul:\\
+\url{http://www.tldp.net/LDP/abs/html/index.html} Advanced bash-scripting guide
+
+\subsection{Csővonal (pipe) és átirányítás}
+\label{sub:pipe}
+
+% subsection subsection name (end)
+A UNIX-os utasítások egy része szűrő jellegű, ami háromféleképp veheti a
+bemenetét.
+\begin{enumerate}
+\item egy csővonalból
+\item a billentyűzetről
+\item egy fájlból
+\end{enumerate}
+
+Igazából az első kettő a UNIX/Linux szempontjából ugyanaz. Ő ha nincs
+megadva fájl, az úgynevezett standard bemenetről (stdin) várja az adatot, ami
+vagy az úgynevezett csővonalból jön, vagy a billentyűzetről. A hasznos
+kimenetet minden szűrő a standard kimenetre (stdout) küldi, ez
+csővonallal továbbküldhető egy másik utasításnak, vagy megjelenik a
+képernyőn, esetleg beleirányíthatjuk egy fájlba. Ha egy utasítás
+végrehajtása során hiba történik, az nem megy a csővonalba, hanem az
+úgynevezett standard hibakimenetre (stderr).
+
+Hogy értsük is, pár példát mutatunk: az egyik szűrőutasítás a
+\code{grep}. Ez egy szövegrészletet keres meg a bemenetében, pontosabban
+egy reguláris kifejezésre keres rá.
+
+\paragraph{1a. példa}
+
+\verb+ls /usr/bin | grep im$+
+
+Itt az ls parancs kilistázza a felhasználók által végrehajtható
+utasításokat és kiírná a képernyőre (stdout-ra) a kimenetet, de a |
+(függőleges vonal) azt mondja, hogy a kimenetet adja át a grep
+utasításnak, ez lesz az ő stdin-je. A grep pedig kiszűri az im végű
+fájlneveket. A \verb+$+ a sor végét jelenti a reguláris kifejezésekben.
+
+
+\begin{tikzpicture}[scale=2]
+ \node[box] (ls) at (0,0) {ls};
+ \node[small point] (P) at (1,0) {};
+ \node[box] (grep) at (2,0) {grep};
+ \node[box] (scr) at (4,0) {képernyő};
+ \path[dedge] (ls) edge node[above] {stdout}  (P);
+ \path[dedge] (P) edge node[above] {stdin}  (grep);
+ \path[dedge] (grep) edge node[above] {stdout}  (scr);
+\end{tikzpicture}
+
+\paragraph{1b. példa}
+
+\verb+ls /usr/bin | grep im$ >ezegyfajl+
+
+Az előzőhöz hasonló, csak a kimenetet egy fájlba küldjük, nem a
+képernyőre.
+
+\paragraph{2. példa}
+
+\verb+grep im$+
+
+Ilyenkor a billentyűzetről vár bemenetet, és minden soremeléskor, ha a
+sor illeszkedik a mintára, kiírja a sort.
+
+\begin{tikzpicture}[scale=2]
+ \node[box] (kb) at (0,0) {billentyűzet};
+ \node[box] (grep) at (2,0) {grep};
+ \node[box] (scr) at (4,0) {képernyő};
+ \path[dedge] (kb) edge node[above] {stdin}  (grep);
+ \path[dedge] (grep) edge node[above] {stdout}  (scr);
+\end{tikzpicture}
+
+A futtatása így néz ki:
+\begin{verbatim}
+$ grep im$
+sünim
+sünim
+image
+Palim
+Palim
+FELEIM
+\end{verbatim}
+
+A végén Ctrl-D vel jelezzük, hogy végeztünk (ezzel fájlvége jelet, EOF-et
+küldünk).
+
+
+\paragraph{3. példa}
+
+\verb+grep ^alias ~/.bashrc+
+
+Ha egy fájlnév adott a szűrőutasításban, akkor a fájlból veszi az
+adatokat. Itt a alias-szal kezdődő sorokat. A \verb+^+ (kalap jel) a sor
+elejére illeszkedik.
+
+\begin{tikzpicture}[scale=2]
+ \node[box] (file) at (0,0) {fájl};
+ \node[box] (grep) at (2,0) {grep};
+ \node[box] (scr) at (4,0) {képernyő};
+ \path[dedge] (file) edge node[above] {stdin}  (grep);
+ \path[dedge] (grep) edge node[above] {stdout}  (scr);
+\end{tikzpicture}
+
+A futtatása így nézhet ki:
+\begin{verbatim}
+$ grep ^alias ~/.bashrc 
+alias lt='ls -ltr'
+alias ll='ls -l'
+alias la='ls -A'
+alias cx="chmod a+x"
+alias cr="chmod a+r"
+alias ipythonlab='ipython -pylab'
+\end{verbatim}
+
+\paragraph{4. példa}
+
+\verb+grep ^alias nincsilyenfajl | sort+
+
+Ha a grep-ben valamilyen hiba van, például nem létezik a megadott
+nevű fájl, akkor a kimenete (a hiba jelzése) nem megy tovább a
+csővonalon, hanem a stderr-re megy, és mindenképpen kiíródik. (Na jó,
+van arra is mód hogy átirányítsam a hibakimenetet is egy fájlba.) Így a
+sort szűrő, ami rendezni szokott nem nyeli el a hibautasítást (ekkor azt
+hinném, minden rendben volt), és nem hibautasítást fog rendezni.
+
+\begin{tikzpicture}[scale=2]
+ \node[box] (file) at (0,0) {nem létező fájl};
+ \node[box] (grep) at (2,0) {grep};
+ \node[box,fill=red!20] (scr) at (2,-1) {képernyő};
+ \node[box] (sort) at (4,0) {sort};
+ \path[dedge, dashed] (file) edge node[above] {stdin}  (grep);
+ \path[dedge, dashed] (grep) edge node[above] {stdout}  (sort);
+ \path[dedge] (grep) edge node[right] {stderr}  (scr);
+\end{tikzpicture}
+
+\paragraph{További szűrőutasítások}
+
+Milyen héjaink (shelljeink) vannak?
+\begin{Verbatim}
+ls /bin |grep sh
+\end{Verbatim}
+
+A \code{cat fn} utasítással kiírhatunk egy \code{fn} fájlt, vagy többet. Keressük meg ezzel
+a diakok sorait a \code{/etc/passwd} fájlban! Használjuk a grep-et, hogy csak a
+diak tartalmú sorokat írja ki.
+
+Számoljuk meg, hány ilyen sor van! wc (word count, sor-szó-betűszám) -l
+kapcsolóval csak sorok száma.
+\begin{Verbatim}
+cat /etc/passwd |grep diak|wc
+\end{Verbatim}
+
+Mivel a grep fájlból is olvashat ezt így is végrehajthatnánk:
+\begin{Verbatim}
+grep diak /etc/passwd |wc
+\end{Verbatim}
+Ha viszont több fájlból kell szűrnünk, akkor a cat nélkül nem megy:
+\begin{Verbatim}
+cat /etc/passwd /etc/group |grep diak
+\end{Verbatim}
+
+
+Vajon hogyan számolhatjuk meg a sorok számát a passwd fájlban? És
+\code{/home} fájljainak számát (azaz általában a felhasználók számát)?
+
+Szűrők és fontosabb kapcsolóik (minuszt (-) tegyünk a kapcsolók elé):\\
+\begin{tabular}{|l|l|l|}
+\hline
+neve& leírás & kapcsoló\\
+\hline
+grep & szűri a sorokat egy minta szerint&v r\\
+\hline
+sort &rendezi a sorokat (alapból abc-rendbe)&n u c\\
+\hline
+wc & szószámláló (word count)&l c w\\
+\hline
+head & csak a fájl elejét írja ki (=fej)&n c\\
+\hline
+tail & csak a fájl végét írja ki (=farok)&n c\\
+\hline
+sed & pl. szócseréket végez a szövegben (stream editor)&\\
+\hline
+awk & összetett feladatok végzésére (a szerzők nevéből)&\\
+\hline
+tr & karaktercsere&\\
+\hline
+\end{tabular}
+
+Az alábbi példákat a homekönyvtárban próbáljuk ki:
+\begin{Verbatim}
+grep alias .*
+cat /etc/passwd | sort
+ls /bin | wc -l
+head .bashrc
+tail -5 .bashrc
+ls -l ~ | sed "s/diak/****/g"
+cat .bashrc | tr eat EAT
+cat /etc/fstab | awk '/dev/ {print NR, $1, $3}'
+\end{Verbatim}
+Keressük meg a man-ban a fenti utasítások táblázatban szereplő
+kapcsolóit. (pl. -l keresése: /-l)
+
+A sed csereutasítása a Vimben is hasznos. A head és tail nagy fájloknál is
+gyorsan működik. Az awk egy önálló programnyelvvel rendelkező szűrő.
+Jó leírása van a Kernighan--Pike könyvben, de a man-ban is vannak
+hasznos példák.
+
+A legvégső kimenet általában a képernyőre kerül.  Bárminek a kimenete
+cső vagy a képernyő  helyett fájlba is helyezhető $>$ segítségével.
+Pl:
+\begin{Verbatim}
+cat .bashrc .bash_profile > egyesitett
+(df; uname -a) >gep_adatai
+\end{Verbatim}
+
+\subsection{ClusterSSH}
+Ha egyszerre több gépen -- például egy cluster gépein -- kell
+ugyanazokat a parancsokat végrehajtanom, akkor hasznos program a
+ClusterSSH. Futtatásához, grafikus felület kell. A \texttt{cssh}
+parancsnak paraméterként megadva a szerverek IP-címének listáját
+mindegyik szerver terminálja külön ablakban jelenik meg, és egy kis
+beviteli mező is megjelenik, amelyben egyszerre az összes szervernek
+adhatunk parancsot.  Az egyes terminálokba belépve külön is
+foglalkozhatunk egyetlen géppel is.
+
+Telepítése Debian és Ubuntu rendszereken:
+\begin{Verbatim}
+# aptitude install clustterssh
+\end{Verbatim}
+
+\newpage
+\section{\code{.deb} csomagok telepítése és kezelése}
+
+A telepítési parancsokat root-ként adhatjuk ki, vagy megfelelő
+beállítások esetén \code{sudo}-t írva eléjük (Ubuntuban ez az alap,
+\code{man sudo}).
+
+A Linuxokon a programok, könyvtárak csomagokba vannak telepítve. Egy
+könyvtárat több program is használhat. A \code{dpkg} egyedi csomagok
+telepítésére  (\code{-i}), telepített csomagok listázására (\code{-l}),
+csomagok újrakonfigurálására (\code{dpkg-reconfigure}).
+Gyakran hasznos a \code{dpkg -l|grep kulcsszó} alak csomagok keresésére.
+
+Az apt a dpkg-re épül, függőségeket, csomagok letöltését kezeli.
+Azt, hogy honnan tölthet le, a \code{/etc/apt/sources.list} szöveges
+fájl tartalmazza. Az alábbi első sor frissíti a csomaglistát, a második
+letöltögeti az \code{mc}, \code{vim-full} és \code{gimp} csomagokat
+függőségekkel együtt és telepíti.
+\begin{Verbatim}
+aptitude update
+aptitude install mc gimp vim-full
+\end{Verbatim}
+Bővebben: \url{http://321.hu/Debian/apt-guide.html}
+
+Az alábbi sorokkal kereshetünk kulcsszónak megfelelő csomagokat, illetve
+megnézhetjük a csomag leírását:
+\begin{Verbatim}
+aptitude search postgresql  |grep python
+aptitude show vim
+\end{Verbatim}
+
+Az utóbbi kimenetének részlete:\\
+{\small
+Package: vim\\
+Priority: optional\\
+Provides: editor\\
+Depends: libc6 ($>$= 2.7-1), libgpmg1 ($>$= 1.19.6-1), libncurses5 ($>$= 5.6+20071006-3), python2.5 ($>$= 2.5), vim-common (= 1:7.1-138+1ubuntu3), vim-runtime (= 1:7.1-138+1ubuntu3)\\
+Filename: pool/main/v/vim/vim\_7.1-138+1ubuntu3\_i386.deb\\
+Description: Vi IMproved - enhanced vi editor\\
+Origin: Ubuntu
+} %small
+
+Ebből láthatjuk, hogy milyen más csomagok melyik verziójától függ a {\tt
+vim} csomag. A csomagok prioritása lehet required, important, standard,
+optional and extra; ebben az esetben optional.
+A csomagok pl. az Ubuntu alatt három fő tárolóban vannak, ezek nevei:
+main, universe és multiverse.
+A Filename kezdetű sorból láthatjuk, hogy a {\tt vim} a main tárolóban
+található és az Intel 368-as (i386) architektúrára fordított csomagunk van.
+
+Igazából a fenti kimenetet a \code{apt-cache show vim}  sorral
+csináltuk. Az aptitude sokmindent magyarít, ha a magyar nyelv van
+beállítva.
+
+Az apt grafikus felülete a Synaptic csomagkezelő (Rendszer $>$
+Adminisztráció $>$ Synaptic). 
+
+Hasznos parancsok röviden összefoglalva:
+\begin{verbatim}
+dpkg -i <deb-fájl>
+dpkg -l  (esetleg greppel szűrve)
+dpkg-reconfigure <csomag>  (xserver-xorg, tzdata)
+
+aptitude update
+aptitude  install <csomag>
+aptitude safe-upgrade
+vim /etc/apt/sources-list
+aptitude full-upgrade
+
+apt-cache search <keresett szó>
+apt-cache show <csomag>
+\end{verbatim}
+
+Újabban az alapértelmezett csomagkezelő rendszer a Debianban az
+aptitude. Korábban az apt-get és apt-cache utasításokat használták
+helyette.
+
+\section{Telepítés}
+\input{debian-telepites}
+
+\newpage
+\section{Munka több gép között}
+
+Az alábbiakban a távoli gépekkel történő kapcsolatokat vizsgáljuk. Ha
+távoli gépen akarunk ugyanúgy dolgozni, mint a sajátunk karakteres
+felületén, akkor azt általában ssh-val tesszük, ami titkosított
+kapcsolatot létesít. Fájlok másolására az ftp, az sftp vagy az scp
+szolgál. Leírás ezekről (Windowsos lehetőségek is):\\
+http://progkor.inf.elte.hu/pandora.htm
+
+\subsection{ssh}
+Jelentkezzünk be a távoli gépen.\\
+\texttt{ssh -p x diak\textit{n}@mail.roik.bmf.hu}\\
+ahol $n=1,2,\dots,15$, a port x értékét nem írom ide.
+
+Mostmár az alábbi kódolási eltéres ritkább, a szerverek és asztali
+(desktop) gépek Linuxai is általában utf-8-as kódolást használnak, de
+hátha mégis hasznos lesz valakinek.
+
+Ha utf-8-as kódolású gépről jelentkezünk be latin2-esre (iso-8859-2),
+akkor az ékezetes betűk nem mennek át. Ekkor hasznos az alábbi alak.
+\begin{Verbatim}
+luit -encoding iso-8859-2 -- ssh -p x diak1@mail.roik.bmf.hu
+\end{Verbatim}
+Windows alól a putty.exe programmal léphetünk be. Ott is beállítható a
+karakterkódolás a \texttt{Translation} részben.
+
+A fejezet többi része nem tartozik szorosan az ssh-hoz.
+Váltsunk a gyökérkönyvtárra \code{cd /}, listázzuk, térjünk vissza \code{cd} 
+(call directory) A diak15 felhasználó (home)könyvtárának rövidítése:
+\code{\~{}diak15}, a sajátunké \code{\~{}}, a pillanatnyié \code{.}, a
+pillanatnyi szülőkönyvtáráé \code{..} Váltsunk diak15 könyvtárába, majd
+vissza!
+
+Mennyi szabad hely van a lemezen: \code{df} (disc free). Mennyit használ
+a pillanatnyi könyvtárunk: \code{du -h} (disk usage).
+
+Nézzük meg ki mit csinál a gépen: \code{w} (who). Ha elfelejtem hol vagyok:
+\code{pwd} (print working directory, egyébként azt többnyire látjuk a
+prompt (\$) előtt). Milyen felhasználói könyvtárak
+vannak: \code{ls /home} vagy (ha a sajátomban vagyok) \code{ls ..}
+
+Indítsuk el a Vim oktatóját: \code{vimtutor hu}  Ennek a
+végigtanulmányozása házi feladat. Kilépés q!
+Ha valaki otthon akarja kipróbálni, és nem akar bejelentkezni a mail-re,
+a \alapcim{}/vim oldalról letöltheti a tutor.hu
+fájlt, és \code{vim tutor.hu} utasítással megnyithatja. (vim.org-ról
+letölthető a windowsos vim telepítője, azzal is megfelel.)
+
+\subsection{(s)ftp, scp}
+A sima ftp-t használhatjuk, ha nem titkosított fájlokat kell
+letöltenünk, pl. valamelyik Linux-disztribúció  iso-ját. Ellenkező
+esetben sftp-t használhatunk ($\in$ lftp), nyilván a titkosítás és
+visszafejtés időt és erőforrást igényel.
+
+Az ftp leggyakoribb parancsaival ismerkedjünk meg. Jelentkezzünk be:
+\begin{Verbatim}
+ftp mail.roik.bmf.hu
+\end{Verbatim}
+Ez majd rákérdez a felhasználóra és a jelszóra. cd-vel válthatunk
+távoli könyvtárat ls-sel listázhatunk, lcd-vel helyi könyvtárat
+válthatunk. (A \code{!cd} parancs jogosan nem vált könyvtárat, hiszen
+minden parancs egy saját héjat (shellet) nyit meg, és abban vált
+könyvtárat, majd visszalép az eredeti héjba, ahol ez nem érvényes.) A !
+elejű sorok helyi parancsként értelmeződnek. help segítséget ad.
+
+Az (m)get és (m)put paranccsal lehet fájlokat lehívni és feltölteni. Az
+m esetén több (multiple) fájlt, pl.  \code{mget *.jpg} Nagyon sok fájl
+esetén érdemes a \code{prompt} utasítást kiadni, akkor nem kérdez rá
+minden egyes fájlra letöltés előtt.
+
+Töltsük le a mail szerverről a diak1 felhasználó kepek/kepek
+könyvtárában levő képeket!
+
+sftp szintaktikája:
+\begin{Verbatim}
+sftp diak1@mail.roik.bmf.hu
+\end{Verbatim}
+
+Amúgy a Firefox-szal is ftp-zhetünk. Beírhatjuk URL-nek:
+\begin{Verbatim}
+ftp://mail.roik.bmf.hu
+\end{Verbatim}
+
+Midnight Commanderben (mc) a menüből kiválasztható a Jobb/FTP-kapcsolat
+menüpont. A Total Commander is képes ftp-re.
+
+Az scp utasítást akkor használhatjuk, ha pontosan tudjuk a fájl nevét és
+helyét.
+Használata a cp utasításéhoz hasonló.  Ilyenkor csak a jelszóra kérdez
+rá, nem ad promptot. Ez szkriptben hasznos. Pl:
+\begin{Verbatim}
+scp diak1@mail.roik.bmf.hu:.bashrc temp
+\end{Verbatim}
+
+\section{Elosztott verziókezelő rendszerek}
+
+A központosított verziókezelő rendszerek (SVN, CVS) esetén minden
+fejlesztésben résztvevő személy ugyanarra a szerverre küldi fel a
+változásait, és a gépén csak a fájlokról van másolata.
+
+Az elosztott verziókezelő rendszerek (git, bazaar, mercury) esetén a
+fejlesztőknek a saját gépükön is megtalálhatóak azok az információk,
+amelyek a tárolón (repository) vannak, így akár internetkapcsolat nélkül
+is tud feltölteni (commit) a saját gépén lévő tárolójába változásokat új
+változatot (revision) hozva létre, amit aztán -- megfelelő jogosultságok
+esetén -- felküldheti (push) egy interneten elérhető szerverre.
+Leszedheti (pull) és összefésülheti (merge) mások változataival.
+
+Mindegyik fejlesztésben alapvető egység az ág (branch), melyben
+fejlesztési modelltől függően a különböző verziókat tárolhatjuk, vagy
+esetleg egy új megvalósítandó  is új ágat nyithatunk:
+http://nvie.com/posts/a-successful-git-branching-model/ .
+
+A bazaar alapegysége az ág, a git-é az akár több ágat is
+tartalmazó tároló. A bazaar-ban egy új ág létrehozásához új könyvtárat
+kell létrehozni, míg a git-ben az ágak váltásakor ugyanabban a
+könyvtárban változik meg a fájlok tartalma.
+
+A bazaar esetén tehát ágat (branch) másolok le, git esetén a tároló
+klónját (clone) hozom létre.
+
+
+\subsection{git}
+A git elosztott verziókezelő rendszert Linus Torvalds fejlesztette ki a
+Linux kernel fejlesztéséhez. Jól illeszkedik a https://github.com
+oldalhoz.
+
+Egy tárolóban több ág található, amelyek között gyorsan
+válthatunk.
+
+Letölthető illetve frissíthető vele például a linuxos tananyag
+legfrisebb változata:
+
+\begin{Verbatim}
+# aptitude install git gitk
+$ cd ahova/le/akarom/tölteni
+$ git clone https://github.com/horvatha/linux.git
+$ cd linux
+\end{Verbatim}
+
+Ha közben változik a githubon a tároló, ugyanebben a könyvtárban a
+klónunkat frissíthetünk így:
+
+\begin{Verbatim}
+$ git pull
+\end{Verbatim}
+
+A \verb"#" a root-jogosultságot jelöli, helyette sudo is lehet.
+
+Grafikus felületen áttakinthetőbb képet kapunk a változásokról így:
+\begin{Verbatim}
+$ bzr gitk
+\end{Verbatim}
+
+\subsection{Bazaar}
+\label{seq:bazaar}
+A bazaar elosztott verziókövető rendszert, az a Canonical feljeszti, aki
+az Ubuntut is fejleszti. Az Ubuntu http://launchpad.net oldalával jól használható.
+
+Letölthető vele például a linuxos tananyag legfrisebb változata:
+
+\begin{Verbatim}
+# aptitude install bzr
+$ cd ahova/le/akarom/tölteni
+$ bzr branch http://arek.uni-obuda.hu/repo/linux
+\end{Verbatim}
+
+Frissítéskor csak ennyi kell
+
+\begin{Verbatim}
+$ bzr pull
+\end{Verbatim}
+
+Ha változtattunk, és a változtatásainkat is meg szeretnénk őrizni, akkor
+a következőket tegyük.
+
+\begin{Verbatim}
+$ bzr commit  # Ha változtattunk valamit
+$ bzr merge http://arek.uni-obuda.hu/repo/linux
+\end{Verbatim}
+
+Grafikus felületen áttakinthetőbb képet kapunk a változásokról így:
+\begin{Verbatim}
+$ bzr visual
+\end{Verbatim}
+
+Feltölthetünk saját verziókövetett rendszerünket egy tetszőleges helyre,
+amit pl. sftp-vel elérünk:
+\begin{Verbatim}
+bzr push sftp://diak1@mail.roik.bmf.hu:4522/home/diak1/public_html/linux
+\end{Verbatim}
+A 4522 a port száma. A linux könyvtár, ha nem létezik,
+létrejön.
+
+\newpage
+\section{PostgreSQL}
+
+Az alábbi leírás szövegfájlban: linux/postgresql/README.txt
+
+\input{psqljegyzet}
+
+% http://groups.google.com/group/linux.debian.bugs.dist/browse_thread/thread/5ddfcc41e022ff76/17817ee8a08671a1?lnk=raot
+%xxx Az alábbival kéne megoldani, de ékezetes karaktereket nem veszi be
+% jól  utf-8-ból és latin2-ből sem.
+%\lstinputlisting{../postgresql/jegyzet}
+
+\subsection{Elérése Pythonból}
+
+Az alábbi programfálban nyomon követhetjük, hogyan érhetjük el Python
+alól az adatbázisunkat:
+\input{bank_rovid}
+
+Az utolsó megjegyzésbe helyzett sorokkal szebb formátumba tudjuk írni.
+Próbáljuk megérteni az adott sorokat!
+
+\section{\LaTeX}
+
+Töltsök le githubról a horvatha/latex következő tárolót:
+
+\begin{Verbatim}
+git clone https://github.com/horvatha/latex.git
+\end{Verbatim}
+
+A \verb!latex/peldak/keret.tex! fájl jó kiindulófájlnak.
+
+A \verb!latex/latex-roviden! könyvtárban a \verb!make! paranccsal
+fordítsuk le a rövid összefoglalót. A benne leírtakat kell tudni
+használni.
+
+Ennek a fájlnak a forrása a linux tárolóban van, ha magunk akarjuk
+lefordítani, töltsük le a tárolót:
+
+\begin{Verbatim}
+git clone https://github.com/horvatha/linux.git
+\end{Verbatim}
+
+A tikzpicture ábrákhoz szükség van a pgf csomag telepítésére:
+
+\begin{Verbatim}
+apt-get install pgf
+\end{Verbatim}
+
+Nyissuk meg ennek a fájlnak a forrását és fordítsuk le:
+\begin{Verbatim}
+cd linux/segedlet
+vim linalk.tex
+:!pdflatex linalk.tex
+:!evince linalk.pdf &
+\end{Verbatim}
+A :! a vim-ben lefuttaja az utána lévő parancsot, mintha shellbe írnánk.
+
+A pdflatex-et Vimben egyszerűbben is futtahatjuk, mivel a \verb!%! az
+aktuális fájlt jelöli, sőt -- mivel a fenti fájl a Makefile-ban is benne
+van -- make-kel is fordíthatom, de ilyenkor a célfájlt kell megadni:
+\begin{Verbatim}
+:!pdflatex %
+:make linalk.pdf
+\end{Verbatim}
+Mint látjuk a make-hez nem kell felkiáltójel Vimben.
+
+Újraforsításkor a régebbi Evincében a \verb!<Ctrl>+R! frissít.
+Újabbakban automatikusan frissül.
+
+Kis kedvcsinálónak nézzük meg a latex tárolóból a
+\code{latex/latex-izelito/sziv.pdf} fájlt.
+Ezek inkább érdekességek, hogy mit lehet csinálni a \LaTeX-hel.
+A forrás is ott van \code{sziv.tex} néven. Szintén lefordíthatjuk
+
+\verb"pdflatex sziv.tex"
+
+utasítással.
+
+Menjünk át a latex tároló latex-roviden könyvtárába, és fordítsuk le a
+latex-roviden.tex fájlt pdflatex-hel!
+
+Másoljuk át a latex-roviden.tex-et más névre, és a benne leírtak
+és a forrás segítségével:
+\begin{itemize}
+\item Írjunk még pár bekezdést!
+\item Hozzunk létre új fejezetcímeket!
+\item Helyezzük át a tartalomjegyzéket máshová!
+\item Töröljük a felesleges részeket!
+\item Állítsuk be magunkat szerzőnek és írjuk át a címet!
+\item Szúrjuk be a Pitagorasz-tétel képletét \verb+$+-ral és
+ \code{equation} környezettel, valamint a trigonometrikus
+ Pitagorasz-tétel!
+\item Hozzunk létre táblázatot!
+\item Szúrjunk be ábrát! Állítsuk be a szélességét fél
+\verb+\textwidth+-re, 6~cm-re! Esetleg forgassuk el!
+\item Hozzunk létre verbatim szövegrészt környezettel és \verb+\verb+
+paranccsal!
+\item Későbbre: Hozzunk létre egy \LaTeX-táblázatot psql paranccsal, és
+ hozzuk be \verb+\input+ utasítással!
+\begin{Verbatim}
+psql -q -P format=latex -P border=3 -c "SELECT * FROM betetesek;"
+\end{Verbatim}
+ (Lásd még \verb!linux/postgresql/bank/kimutatas.sh! fájlt.)
+\end{itemize}
+
+\section{Megjegyzések, nem kötelező anyag}
+\begin{itemize}
+\item
+\begin{Verbatim}
+pygmentize -O full -o bashrc.tex -f tex -l bash ~/.bashrc
+\end{Verbatim}
+
+\item latex2html: Esetleg fordítsuk le a 
+\verb!linux/latex/peldak/komplex/komplex.tex! fájlt weboldalakká. Segít
+a \verb!Makefile!.
+\end{itemize}
+
+\section{A make használata}
+A \texttt{make paranccsal} lehet több egymástól függő fordítást irányítani.
+Eredetileg a C-forrásfájlok fordítására készült. Képes arra, hogy csak a
+frissült C-forrásfájlokat fordítsa újra. Hasznos lehet
+például \LaTeX-forrásfájlok fordításánál is.
+
+A \texttt{make} parancs a \texttt{Makefile} vagy \texttt{makefile} fájlt
+keresi az aktuális könyvtárban, és azalapján dolgozik.  A
+\texttt{latex/peldak/komplex} könyvtárban található egy példa:
+\begin{Verbatim}[label=\fbox{Makefile}, frame=single]
+komplex.pdf: komplex.tex
+	pdflatex komplex.tex
+	pdflatex komplex.tex
+
+html: komplex.tex
+	latex2html komplex.tex
+
+clean:
+	rm *.log *.aux
+\end{Verbatim}
+
+Ebben az esetben, ha sima \texttt{make} parancsot adok ki, akkor a
+legelső szakasz hajtódik végre, kétszer lefordítja a \LaTeX-fájlt
+PDF-be, de csak akkor, ha a \texttt{komplex.tex} fájl újabb, mint a
+\texttt{komplex.pdf},
+vagy egyáltalán nincs \texttt{komplex.pdf}.
+Ugyanez a helyzet, ha az alábbi első sort írtuk volna be:
+\begin{Verbatim}
+$ make komplex.pdf
+$ make html
+\end{Verbatim}
+A második sor HTML-be fordítja a \LaTeX-fájlt tartalmát. A html nem egy
+létező fájlnév (nem is jön létre), tehát bármikor hívva végrehajtódik az
+utána található parancs.
+
+Vimben kettőspont után írhatunk make parancsokat, mint shellben.
+Kettőspont sem kell make elé.
+
+A szintaktákánál fontos, hogy a parancsokat tartalmazó rész tabulátorral
+legyen behúzva. Végrehajtáskor minden egyes parancssor külön shellben kerül
+megnyitásra, tehát nincs mód a burokváltozók felülírására.
+
+A make parancs lehetőséget ad arra is, hogy több gépen fordítsunk le egy
+nagyobb -- sok C- vagy C++-kódot tartalmazó -- forrást. Ehhez a
+\texttt{distcc} parancs szolgál.
+Bővebb leírás erről és általában a make-ről az alábbi oldalon található
+prezentációban:
+\begin{Verbatim}
+http://cern.ch/ahorvath/prez/make_rpm
+\end{Verbatim}
+
+\newpage
+\section{Emberi nyelvek, karakterkódolások}
+
+Házi feladat köv alkalomra: Ismerkedés a Pythonnal
+\url{http://pythontutorial.pergamen.hu} honlap alapján. Átnézni az alábbi
+fejezeteket: 3. Kötetlen bevezető... 5.  Adatstruktúrák
+
+\subsection{Emberi nyelvek}
+
+Otthon beállíthatjuk, hogy ne kelljen mindig külön
+konzolt nyitni a rootnak:
+\begin{itemize}
+\item Ezegyszer utoljára jelentkezzünk be rootként.
+\item Állítsuk be a sudo-t: \code{visudo} parancs
+\item Másoljuk át a root-os sort (\code{yyp})
+\item Az új sorban cseréljük a \code{root} szót \code{diak}-ra (\code{cw})
+\item Lépjünk ki (\code{<Esc>:wq})
+\end{itemize}
+Ekkor mindenre hatalmunk lesz diak felhasználóként is, ha a parancs elé
+biggyesztem a sudo parancsot. Szerveren nem illik ez a mindent
+megengedő beállítás, ott a rendszergazda csak egy-egy részterületet
+(webszerver kezelése, adatbázis mentése) szokott másra bízni.
+
+Visszatérve normál felhasználói módba -- állítsuk be, milyen
+nyelveket ismerjen a gép, legyenek ezek (magyar latin2-es és UTF-8:
+hu\_HU, hu\_HU.UTF-8 német de\_DE, amerikai: en\_US):
+\begin{Verbatim}
+sudo dpkg-reconfigure locales
+\end{Verbatim}
+Miután végeztünk, nézzük meg a /etc/locale.gen tartalmát!
+
+Amíg tovább dolgozunk, futtassuk le egy másik ablakban a \code{sudo
+updatedb} parancsot.
+
+Vannak olyan programok, amelyek a LANG változót nézik, mások a LANGUAGE
+változót. Nézzük meg a tartalmukat: \code{export | grep LANG}.
+Próbáljuk meg működnek-e (nem kell mindet kipróbálni):
+\begin{Verbatim}
+export LANG=de_DE
+vimtutor (kilépés :q)
+abiword&	(ha van ilyen)
+export LANGUAGE=de_DE
+vim   (majd kilépés)
+gimp &
+\end{Verbatim}
+Miután kipróbáltuk, állítsuk mindkettőt vissza hu\_HU-ra.
+
+A magyarítási fájlok egy .mo kiterjesztésű fájlban találhatóak. Amely a
+szerkeszthető .po fájlokból készülnek. Töltsük le a \alapcim/vim
+oldalról a vim.po fájlt (és a vimrc-t mentsük el ~/.vimrc néven, ha még
+nem tettük). Később kell majd ennek a szülőkönyvtárából a galaktos\_utf-8
+nevű fájl is.
+
+Ha megnézzük a tartalmát, akkor msgid sorokban angol, msgstr sorokban
+magyar szövegeket találunk. Ilyen -- de magyar szövegek nélküli -- fájl
+hozható létre a Vim  és más programok forráskódjából, amelyet mindenféle
+nyelvre le lehet fordítani. Az updatedb bizonyára lefutott, ez egy
+adatbázist hozott létre a fájlok/könyvtárak neveiből, ami alapján
+gyorsan kereshetünk fájlokat, keressük meg a \code{vim.mo} fájlok
+helyét:
+\begin{Verbatim}
+locate vim.mo
+\end{Verbatim}
+
+Látszik, hogy még hu-s változat nincs. Fordítsuk le a gép által ismert
+.mo fájllá a .po fájlunkat. (Ehhez a gettext csomag kell.) Másoljuk be
+a megfelelő helyre. És indítsuk el magyar Vimünket.
+\begin{Verbatim}
+msgfmt -o vim.mo vim.po
+sudo mkdir -p /usr/share/vim/vim63/lang/hu/LC_MESSAGES/
+sudo cp vim.mo /usr/share/vim/vim63/lang/hu/LC_MESSAGES/
+vim
+\end{Verbatim}
+(A mkdir a -p opcióval úgy csinál könyvtárat, hogy a még nem létező
+szülőkönyvtárakat is létrehozza.)
+
+Szerkeszthetjük is a fájlt szövegszerkesztővel, de hosszabb fájlok
+esetén a kbabel, gtranslator vagy poedit használata könnyíti a
+dolgunkat. Ezeken a gépeken a kbabel és a gtranslator van fent, csak ízelítésképpen
+megpróbálkozhatunk a használatával. (\code{kbabel vim.po})
+
+Csináljunk mi fordítható programot! Töltsük le a hello.py
+fájlt a szokásos linalk könyvtárból, és kövessük az elején található
+utasításokat.  (Egy Python-programot  magyarítunk, bővítjük a programot,
+és ismét magyarítjuk.)
+
+Miért érdemes ismerni ezeket a dogokat? Előfordulhat, hogy a cégnek,
+ahol dolgozunk szüksége lenne egy olyan szabad szoftverként meglevő
+programra, amely még nincs lefordítva, és a felhasználók nem tudnak
+(kellő mértékben) angolul. Megkereshető általában az interneten egy CVS
+vagy SVN archívumban a .pot fájl, amiből megcsinálhatjuk a mi .po
+fájlunkat, lefordíthatjuk és már van működő magyar alkalmazásunk.
+Természetesen örülnek a fejlesztők, ha visszaküldjük. A fordításnak van
+egy webes változata, a launchpad.net, ahol elsősorban az Ubuntuban
+található csomagok fordítása folyik, melyek közül a legtöbb nem csak az
+Ubuntuban szerepel (pl. a Vim, a GIMP, és a Firefox M\$ Windows alatt is
+megy).
+
+Előfordulhat az is, hogy mi szeretnénk fordítható programot összeütni.
+
+\newpage
+\section{A fájlrendszer és gyakorlás}
+%Lépjünk be a mail-szerverre!
+
+\subsection{A fájlrendszer}
+Közösen átnézni:
+
+/etc: fstab group profile crontab apt/sources.list
+
+/bin zgrep (\code{file /bin/*})
+
+/usr: local share share/doc
+
+/var: log (syslog, dmesg) www cache/apt/archives cache/locate
+
+/tmp /home /root /sbin /dev /mnt (cdrom, floppy...) /lib
+
+\section{Képek kezelése}
+Képtípusok raszter/vektoros, tömörítés típusai.
+
+\subsection{Képek átalakítása az Imagemagick programokkal}
+
+Töltsük le a bash.tar.gz fájlt. Ennek kicsomagolásakor a bash/kepek
+könyvtárban vannak képek.
+
+Alakítsunk át egy képet másik formába:
+\begin{Verbatim}
+convert valami.png valami.jpg
+\end{Verbatim}
+
+Kérjünk adatokat a képeinkről:
+\begin{Verbatim}
+identify *
+\end{Verbatim}
+
+Tanulmányozzuk a \code{bash/kepek/kepatalakito} nevű szkripttel a
+\code{convert} lehetőségeit.
+
+Ehhez ismerni kell a következőket.
+A \code{basename} utasítás használata.
+Az argumentumlista kezelését tanulmányozzuk a \dir{bash/argumentum\_lista} fájljain.
+
+Sok kép Exif dátumainak módosítása (ha nem jól járt a fényképezőgép
+órája): \code{exiv2} parancs/csomag \code{-a} opció.
+
+\subsection{Képek kezelése a gthumb programmal}
+Nyissuk meg a gthumb programmal a képek könyvtárat. Adjunk megjegyzést a
+képekhez (c billentyű). Listázzuk a rejtett állományokat a képek
+könyvtárában (hova kerülnek a megjegyzések?).
+
+Jelöljük ki a képek egy részét. (\Ctrl- ill. Shift-katt) és csináljuk egy
+honlapra kitehető galériát ezekből: Eszközök $>$ Webalbum létrehozása
+
+\newpage
+\appendix
+
+\section{Az AREK könyvtárában fellelhető irodalom}
+A darabszámok az éppen bent találhatóak, azaz minimumadatok.
+\subsection{UNIX általános/parancssor}
+
+Bartók: UNIX felhasználói ismeretek 3db
+
+Harley: UNIX bevezetés/haladó 3db
+
+Kernighan -- Pike: A UNIX operációs rendszer, 1987, 6db, régi de alapos
+
+Bagoly: UNIX alapismeretek 1995 5db
+
+Büki: Héjprogramozás
+
+\subsection{Linux}
+
+Petersen: Linux, 1997, 2db, Parancssor mellett, (felhasználó/hálózat)adminisztráció, TeX
+
+Gagné: Válts Linuxra! Búcsú a kékhaláltól, 2004, Hangsúlyosabb a grafikus felület, KDE
+
+\subsection{Speciális területek}
+
+Flickenger: Linux bevetés közben, 2003, Tippek
+
+Butzen: Linux hálózatok
+
+Kirch: Linux hálózati adminisztrátorok kézikönyve
+
+Friedl: Reguláris kifejezések
+
+Pere László: Linux felhasználói ismeretek I.
+
+Pere László: Linux felhasználói ismeretek II, Adatkezelés (awk, bc, adatbázis)
+
+Pere László: GNU/Linux rendszerek üzemeltetése I. és II.
+
+Gagné: Linux rendszerfelügyelet
+
+\section{Hasznos fogások}
+
+Levél küldése bash-ből mail ($\in$ mailx).
+
+%Az \code{ifconfig} parancs kimenetéből megtudhatom, hogyan
+%jelentkezhetnek be a gépemre. 2. sorban inet addr: utáni négy számot
+%írhatom a gép neve helyett. Pl:
+%ssh diak@
+
+\subsection{Érdemes lehet a .basrc-be tenni}
+
+\hspace{1 ex}
+\begin{Verbatim}[label=\fbox{~/.bashrc}, frame=single]
+alias sshmaildiak1="ssh -p xx22 diak1@mail.roik.bmf.hu"
+alias cx="chmod a+x"
+alias ipythonlab='ipython -pylab'
+
+export EDITOR="vim"  # A vim lesz az alapértelmezett szerkesztő
+export LESSEDIT="%E ?lt+%lt. %f" # lessből a vim az adott sortól kezd
+				 #szerkeszteni
+export CDPATH=.:~   # cd parancsnál a homekönyvtárban is keres
+\end{Verbatim}
+
+\subsection{mc (Midnight Commander $\in$ mc)}
+
+Beállítások $>$ alapbeállítások... $>$ Lynx-hez hasonló navigálást
+érdemes beikszelni, akkor a jobb nyíllal be lehet menni a
+könyvtárakba, bal nyilakkal szülőkönyvtárba $\Rightarrow$ nagyon gyors
+navigálás.
+
+Ha a belső szövegszerkesztő elől kivesszük az x-et, akkor az
+alapértelmezett szövegszerkesztőnket kapjuk \verb+<F4>+-re. Fentebb van,
+hogyan állíthatjuk ezt vim-re a .basrc-ben.
+
+Grafikus felületen gyakran az F10 gomb másra foglalt. F9-cel kell
+menübe menni Fájl $>$ Kilépés-sel lehet kilépni. Fájlokból kilépés két
+\Esc-el.
+
+Másik mód a GNOME-terminál esetén annak beállításával: Szerkesztés $>$
+Gyorsbillentyűk: Menüelérés billentyűjének (F10) tiltása
+
+\subsection{Pár dolog, amit együtt érdemes megjegyezni}
+
+\noindent
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+/ & keresés &Firefox, Vim, man, less, info\\
+\hline
+n és N& adott irányban illetve ellenkező irányban keresi a következő
+találatot&Vim, man, less\\
+\hline
+q& kilépés& man, less, mutt, info esetén\\
+\hline
+:q& kilépés& Vimből, ha nem volt módosítás\\
+\hline
+:q!& kilépés& Vimből, ha nem mentem a  módosításokat\\
+\hline
+\Ctrl$+$D& kilépés& shellből (ssh-t ill. terminálablakot bezárja); szövegbeíráskor  egy
+szűrő (pl. cat, mail, grep) után, ipython, python shell\\
+\hline
+$<$F11$>$& teljes képernyő& GNOME terminál; Firefox; evince\\
+\hline
+\Ctrl$+<$PageUp$>$\quad \Ctrl$+<$PageDown$>$& váltás a lapok között
+egyik ill. másik irányban&
+GNOME terminál; Firefox\\
+\hline
+\Alt$+$1 \dots \Alt$+$9& adott sorszámú lapra ugrik& GNOME terminál; Firefox\\
+\hline
+\end{tabularx}
+
+\subsection{GNOME, KDE és LXDE együtt Ubuntun}
+Akár melyik változatot telepítettük az
+\code{ubuntu-desktop},
+\code{kubuntu-desktop},
+\code{lubuntu-desktop} csomag telepítésével megkapjuk az adott
+desktop környezetet.
+
+\subsection{\code{sudo} Debianon is}
+Otthon beállíthatjuk Debian alatt is, hogy ne kelljen mindig külön
+konzolt nyitni a rootnak, hanem sudo-val dolgozhassunk:
+\begin{itemize}
+\item Ez egyszer utoljára jelentkezzünk be rootként.
+\item Állítsuk be a sudo-t: \code{visudo} parancs
+\item Másoljuk át a root-os sort (\code{yyp})
+\item Az új sorban cseréljük a \code{root} szót \code{diak}-ra (\code{cw})
+\item Lépjünk ki (\code{\Esc:wq})
+\end{itemize}
+Ekkor mindenre hatalmunk lesz diak felhasználóként is, ha a parancs elé
+biggyesztem a sudo parancsot. Szerveren nem illik ez a mindent
+megengedő beállítás, ott a rendszergazda csak egy-egy részterületet
+(webszerver kezelése, adatbázis mentése) szokott másra bízni.
+
+\newpage
+\tableofcontents
+\end{document}

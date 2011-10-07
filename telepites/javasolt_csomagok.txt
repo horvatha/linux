@@ -1,0 +1,87 @@
+================================================
+Telepítésre javasolt csomagok (Ubuntu, Debian)
+================================================
+
+Hasznosságok
+=============
+vim mc
+
+esetleg:
+enca
+virtualbox-ose
+
+LaTeX
+========
+texlive-latex-extra texlive-lang-hungarian
+latex-beamer pgf
+esetleg:
+texlive-publishers
+latex2html
+
+Python
+==========
+
+Dokumentáció
+--------------
+python-doc diveintopython
+
+Django
+----------
+ipython
+python-django
+python-psycopg2
+libapache2-mod-python
+
+Grafikonok, tudományos
+------------------------
+python-numpy python-matplotlib
+esetleg: python-scipy python-sympy
+
+Verziókövetés, Python-fejlesztés
+=================================
+bzr
+python-pip (python-setuptools helyett jobb)
+
+esetleg:
+python-paramiko # bzr-tároló frissítés ssh-n keresztül
+python-virtualenv
+fabric
+See:
+http://www.clemesha.org/blog/modern-python-hacker-tools-virtualenv-fabric-pip
+python-sphinx dokumentációhoz
+
+
+Egyéb (esetleg)
+------------------------
+python-gtk2
+python-glade2
+python3
+
+tar.gz fájlok fordítása, C, C++ fordítás
+=========================================
+build-essential (igraph0.6 fordításhoz is kell)
+manpages-dev
+  2 = Linux system calls.
+  3 = Library calls (note that a more comprehensive source of
+        information may be found in the glibc-doc package).
+
+cxnet
+==============
+igraph0.6-os telepítése forrásból (igraph.wikidot)
+http://igraph.wikidot.com/installing-python-igraph-on-linux
+
+cxnet bazaar-ból
+
+ipython
+python-apt
+
+esetleg:
+python-pygraphviz
+python-networkx
+
+Érdekességek, játékok
+========================
+stellarium
+kstars
+frozen-bubble
+gramps

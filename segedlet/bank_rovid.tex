@@ -1,0 +1,30 @@
+\begin{Verbatim}[commandchars=@\[\]]
+@PYaD[#! /usr/bin/python]
+@PYaD[# coding: utf-8]
+@PYay[from] @PYaV[__future__] @PYay[import] division
+
+@PYas["""Egyszerű program az adatbázis elérésére Pythonból."""]
+
+@PYaD[# python-pygresql csomag kell hozzá]
+@PYaD[# (apt-get install python-pygresql)]
+
+@PYaD[# http://www.pygresql.org/pgdb.html]
+
+@PYay[import] @PYaV[pgdb]
+@PYaD[# Ha más adatbázis van, akkor csak ezt a sort kell változtatni. Pl:]
+@PYaD[# import oracledb]
+
+connection @PYbe[=] pgdb@PYbe[.]connect(database@PYbe[=]@PYad[']@PYad[diak]@PYad['], user@PYbe[=]@PYad[']@PYad[diak]@PYad['],
+		    password@PYbe[=]@PYad[']@PYad[diak]@PYad['], dsn@PYbe[=]@PYad[']@PYad[mail.roik.bmf.hu]@PYad['])
+
+cursor @PYbe[=] connection@PYbe[.]cursor()
+cursor@PYbe[.]execute(@PYad["]@PYad[SELECT * FROM betétesek;]@PYad["])
+connection@PYbe[.]commit() @PYaD[# Csak SELECT parancs esetén nem fontos]
+
+lekert_adatok @PYbe[=] cursor@PYbe[.]fetchall()
+
+@PYay[for] nev, cim, egyenleg @PYan[in] lekert_adatok:
+    @PYay[print] nev, cim, egyenleg
+    @PYaD[#print nev.left(20), cim.left(20), egyenleg.left(5)]
+    @PYaD[#print "{0:20} | {1:20} | {2:5}".format(nev, cim, egyenleg))]
+\end{Verbatim}

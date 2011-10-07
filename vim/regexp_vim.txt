@@ -1,0 +1,131 @@
+vau  mammut samu  ammmmmuuuuuuu
+abb    acb atb 
+  akjljlkjljljljlb 
+ ABB44AFE9
+  ab
+ lxaa l/aaa   l% aa
+ al
+   al
+      al
+   al
+      al
+almaaaa
+almaxalmayalma
+almlmlmlma
+almlmlma
+almlma maaaa
+almmmm maaaaaa
+alalalalalalma
+  aa aa aaa 
+alm+  
+  (al)
+mamma
+   ABC-005
+ AAA-334   AQQ-567
+ ALMA-02
+ -123 AA-113  AAB-
+samu@akarmi.hu
+samu@akarmi.org
+samu@akarmi.kua
+si.kua
+ x@akarmi..hu
+ x@akarm+..hu
+ @akarmi..hu
+Samu@a.hung
+     jahu
+  x@akarmi
+  x@
+   ***   * *
+  127.12.11.3
+ 123.45.111.3 
+ 123..111.3  \([0-9]\+\.\)\{3}[0-9]\+
+  123.45.4
+
+A gvim windows alá is letölthető, és benne próbálgatni lehet az
+alábbiakat.
+:set hlsearch
+kiszínezi az illeszkedő mintákat.
+i után beszúró módba kerülhetünk ha szerkeszteni akarjuk a fájlt.
+Ha valaki beszúró módba kerül <Esc> billentyűvel kiléphet.
+ZZ kilép a vimből.
+
+Pár reguláris kifejezés, amiket megvizsgáltunk.
+(per után kell beírni, pl. parancs módban /am*u )::
+
+  am*u
+  a\+
+  [a-k]\+
+  [0-9A-F]\+
+  \d\+
+  a.*a
+  \a\+
+  \w\+
+  \w\+@\w\+.\w\+
+  \(lm\)\+
+  a\(lm\)\+a
+  \a\{3}
+  [A-Z]\{3}
+  a\{3,5}
+  [A-Z]\{3}-\d\{3}   rendszám
+  [A-Z]*-\d\{3}   miben változik?
+  \w\+
+  \W\+
+  \w\+@\w\+.\w\{2,3}
+  \w\+@[a-z.]\+
+  \w\+@[a-z.+]\+
+  \w*@[a-z.+]\+
+  \*\+
+  \.\.
+  \d\+.\d\+.\d\+.\d\+
+  alm+
+  alm\+
+  am
+  al
+  ^al
+  ^ *al
+  hu$
+  \d\+\.\d\+\.\d\+\.\d\+     IPv4 címek
+  \d\+\.\d*\.\d\+\.\d\+
+  \(\d\+\.\)\+\d\+
+  \(\d\+\.\)\{3}\d\+
+  Egy nehezebb:
+  \([0-9]\+\.\)\{3}[0-9]\+
+
+Kétféle formátuma van a reguláris kifejezéseknek,
+például Pythonban, Java Scriptben a csoportosítás zárójelét, az 1 vagy
+több ismétlődést jelentő +-ot és az adott számú előfordulást jelentő {3}
+zárójeleket nem kell levédeni \-rel. Ott viszont az a nehezebb ha kerek
+vagy kapcsos zárójelre kell illeszteni. Olyankor kell levédeni.
+
++------- --------------------------------------    -------------------------------------------
+| mi      mire illeszkedik                         mikor kell levédeni?
++======= ======================================    ===========================================
+| \\     \-re                                      mindig
+| |      vagylagos választás kettő között          Vimben
+| |      |-re                                      Pythonban
+| *      előtte lévőnek 0 vagy több ismétlődése    nem kell levédeni
+| \*     csillag                                   mindig
+| .      tetszőleges karakter                      nem kell
+| \.     pont                                      mindig
+| +      előtte lévő 1 vagy több ismétlődése       Vim-ben
+| +      plussz                                    Pythonban
+| [...]  valamelyikre a benne lévő karakterekből   nem kell
+| [^...] egy olyan karakterre, ami nincs benne     nem kell
+| \[     [-re                                      mindig
+| {n}    előtte lévő n-szeri ismétlése             Vim-ben csak a nyitót
+| {n,m}  előtte lévő n..m-szeri ismétlése          Vim-ben csak a nyitót
+| {,m}   előtte lévő 0..m-szeri ismétlése          Vim-ben csak a nyitót
+| {n,}   előtte lévő min. m-szeri ismétlése        Vim-ben csak a nyitót
+| {      {-re                                      Pythonban
+| ^      sor elejére                               nem kell
+| $      sor végére                                nem kell
+| \^     ^-re                                      mindig
+| \$     $-ra                                      mindig
+| \<     szó elejére
+| \>     szó végére
+| ()     csoportosítás                             Vimben mindkettőt
+| (      (-re                                      Pythonban
+| )      )-re                                      Pythonban
+
+
+Lásd még: Python dokumentáció, The Python Standard Library, re module (Regular expression operations)

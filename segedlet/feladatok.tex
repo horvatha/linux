@@ -1,0 +1,136 @@
+\documentclass[a4paper]{article}
+% 12 (10, 11) pontos betű: \documentclass[a4paper,12pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% PREAMBULUM= A \begin{document}-ig tartó rész
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% A KARAKTEREK KÓDOLÁSÁVAL kapcsolatos csomagok
+% KÓDOLÁSRA FIGYELNI, ALÁBB BEÁLLÍTANI !!! latin2 vagy utf-8 ?
+
+% iso-8859-2 azaz latin-2 kódolás esetén ez a rész kell:
+%\usepackage{t1enc}
+%\usepackage[latin2]{inputenc}
+
+% (utf-8-ra kódolhatjuk az iso-8859-est
+% az enconv paranccsal [enca csomag])
+% utf-8 kódolás esetén ez a rész kell:
+
+\usepackage{ucs}
+\usepackage{html}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% A MAGYAR NYELVVEL kapcsolatos csomagok
+\usepackage[magyar]{babel}
+\usepackage{indentfirst}  % Az első bekezdést is behúzza.
+
+\frenchspacing   % A mondatvégek után azonos szóköz van, mint máshol
+ % (Az angolban nagyobb a szokás. Ez az alapbeállítás.)
+
+% A pdf kisebb és olvashatóbb lesz, ha times betűket használok sima
+% (nem pdf-) latex esetén.
+% \usepackage{times}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Az ÁBRÁKHOZ hasznos csomagok
+
+%\usepackage{graphics} % ábrák beillesztésének bővebb paraméterezése
+% \usepackage{psfrag} % PostScript ábrák feliratainak cserélése TeX-esre
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% MATEKKAL KAPCSOLATOS CSOMAGOK, DEFINÍCIÓK
+
+% Az Amerikai Matematikai Társulat (AMS)
+% hasznos csomagja  (pl. \dfrac)
+%% \usepackage{amsmath}
+
+% Magyar függvénynevek
+%% \DeclareMathOperator{\tg}{tg}
+%% \DeclareMathOperator{\sh}{sh}
+%% \DeclareMathOperator{\ch}{ch}
+%% \DeclareMathOperator{\cth}{cth}
+%% \DeclareMathOperator{\ctg}{ctg}
+%% \DeclareMathOperator{\arctg}{arctg}
+%% \DeclareMathOperator{\arcctg}{arcctg}
+%% \DeclareMathOperator{\arsh}{arsh}
+%% \DeclareMathOperator{\arch}{arch}
+%% \DeclareMathOperator{\arth}{arth}
+%% \DeclareMathOperator{\arcth}{arcth}
+
+% Ezzel a duplaszárú betűk elérhetőek.
+% Pl. valós számok halmazjele:  \mathbb{R}
+% (Nem tökéletes, mert mindkét oldalon dupla.)
+%\usepackage{amssymb}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% KIMONDOTTAN EHHEZ A FÁJLHOZ DEFINIÁLT PARANCSOK
+%\usepackage{html} %html-címekhez hasznos
+
+
+\begin{document}
+
+\title{Linux alkalmazása, adatbázis feladatok}
+\author{Horváth Árpád}
+\maketitle
+
+Az alábbi feladatok mind a főiskolához kapcsolódó adatkezelési
+feladatok. A megoldásuk közös adatbázissal lehet hatékony. A feladat
+megoldásához a mail.roik.bmf.hu szerver PostgreSQL adatbázisát kell
+felhasználni, valamint a felülethez webes oldalt kialakítani a Python
+CGI-vel.
+Az egyes táblázatokat saját jelszó megadása után módosíthatják egyes
+oktatókweben keresztül.
+Az oktatók azonosítója a NEPTUN-kód, de a jelszó szabadon
+megválasztható.
+
+Az oktatók táblázat létrehozását, a weboldalhoz tartozó kinézetet (css)
+és a jogosultság-kezelést közösen kell megoldani.
+
+Egyes lekérdezéseket lehessen LaTeX-en keresztül PDF-ben is letölteni.
+
+\section{Részfeladatok}
+
+\subsection{Konzultációs időpontok nyilvántartása}
+Az intézet oktatói konzultációs időpontokat írhatnak ki, melyekhez
+szöveges megjegyzést fűzhetnek. Egy konzultációnak van helye és kezdő és
+végső időpontja. A hely egyelőre szövegesen megadható (nem kell termek
+táblázat).
+
+Ehhez a feladathoz tartozik a többi feladat összefogása is.
+
+\subsection{Műhely előadások nyilvántartása}
+A szerdai napokon általában fix időpontban előadások szerepelnek.
+Ezeknek van előadójuk, címük, esetleg alcímük és rövid leírásuk. Az
+előadónak lehet valamilyen leírása (X cég vagy
+főiskolai tanár)
+
+\subsection{TDK/projekt/szakdolgozat témakörök nyilvántartása}
+Bármely oktató írhat ki témaköröket, melynél megjelöl a három
+kategória közül legalább egyet. A hallgatók megtekinthetik szűrve az
+egyes típusokra a kínálatot, és láthatják az e-mailcímet valamilyen
+robottal nem összegyűjthető formában.
+
+Módosíthatja a hozzárendelt oktató.
+
+\subsection{TDK/szakdolgozat dolgozatok nyilvántartása}
+Egy főre az egyik típus elég.
+Már kész dolgozatok tárolására és visszakeresésére szolgál.
+
+A szakdolgozatoknak egy szerzője, egy belső konzulense, bírálója és
+esetleg külső konzulense van. Lehetnek titkosítottak is, mely esetben
+nem érhetőek el a könyvtárban.
+
+A TDK-dolgozatoknál tárolni kell a szerzők mellett az konzulenst is, hogy
+főiskolai ill. esetleg országos TDK-n milyen eredményt ért el milyen
+szekcióban. A helyezés lehet 1. 2. 3. vagy különdíj. A helyezéshez
+megjegyzés fűzhető (milyen különdíj, megosztott x. helyezett...).
+
+Módosíthatja a hozzárendelt oktató.
+Mindkét típust lehessen bárki által lekérdezni.
+
+\section{Határidő}
+A BMF-es moodle oldalon (https://elearnig.bmf.hu).
+\end{document}

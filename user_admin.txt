@@ -1,0 +1,71 @@
+=========================================
+ Felhasználók, kódolások
+=========================================
+
+Vizsgáljuk meg mit, hogyan csinál az adduser és addgroup utasítás.
+(Egyelőre ne hajtsuk végre, hogyan tudhatjuk meg akkor a működését?)
+Derítsük ki, milyen alapvető beállítási lehetőségi vannak az adduser
+parancsnak, és ezeket hol szerkeszthetjük?
+(Fontos beállítási fájlok a kézikönyv (man) vége felé találhatóak.)
+
+Vizsgáljuk meg a /etc/skel tartalmát. Ez kerül az új homekönyvátrakba.
+Módosíthatunk értelemszerűen rajta.
+
+Hozzunk létre egy diak2 felhasználót.
+
+kozos csoport létrehozása, amelyben mindkét személy benne van
+
+kozos könyvár létrehozása, a diak felhasznalo homekönyvtárában, amelybe mindkét
+tagnak joga van írni, de másnak nem.
+
+szimbolikus link létrehozása a másik felhasználó könyvtárából
+
+Adjunk sudo jogot az új felhasználónknak. Ellenőrizzük, működik-e.
+
+/var/mail ide jönnek az új leveleink
+
+mutt címzett_e-mail_címe <szövegfájl
+(mutt helyett mail is jó, de a muttnak több hasznos opciója van)
+Küldjünk egy üzenetet az pár diak* felhasználónak::
+
+  for i in 1 2 8
+  do
+   echo "Üdvözöllek diak$i" |mutt diak$i
+  done
+
+
+  for ((i=1; i<8; i++))
+
+is használható
+
+Hogyan lehet mutt paranccsal parancssorból csatolt fájlt küldeni?
+A /-rel man-ban is ugyanúgy kereshetünk mint Vimben, ugyanúgy használhatók
+reguláris kifejezések.
+Küldjünk egy fájlt valakinek (pl. linalk.tar.gz, hogyan kereshetjük meg, hol van?)
+
+Hol található a felhasználó beállítási fájlja és a rendszerszintű?
+
+Küldjünk levelet, mostmár ne parancssorból, csatoljunk hozzá fájlt:
+mutt  (fent a legfontosabb parancsok megvannak)
+
+Átkódolás (mail-en csináljuk)
+=============================
+
+Nézzük meg milyen kódolásúak a linalk/num_modsz fájljai
+  enca linalk/num_modsz/*
+Másoljunk át a saját könyvtárunkba az összes fájlt.
+  cp linalk/num_modsz/* ~/sajat_konyvtaram  (a könyvtárakat kihagyja)
+Alakítsuk a saját kódolásunknak megfelelőre (mivel LANG értéke
+hu_HU.UTF-8, ez UFT-8 lesz):
+  enconv kódolandó_fájlok
+
+Ennek az utasításnak nagy szerepe van, ha korábbi Linuxokról utf-8-asra
+térünk át (vagy vissza).
+
+gettext
+============
+
+Folytassuk korábbi ismerkedésünket a többnyelvűséggel, a feladatok a
+linalk/emberi_nyelvek/hello.py fájlban vannak. ??? Kódoljuk át latin2-re, és
+a saját gépünkön dolgozzunk.
+

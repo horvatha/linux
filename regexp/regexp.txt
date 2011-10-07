@@ -1,0 +1,28 @@
+== Reguláris kifejezések ==
+
+A reguláris kifejezések sokszor hasznosak, szinte nélkülözhetetlen
+segédeszközeink. Remélem sikerül ebből valamennyit megmutatni az alábbi
+feladatokkal.
+
+Először a Vimben tanulmányozzuk alkalmazásukat keresés és csere során.
+nyissuk meg a bővített Vim-oktatót és keressük meg a reguláris kifejezések
+részt és végezzük el az ott levő feladatokat:
+cp linalk/vim/tutor.hu.bovitett .
+vim tutor.hu.bovitett
+/reguláris<Újsor>    (ezzel kereshetek rá a reguláris szóra a Vimben)
+...
+
+Listázzuk a py tartalmú /elérés/fájl-okat:
+locate py
+Erre rengeteg eredményt kapunk. Csak a python fájlokat szeretnénk látni:
+locate py|grep "\.py$"
+Van-e olyan fájl, amely py-re végződik, de nem pont van előtte:
+locate py|grep "[^.]py$"
+Keressünk idézőjeles kifejezést a .bashrc-ben
+cat ~/.bashrc | grep '".*"'
+vagy 
+cat ~/.bashrc | grep '"[^*]*"'
+Van-e a két alak között különbség keresésnél/cserénél?
+
+Másoljuk a linalk/regexp/regex.py fájlt  a saját könyvtárunkba és
+tanulmányozzuk a működését, végezzük el a megjegyzésbe tett feladatokat!

@@ -1,0 +1,52 @@
+Az alábbiakban azt tanulhatjuk meg, hogyan kezelhetünk utf-8-as kódoláѕú
+szövegeket a VIM-ben és a Linux alatt.
+
+Egy kis minta utf-8 kódolású szövegre:
+
+A görög γαλακτοσ (ejtsd galaktosz) szó tejet jelent, ebből származik a
+galaxis elnevezés.
+(A görögök a Tejútban Héra kifröccsent tejét tisztelték.)
+
+Ha a harmadik szó (a görög szó után) nem jól jelenik meg (latin-2-es, azaz
+8859-2-es kódolású rendszeren), állítsuk be az utf-8 kódolást:
+:set encoding=utf-8
+
+ΠΕΡΙΚΛΗΣ Περικλησ
+ΘΑΛΕΣ Θαλεσ
+ματεματικα
+
+A fenti szövegre menve kipróbálhatjuk, hogy parancs módban (<ESC> után)
+a nagy/kis betűváltó ~ karakter a görög betűk után is működik.
+Nyomjunk <ESC>-et! Menjünk a fenti ΠΕΡΙΚΛΗΣ szói elejére, és nyomjunk
+többször ~-t.
+
+Mentés előtt -- ha még nincs -- :set fileencoding=utf-8
+
+Digráfok a Vimben. A Vimbe egy halom különleges karakter bevihető két
+karakterrel. Előtte Ctrl-k -t kell nyomni. Ha beírtuk, hogy :set digraph
+akkor <Első karakter><Backspace><Második karakter> is működik.
+
+Digráfok listája :digraphs
+
+Görög betűk általában csillaggal d* δ, W* Ω, m* μ, y* η, c* ξ, z* ζ 
+Orosz betűk általában egyenlőségjellel vagy %-kal (D=,s%...), Дорогойа товориши
+ss ß
+TM ™
+Co ©
+O/ Ø
+AA Å
+O> Ô
+O" Ő
+12 ½ In ∫
+PI ¶
+Pd £ Ye ¥
+!*  ?*  J<  
+
+==Fájlok átkódolása==
+A rendszerszintű kódolásra az alábbi módon konvertálhatom át a
+fájljaimat:
+enconv <fájlnév>
+A kódolást így tudhatom meg:
+enca <fájlnév>
+Más kódolásra ehhez hasonlóan válthatok át:
+enca -x latin-2 <fájlnév>
