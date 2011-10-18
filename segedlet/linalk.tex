@@ -440,7 +440,7 @@ A Vim letölthető Windowsra is (gVim): vim.org
 
 Töltsük le a Linuxos anyagot a bazaar verziókezelő rendszerrel:
 \begin{Verbatim}[commandchars=@\[\]]
-@PYaD[#] aptitude install bzr    # Ha még nincs bazaar
+@PYaD[#] apt-get install bzr    # Ha még nincs bazaar
 @PYaD[$] cd ahova/le/akarom/tölteni
 @PYaD[$] bzr branch http://mail.roik.bmf.hu/linux
 \end{Verbatim}
@@ -752,7 +752,7 @@ foglalkozhatunk egyetlen géppel is.
 
 Telepítése Debian és Ubuntu rendszereken:
 \begin{Verbatim}
-# aptitude install clustterssh
+# apt-get install clustterssh
 \end{Verbatim}
 
 \newpage
@@ -774,16 +774,16 @@ fájl tartalmazza. Az alábbi első sor frissíti a csomaglistát, a második
 letöltögeti az \code{mc}, \code{vim-full} és \code{gimp} csomagokat
 függőségekkel együtt és telepíti.
 \begin{Verbatim}
-aptitude update
-aptitude install mc gimp vim-full
+apt-get update
+apt-get install mc gimp vim-full
 \end{Verbatim}
 Bővebben: \url{http://321.hu/Debian/apt-guide.html}
 
 Az alábbi sorokkal kereshetünk kulcsszónak megfelelő csomagokat, illetve
 megnézhetjük a csomag leírását:
 \begin{Verbatim}
-aptitude search postgresql  |grep python
-aptitude show vim
+apt-cache search postgresql  |grep python
+apt-cache show vim
 \end{Verbatim}
 
 Az utóbbi kimenetének részlete:\\
@@ -806,31 +806,36 @@ A Filename kezdetű sorból láthatjuk, hogy a {\tt vim} a main tárolóban
 található és az Intel 368-as (i386) architektúrára fordított csomagunk van.
 
 Igazából a fenti kimenetet a \code{apt-cache show vim}  sorral
-csináltuk. Az aptitude sokmindent magyarít, ha a magyar nyelv van
-beállítva.
+csináltuk. Az apt-get és apt-cache parancsok helyett gyakran írhatunk
+aptitude-ot is (az alábbi összefoglalóan az upgrade-eket kivéve ugyanúgy),
+hasonló információkat tudhatunk meg, kicsit más kinézettel. Az aptitude
+talán többmindent magyarít, ha a magyar nyelv van beállítva.
 
 Az apt grafikus felülete a Synaptic csomagkezelő (Rendszer $>$
 Adminisztráció $>$ Synaptic). 
 
 Hasznos parancsok röviden összefoglalva:
 \begin{verbatim}
-dpkg -i <deb-fájl>
-dpkg -l  (esetleg greppel szűrve)
-dpkg-reconfigure <csomag>  (xserver-xorg, tzdata)
+dpkg -i <deb-fájl>        # Egy deb-csomagot telepít.
+dpkg -l                   # (esetleg greppel szűrve) Telepített csomagok listája
+dpkg-reconfigure <csomag> # (xserver-xorg, tzdata) Csomagok újból-beállításai
 
-aptitude update
-aptitude  install <csomag>
-aptitude safe-upgrade
-vim /etc/apt/sources-list
-aptitude full-upgrade
+apt-get update             # A tárolóra vonatkozó információk frissítése.
+apt-get  install <csomag>  # Csomag telepítése (függőségeket feloldja)
 
-apt-cache search <keresett szó>
-apt-cache show <csomag>
+
+apt-get upgrade       # A tárolóban frissült csomagok telepítése
+aptitude safe-upgrade # Az előző megfelelője.
+
+vim /etc/apt/sources-list  # A tárolók helyének megadása.
+
+apt-get dist-upgrade  # Frissítés új verzióra.
+aptitude full-upgrade # Az előző megfelelője.
+
+apt-cache search <keresett_szó>  # Keresés a csomagnévben
+                                 # illetve a rövid és a hosszú leírásban
+apt-cache show <csomag>          # Adott csomag fontosabb adatai
 \end{verbatim}
-
-Újabban az alapértelmezett csomagkezelő rendszer a Debianban az
-aptitude. Korábban az apt-get és apt-cache utasításokat használták
-helyette.
 
 \section{Telepítés}
 \input{debian-telepites}
@@ -1000,7 +1005,7 @@ Letölthető vele például a linuxos tananyag legfrisebb változata:
 \begin{Verbatim}
 # aptitude install bzr
 $ cd ahova/le/akarom/tölteni
-$ bzr branch http://arek.uni-obuda.hu/repo/linux
+$ bzr branch http://arek.uni-obuda.hu/repo/cxnet
 \end{Verbatim}
 
 Frissítéskor csak ennyi kell
@@ -1014,7 +1019,7 @@ a következőket tegyük.
 
 \begin{Verbatim}
 $ bzr commit  # Ha változtattunk valamit
-$ bzr merge http://arek.uni-obuda.hu/repo/linux
+$ bzr merge http://arek.uni-obuda.hu/repo/cxnet
 \end{Verbatim}
 
 Grafikus felületen áttakinthetőbb képet kapunk a változásokról így:
@@ -1027,8 +1032,8 @@ amit pl. sftp-vel elérünk:
 \begin{Verbatim}
 bzr push sftp://diak1@mail.roik.bmf.hu:4522/home/diak1/public_html/linux
 \end{Verbatim}
-A 4522 a port száma. A linux könyvtár, ha nem létezik,
-létrejön.
+A 4522 a port száma. A szerver azóta nem létezik, de a példának jó. A
+linux könyvtár, ha nem létezik, létrejön.
 
 \newpage
 \section{PostgreSQL}

@@ -2,6 +2,10 @@ linalk.pdf: linalk.tex psqljegyzet.tex bank_rovid.tex debian-telepites.tex
 	pdflatex linalk.tex
 	pdflatex linalk.tex
 
+upload:
+	scp -p -P 122 linalk.pdf horvatha@arek.uni-obuda.hu:/home/AREK/horvatha/public_html/repo/linux/extra
+
+
 psqljegyzet.tex: ../postgresql/README.txt
 	./bin/verbatim.py ../postgresql/README.txt psqljegyzet.tex
 
