@@ -88,7 +88,9 @@ Feladatok a kész Linuxon
 
 Töltsük le a feladatokat a frissen telepített gépre::
  
- bzr branch http://arek.uni-obuda.hu/repo/linux
+ apt-get install git vim
+
+ git clone git://github.com/horvatha/linux.git
 
  cd linux/telepites
 
@@ -200,14 +202,11 @@ Nézzük meg a .bashrc-t::
 Nem színez::
   :syntax on
 
-Oppá, most sem, csak egy minimális csomag van fent
-(vim-tiny), telepítsük a vim csomagot::
+Alapból a Debian és Ubuntu csak egy minimális csomagot telepít a Vimből
+(vim-tiny) ami nem tud szintaxiskiemelést, de szerencsére már
+telepítettük a vim csomagot nemrég.
 
-  (lásd fent, vissza a root termináljára: <Alt><F1>)
-
-Mostmár megy a :syntax on !!!
-
-Állítsuk be, hogy alapból színezzen. De hol vannak a Vim rendszerszintû
+Állítsuk be, hogy alapból színezzen. De hol vannak a Vim rendszerszintű
 beállításai? ...
 
 Keressünk gyorsan fájlokat locate-tel.
