@@ -22,19 +22,20 @@ Feladatok
 ---------------------------------------
 
 
- a) telepítés (root-ként vagy sudo-val)
+a) telepítés (root-ként vagy sudo-val)
 
    # aptitude install postgresql
    (vagy sudo aptitude install postgresql)
 
- b) diak adatbázisfelhasználó létrehozása
+b) diak adatbázisfelhasználó létrehozása
 
    # su postgres
    (vagy sudo su postgres)
 
    $ createuser diak
-   (y után n, ha jogot akarunk adni a felhasználónak
-   adatbázisok létrehozására)
+
+(y után n, ha jogot akarunk adni a felhasználónak
+adatbázisok létrehozására)
 
 
 1. Adatbázis létrehozása:
@@ -52,7 +53,7 @@ Feladatok
 2. SQL-fájl tanulmányozása és beolvasása:
 -------------------------------------------
 
-Normál felhasználóként:
+Normál felhasználóként::
 
  $ vim bank.sql
  $ psql -f bank.sql
@@ -64,7 +65,7 @@ csinálnak?
 3. Interaktív munka:
 ---------------------------------------
 
-Indítsuk el a PostgreSQL parancssorát!
+Indítsuk el a PostgreSQL parancssorát! ::
 
   $ psql
 
@@ -73,28 +74,29 @@ Minden SQL-parancsot pontosvesszővel kell lezárni. Ha elfelejtettük
 a következő sorba csak a pontosvesszűt írjuk, ne az egész parancssort.
 A psql saját parancsai \-vel kezdődnek, utánuk nem kell pontosvessző.
 
-Listázzuk a táblákat!
+Listázzuk a táblákat! ::
 
  \d
 
-Irassuk ki a táblázatok és a "betetesek" nézetmód mezőit!
+Irassuk ki a táblázatok és a "betetesek" nézetmód mezőit! ::
 
  \d <táblanév>
 
-Listázzuk a függvényeinket!
+Listázzuk a függvényeinket! ::
 
  \df public.*
 
 Hozzunk létre új betétest!
+
 (Találjuk ki a bank.sql és az előző feladatban szereplő függvények
 segítségével, hogyan kell.)
 
 Próbáljunk létrehozni nem létező névvel befizetést!
 
 Próbáljunk törölni olyan sorokat, amelynek valamelyik mezőjére
-	REFERENCES hivatkozik.
+REFERENCES hivatkozik.
 
-Hozzunk létre új táblázatot!
+Hozzunk létre új táblázatot! ::
 
  \h CREATE TABLE
 
@@ -114,166 +116,168 @@ Lépjünk ki a psql-ből!
 4. Adatbázis mentése és visszaállítása
 ---------------------------------------
 
-Adatbázis mentése:
+Adatbázis mentése::
 
  $ pg_dump diak >mentes.sql
 
 Érdemes belenézni a mentett fájlba, tanulságos.
 
-Adatbázis törlése:
- (postgres-ként, vagy ha a felhasználónak adtunk
- adatbázis létrehozására jogokat, felhasználóként)
+Adatbázis törlése
+(postgres-ként, vagy ha a felhasználónak adtunk
+adatbázis létrehozására jogokat, felhasználóként) ::
 
  $ dropdb diak
 
-Adatbázis létrehozása:
- (postgres-ként, vagy ha a felhasználónak adtunk
- adatbázis létrehozására jogokat, felhasználóként)
+Adatbázis létrehozása
+(postgres-ként, vagy ha a felhasználónak adtunk
+adatbázis létrehozására jogokat, felhasználóként)::
 
  $ createdb diak
 
-Adatbázis visszatöltése:
+Adatbázis visszatöltése::
 
  $ psql -f mentes.sql
 
 Ellenőrizzük, hogy tényleg megvan-e minden.
 
 
-
 5. Törlések
 ---------------------------------------
 
-Próbáljuk törölni a szemelyes_adatok táblázatot!
+Próbáljuk törölni a szemelyes_adatok táblázatot! ::
 
- DROP TABLE szemelyes_adatok;
+    DROP TABLE szemelyes_adatok;
 
 Milyen sorrendben törölhetem a táblázatokat? Tegyük meg!
 
-Listázzuk a függvényeinket:
+Listázzuk a függvényeinket::
 
- \df public.*
+    \df public.*
 
-Töröljünk közülük:
+Töröljünk közülük::
 
- DROP FUNCTION ...;
-
-Mára ennyi. Köszönöm a figyelmet!
-	HÁ
-
+    DROP FUNCTION ...;
 
 
 PostgreSQL Cheat Sheet
 ==========================
 
 from http://www.petefreitag.com/cheatsheets/postgresql/
-Create database
 
-CREATE DATABASE dbName;
+Create database::
 
-Create table (with auto numbering integer id)
+    CREATE DATABASE dbName;
 
-CREATE TABLE tableName (
- id serial PRIMARY KEY,
- name varchar(50) UNIQUE NOT NULL,
- dateCreated timestamp DEFAULT current_timestamp
-);
+Create table (with auto numbering integer id)::
 
-Add a primary key
+    CREATE TABLE tableName (
+     id serial PRIMARY KEY,
+     name varchar(50) UNIQUE NOT NULL,
+     dateCreated timestamp DEFAULT current_timestamp
+    );
 
-ALTER TABLE tableName ADD PRIMARY KEY (id);
+Add a primary key::
 
-Create an INDEX
+    ALTER TABLE tableName ADD PRIMARY KEY (id);
 
-CREATE UNIQUE INDEX indexName ON tableName (columnNames);
+Create an INDEX::
 
-Backup a database (command line)
+    CREATE UNIQUE INDEX indexName ON tableName (columnNames);
 
-pg_dump dbName > dbName.sql
+Backup a database (command line)::
 
-Backup all databases (command line)
+    pg_dump dbName > dbName.sql
 
-pg_dumpall > pgbackup.sql
+Backup all databases (command line)::
 
-Run a SQL script (command line)
+    pg_dumpall > pgbackup.sql
 
-psql -f script.sql databaseName
+Run a SQL script (command line)::
 
-Search using a regular expression
+    psql -f script.sql databaseName
 
-SELECT column FROM table WHERE column ~ 'foo.*';
+Search using a regular expression::
 
-The first N records
+    SELECT column FROM table WHERE column ~ 'foo.*';
 
-SELECT columns FROM table LIMIT 10;
+The first N records::
 
-Pagination
+    SELECT columns FROM table LIMIT 10;
 
-SELECT cols FROM table LIMIT 10 OFFSET 30;
+Pagination::
 
-Prepared Statements
+    SELECT cols FROM table LIMIT 10 OFFSET 30;
 
-PREPARE preparedInsert (int, varchar) AS
-  INSERT INTO tableName (intColumn, charColumn) VALUES ($1, $2);
-EXECUTE preparedInsert (1,'a');
-EXECUTE preparedInsert (2,'b');
-DEALLOCATE preparedInsert;
+Prepared Statements::
 
-Create a Function
+    PREPARE preparedInsert (int, varchar) AS
+      INSERT INTO tableName (intColumn, charColumn) VALUES ($1, $2);
+    EXECUTE preparedInsert (1,'a');
+    EXECUTE preparedInsert (2,'b');
+    DEALLOCATE preparedInsert;
 
-CREATE OR REPLACE FUNCTION month (timestamp) RETURNS integer 
- AS 'SELECT date_part(''month'', $1)::integer;'
-LANGUAGE 'sql';
+Create a Function::
 
-*** Table Maintenance
+    CREATE OR REPLACE FUNCTION month (timestamp) RETURNS integer 
+     AS 'SELECT date_part(''month'', $1)::integer;'
+    LANGUAGE 'sql';
 
-VACUUM ANALYZE table;
+Table Maintenance
+--------------------
 
-Reindex a database, table or index
+    VACUUM ANALYZE table;
 
-REINDEX DATABASE dbName;
+Reindex a database, table or index::
 
-Show query plan
+    REINDEX DATABASE dbName;
 
-EXPLAIN SELECT * FROM table;
+Show query plan::
 
-Import from a file
+    EXPLAIN SELECT * FROM table;
 
-COPY destTable FROM '/tmp/somefile';
+Import from a file::
 
-Show all runtime parameters
+    COPY destTable FROM '/tmp/somefile';
 
-SHOW ALL;
+Show all runtime parameters::
 
-Grant all permissions to a user
+    SHOW ALL;
 
-GRANT ALL PRIVILEGES ON table TO username;
+Grant all permissions to a user::
 
-Perform a transaction
+    GRANT ALL PRIVILEGES ON table TO username;
 
-BEGIN TRANSACTION 
- UPDATE accounts SET balance += 50 WHERE id = 1;
-COMMIT;
+Perform a transaction::
 
-**** Basic SQL
-Get all columns and rows from a table
+    BEGIN TRANSACTION 
+     UPDATE accounts SET balance += 50 WHERE id = 1;
+    COMMIT;
 
-SELECT * FROM table;
+Basic SQL
+--------------------
 
-Add a new row
+Get all columns and rows from a table::
 
-INSERT INTO table (column1,column2)
-VALUES (1, 'one');
+    SELECT * FROM table;
 
-Update a row
+Add a new row::
 
-UPDATE table SET foo = 'bar' WHERE id = 1;
+    INSERT INTO table (column1,column2)
+    VALUES (1, 'one');
 
-Delete a row
+Update a row::
 
-DELETE FROM table WHERE id = 1;
+    UPDATE table SET foo = 'bar' WHERE id = 1;
+
+Delete a row::
+
+    DELETE FROM table WHERE id = 1;
 
 SQL-kezelése Pythonból
 ===========================
 
-$ vim pgdb_pygres_proba.py
-$ ./pgdb_pygres_proba.py
+Lásd::
+
+    hp/alapsql.cgi
+    hp/htmltabla.py
+
