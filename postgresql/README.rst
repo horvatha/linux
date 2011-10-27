@@ -1,6 +1,10 @@
+=======================
 A PostgreSQL kezelése
+=======================
 
----------------------------------------
+Bevezető
+====================
+
 Az alábbiakban azt feltételezzük, hogy létrehoztunk egy felhasználót
 diak felhasználónévvel pl. a
 
@@ -11,9 +15,12 @@ paranccsal.
 Ha diak helyett más felhasználónevünk van, akkor a diak-ot mindenhol
 helyettesítsük azzal.
 
----------------------------------------
+Feladatok
+====================
 
 0. Telepítés beállítás:
+---------------------------------------
+
 
  a) telepítés (root-ként vagy sudo-val)
 
@@ -29,9 +36,9 @@ helyettesítsük azzal.
    (y után n, ha jogot akarunk adni a felhasználónak
    adatbázisok létrehozására)
 
----------------------------------------
 
 1. Adatbázis létrehozása:
+---------------------------------------
 
  (postgres-ként, vagy ha a felhasználónak adtunk
  adatbázis létrehozására jogokat, felhasználóként)
@@ -41,9 +48,9 @@ helyettesítsük azzal.
  Alapból mindenkinek egy saját nevével azonos
  nevű adatbázist érdemes létrehozni.
 
----------------------------------------
 
 2. SQL-fájl tanulmányozása és beolvasása:
+-------------------------------------------
 
 Normál felhasználóként:
 
@@ -53,9 +60,9 @@ Normál felhasználóként:
 Milyen függvényeket és táblázatokat hoztunk létre, és azok mit
 csinálnak?
 
----------------------------------------
 
 3. Interaktív munka:
+---------------------------------------
 
 Indítsuk el a PostgreSQL parancssorát!
 
@@ -103,9 +110,9 @@ Keressünk benne reguláris kifejezésekkel (Cheat Sheet)
 Lépjünk ki a psql-ből!
 (Vajon melyik billentyűkombinációval lehet?)
 
----------------------------------------
 
 4. Adatbázis mentése és visszaállítása
+---------------------------------------
 
 Adatbázis mentése:
 
@@ -132,9 +139,9 @@ Adatbázis visszatöltése:
 Ellenőrizzük, hogy tényleg megvan-e minden.
 
 
----------------------------------------
 
 5. Törlések
+---------------------------------------
 
 Próbáljuk törölni a szemelyes_adatok táblázatot!
 
@@ -153,11 +160,11 @@ Töröljünk közülük:
 Mára ennyi. Köszönöm a figyelmet!
 	HÁ
 
--------------------------------------
--------------------------------------
 
-6.
+
 PostgreSQL Cheat Sheet
+==========================
+
 from http://www.petefreitag.com/cheatsheets/postgresql/
 Create database
 
@@ -265,16 +272,8 @@ Delete a row
 
 DELETE FROM table WHERE id = 1;
 
----------------------------------------
+SQL-kezelése Pythonból
+===========================
 
-7. SQL-kezelése Pythonból:
 $ vim pgdb_pygres_proba.py
 $ ./pgdb_pygres_proba.py
-
-
-------------------------------------
-Tanári jegyzet:
-
-sudo kell ezekre:
-apt-get
-su postgres
