@@ -22,15 +22,17 @@ Feladatok
 ---------------------------------------
 
 
-a) telepítés (root-ként vagy sudo-val)
+Telepítés (root-ként vagy sudo-val)::
 
    # aptitude install postgresql
-   (vagy sudo aptitude install postgresql)
+   vagy
+   sudo aptitude install postgresql
 
-b) diak adatbázisfelhasználó létrehozása
+diak adatbázisfelhasználó létrehozása::
 
    # su postgres
-   (vagy sudo su postgres)
+   vagy
+   sudo su postgres
 
    $ createuser diak
 
@@ -41,13 +43,13 @@ adatbázisok létrehozására)
 1. Adatbázis létrehozása:
 ---------------------------------------
 
- (postgres-ként, vagy ha a felhasználónak adtunk
- adatbázis létrehozására jogokat, felhasználóként)
+(postgres-ként, vagy ha a felhasználónak adtunk
+adatbázis létrehozására jogokat, felhasználóként)::
 
  $ createdb diak
 
- Alapból mindenkinek egy saját nevével azonos
- nevű adatbázist érdemes létrehozni.
+Alapból mindenkinek egy saját nevével azonos
+nevű adatbázist érdemes létrehozni.
 
 
 2. SQL-fájl tanulmányozása és beolvasása:
