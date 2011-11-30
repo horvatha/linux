@@ -128,4 +128,8 @@ vagy kapcsos zárójelre kell illeszteni. Olyankor kell levédeni.
 | )      )-re                                      Pythonban
 
 
-Lásd még: Python dokumentáció, The Python Standard Library, re module (Regular expression operations)
+Lásd még:
+
+* Python dokumentáció, The Python Standard Library, re module (Regular expression operations)
+* man regexp
+* Vimben   :help regexp    és    :help usr_27.txt

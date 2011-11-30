@@ -1,6 +1,3 @@
--- Pere László: Linux felhasználói ismeretek II., Adatkezelés, Kiskapu,
--- Pécs, 2002
-
 -- Bevihető a
 -- psql -f hp.sql
 -- paranccsal.
