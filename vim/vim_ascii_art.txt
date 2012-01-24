@@ -1,0 +1,135 @@
+AREKAREKAREKAREKAREKAREKAREKKAREKAREKAREKAREKAREKAREK
+AREK      EKARE         AREK         AR    EKAR    EK
+AR   REKA   ARE   EKARE   EK   EKAREKAR    EKA    REK
+AR   REKA   ARE   EKARE   EK   EKAREKAR    EK    AREK
+AR   REKA   ARE   EKARE   EK   EKAREKAR    E    KAREK
+AR          ARE         AREK         AR        EKAREK
+AR   REKA   ARE   EKAR  AREK   EKAREKAR    E    KAREK
+AR   REKA   ARE   EKARE   EK   EKAREKAR    EK    AREK
+AR   REKA   ARE   EKARE   EK   EKAREKAR    EKA    REK
+AR   REKA   ARE   EKARE   EK         AR    EKAR    EK
+AREKAREKAREKAREKAREKAREKAREKKAREKAREKAREKAREKAREKAREK
+
+
+    ++++++    +++++++++    +++++++++  ++++    ++++
+  +++    +++  +++     +++  +++        ++++   ++++
+  +++    +++  +++     +++  +++        ++++  ++++
+  +++    +++  +++     +++  +++        ++++ ++++
+  ++++++++++  +++++++++    +++++++++  ++++++++
+  +++    +++  +++    ++    +++        ++++ ++++
+  +++    +++  +++     +++  +++        ++++  ++++
+  +++    +++  +++     +++  +++        ++++   ++++
+  +++    +++  +++     +++  +++++++++  ++++    ++++
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXX      XXXX         XXXX         XX    XXXX    XX
+XX   XXXX   XX   XXXXX   XX   XXXXXXXX    XXX    XXX
+XX   XXXX   XX   XXXXX   XX   XXXXXXXX    XX    XXXX
+XX   XXXX   XX   XXXXX   XX   XXXXXXXX    X    XXXXX
+XX          XX         XXXX         XX        XXXXXX
+XX   XXXX   XX   XXXX  XXXX   XXXXXXXX    X    XXXXX
+XX   XXXX   XX   XXXXX   XX   XXXXXXXX    XX    XXXX
+XX   XXXX   XX   XXXXX   XX   XXXXXXXX    XXX    XXX
+XX   XXXX   XX   XXXXX   XX         XX    XXXX    XX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+                       /\       =======
+                     /AAAA\      #####
+                   /AAAAAAAA\    #####
+                 /AAAAAAAAAAAA\  #####
+               /AAAA  AAAA  AAAA\#####
+             /AAAAAA  AAAA  AAAAAA\###
+           /AAAAAAAA  AAAA  AAAAAAAA\#
+         /AAAAAAAAAAAAAAAAAAAAAAAAAAAA\
+       /AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\
+     /AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\
+   /AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\
+  /XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\
+  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  XXX          XXX           XXX           XXX
+  XXX          XXX           XXX           XXX
+  XXX          XXX           XXX           XXX
+  XXX          XXX           XXX           XXX
+  XXX          XXX           XXX           XXX
+  XXX          XXX           XXX           XXX
+  XXX          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  XXX          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  XXX          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  XXX          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  XXX          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  XXX          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  XXX          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  XXX          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+
+                         /\       ========
+                       /AAAA\      ######
+                     /AAAAAAAA\    ######
+                   /AAAAAAAAAAAA\  ######
+                 /AAAAAAAAAAAAAAAA\######
+               /AAAAA|  |AA|  |AAAAA\####
+             /AAAAAAA|  |AA|  |AAAAAAA\##
+           /AAAAAAAAA|  |AA|  |AAAAAAAAA\
+         /AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\
+       /AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\
+     /AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\
+   /AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\
+  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|
+ |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|
+ |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|
+ |XXX------------XXX+---------+XXXX+---------+XXXX|
+ |XXX--        --XXX|         |XXXX|         |XXXX|
+ |XXX--        --XXX|         |XXXX|         |XXXX|
+ |XXX--        --XXX|         |XXXX|         |XXXX|
+ |XXX--        --XXX|         |XXXX|         |XXXX|
+ |XXX--        --XXX|         |XXXX|         |XXXX|
+ |XXX------------XXX|         |XXXX|         |XXXX|
+ |XXX------------XXX+---------+XXXX+---------+XXXX|
+ |XXX------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|
+ |XXX------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|
+ |XXX------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|
+ |XXX------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|
+ |XXX------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|
+ |XXX------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|
+ |XXX------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+#+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---#
+#|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo#
+#|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo#
+#|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo#
+#+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---#
+#|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo#
+#|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo#
+#|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo#
+#+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---#
+#|ooo|ooo|ooo|xxxxxxxxxxxxxxx|ooo|ooo|xxxxxxxxxxxxxxxxxxx|ooo|ooo#
+#|ooo|ooo|ooo|x             x|ooo|ooo|xxxxxxxxxxxxxxxxxxx|ooo|ooo#
+#|ooo|ooo|ooo|x             x|ooo|ooo|xx               xx|ooo|ooo#
+#+---+---+---+x             x+---+---+xx               xx+---+---#
+#|ooo|ooo|ooo|x             x|ooo|ooo|xx               xx|ooo|ooo#
+#|ooo|ooo|ooo|x             x|ooo|ooo|xx               xx|ooo|ooo#
+#|ooo|ooo|ooo|x             x|ooo|ooo|xx               xx|ooo|ooo#
+#+---+---+---+x             x+---+---+xx               xx+---+---#
+#|ooo|ooo|ooo|x             x|ooo|ooo|xx               xx|ooo|ooo#
+#|ooo|ooo|ooo|x             x|ooo|ooo|xx               xx|ooo|ooo#
+#|ooo|ooo|ooo|xxxxxxxxxxxxxxx|ooo|ooo|xxxxxxxxxxxxxxxxxxx|ooo|ooo#
+#+---+---+---+---+---+---+---+---+---+xxxxxxxxxxxxxxxxxxx+---+---#
+#|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|xx               xx|ooo|ooo#
+#|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|xx               xx|ooo|ooo#
+#|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|xx               xx|ooo|ooo#
+#+---+---+---+---+---+---+---+---+---+xx               xx+---+---#
+#|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|xx               xx|ooo|ooo#
+#|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|xx               xx|ooo|ooo#
+#|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|ooo|xxxxxxxxxxxxxxxxxxx|ooo|ooo#
+#+---+---+---+---+---+---+---+---+---+xxxxxxxxxxxxxxxxxxx+---+---#
