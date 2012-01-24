@@ -45,6 +45,6 @@ fi
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
-PATH=$PATH:.:~/bin
+PATH=$PATH:.:~/bin:~/cxnet/scripts
 
 #fortune de hu|cowthink
