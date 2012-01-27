@@ -1,1 +1,1 @@
-debian-telepites.txt
+debian-telepites.rst
