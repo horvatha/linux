@@ -4,7 +4,7 @@ Telepítésre javasolt csomagok (Ubuntu, Debian)
 
 Hasznosságok
 =============
-vim mc
+vim-nox mc
 
 esetleg:
 enca
@@ -39,6 +39,8 @@ esetleg: python-scipy python-sympy
 
 Verziókövetés, Python-fejlesztés
 =================================
+git
+
 bzr
 python-pip (python-setuptools helyett jobb)
 
@@ -84,4 +86,4 @@ python-networkx
 stellarium
 kstars
 frozen-bubble
-gramps
+gramps Családfa kezelő
