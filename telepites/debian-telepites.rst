@@ -9,8 +9,8 @@ beállításáról a fájl végén van szó.
 Telepítés
 ===============
 
-A `debian.org <http://debian.org>`_-on keressük meg, hol lehet letölteni képfájlokat, és hol találunk
-leírásokat. Ez otthoni házi.
+A `debian.org <http://debian.org>`_-on keressük meg, hol lehet letölteni
+képfájlokat, és hol találunk leírásokat. Ez otthoni házi.
 
 Gyakorláshoz a helyi szerverről is leszedhetjük::
 
@@ -39,29 +39,22 @@ későbbi gyakorláshoz.
 
 A telepítendő összetevőket átnézhetjük, most nem kell semmi.
 
-!!!!! A hálózat beállítását az órán elmondottak szerint állítsuk !!!!!
+A hálózat beállítását DHCP-vel végezzük.
 
-Ha nem DHCP, akkor ezek a címek hasznosak a ROIK-ban.
-IP-cím:
-192.168.3.232 - 192.168.3.243 (12 db IP-cím)
-Mindenkié legyen a 192.168.3.x ahol x=231+ gépsorszám.
-
-mask, átjáró, jó ahogy van,
-de DNS-nek még jobb a 193.224.148.2 (az ns.szerver közvetlen címe).
-
-gépnévnek ne mindeni debiant adjon hanem pl. debian<gépsorszám>-ot
-tartomány roik.bmf.hu
+gépnévnek mindeni debian<gépsorszám>-ot adjon
+tartomány arek.uni-obuda.hu
 
 Particionálás
 ---------------
 
 Kézzel particionáljunk, az alábbi partíciókat hozzuk létre:
 
-1. Fat32 terület (20% méret /windowsra csatolva)
+1. Fat32 terület (5% méret /windowsra csatolva)
    (képzeletbeli Windows, vagy egy olyan terület, amit
    közösen használ a Win és Linux adatoknak).
+   (Ha akarjuk kihagyhatjuk, de jegyezzük meg, hogy ilyet is lehet.)
   
-2. ext3 3 GB,  hely /     Boot "zászlóval"
+2. ext3 4 GB,  hely /     Boot "zászlóval"
   
 3. cserehely (swap) 256 MB (amekkora a RAM)
   
@@ -342,9 +335,9 @@ Ez elveszik újabb indításkor, ezért rakjuk be a
 
 Linux 2.6 kernel kijelölése
 
-Memóriaméret: 256MB elég karakteres szerverhez
+Memóriaméret: 256MB elég karakteres szerverhez, később állítható
 
-4GB merevlemez-méret legyen a változó méretű jó nekünk.
+6GB merevlemez-méret legyen a változó méretű jó nekünk.
 
 Ellenőrizhetjük, hogy mekkora helyünk van a gépünkön::
 
@@ -353,12 +346,8 @@ Ellenőrizhetjük, hogy mekkora helyünk van a gépünkön::
 VMWare beszerzése és beállítása
 ===============================
 
-VMware Workstation lelőhelye (lehet, hogy már nincs ott):
-hirdet/szakcs/szamitogep_rendszerek/B.Z./wmware (88M)
-ez a telepítéshez kell csak, mert a létrehozott fájlrendszer az
-ingyenesen jogtisztán használható VMware Playerrel használható.
-Regisztráció után telepítésre alkalmas VMWare verzió is beszerezhető
-ingyenesen a honlapjukról.
+VMware Workstation-t be tudunk szerezni, azzal is telepíthetünk. A kész
+telepítést a szabadon letölthető VMware Player is elfuttaja.
 
 Indítsuk a VMWare-t!
 
@@ -372,7 +361,7 @@ Linux/Other Linux 2.6 kernel kijelölése
 
 Memóriaméret: 256MB elég karakteres szerverhez
 
-4GB merevlemez-méret legyen
+6GB merevlemez-méret legyen
 és ugyanabban az ablakban foglaljuk le a diszkterületet előre
 (Allocate all disk space)
 
