@@ -1039,5 +1039,6 @@ Oct 18 2006
 
 Ugorjunk a 820-dik sorra, majd a fájl végére:   820G G
 Ugorjunk a 820-dik sorra, töröljünk onnan a fájl végéig, majd állítsuk
-vissza a törölt részt: 820G dG u
+Töröljünk a 820. sortól a fájl végéig, majd állítsuk vissza a törölt
+részt: 820G dG u
 Töröljünk a 20. sortól a fájl elejéig:  20G dgg
