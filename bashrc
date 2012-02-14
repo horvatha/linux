@@ -10,13 +10,18 @@ alias cr="chmod a+r"
 alias l='ls -CF'
 alias ipythonlab='ipython -pylab'
 alias pylab='ipython -pylab'
-alias bzrstatushead='bzr status|head -23'
-alias bzrlastrevisions='bzr log -r -5..'
 alias ducks='su -cks * | sort -rn|head -11'
 alias ..='cd ..'
 alias ...='cd ~/cxnet/mfng'
 alias aw='antiword   -m 8859-2.txt'
 alias old="cd $OLDPWD"
+alias vi="vim -u NORC"
+alias up=uptime
+
+alias bzrstatushead='bzr status|head -23'
+alias bzrlastrevisions='bzr log -r -5..'
+alias gitpush="git push -u origin master"
+
 
 #export PYTHONSTARTUP=.pythonrc.py
 #export CDPATH=.:~
@@ -24,9 +29,8 @@ export LESSEDIT="%E ?lt+%lt. %f"
 export EDITOR="vim"
 #export VISUAL="gvim"
 #alias ssh2="luit -encoding iso-8859-2 -- ssh"
-#alias ssh4522="ssh -p 4522"
-alias ns="luit -encoding iso-8859-2 -- ssh -p 4522 $NS"
-alias sshdiak1="ssh -p 4522 diak1@mail.roik.bmf.hu"
+alias ns="luit -encoding iso-8859-2 -- ssh -p 122 horvatha@ns.arek.uni-obuda.hu"
+alias sshdiak1="ssh -p 122 diak1@mail.roik.bmf.hu"
 
 if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
