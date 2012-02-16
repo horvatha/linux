@@ -20,8 +20,9 @@ alias up=uptime
 
 alias bzrstatushead='bzr status|head -23'
 alias bzrlastrevisions='bzr log -r -5..'
-alias gitpush="git push -u origin master"
-
+alias gitpushmaster="git push -u origin master"
+alias gitstatushead='git status|head -23'
+alias gitlastrevisions='git log @{6}..'
 
 #export PYTHONSTARTUP=.pythonrc.py
 #export CDPATH=.:~
@@ -52,3 +53,4 @@ fi
 PATH=$PATH:.:~/bin:~/cxnet/scripts
 
 #fortune de hu|cowthink
+source git/git_branch_in_bash_prompt.sh
