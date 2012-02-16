@@ -53,4 +53,4 @@ fi
 PATH=$PATH:.:~/bin:~/cxnet/scripts
 
 #fortune de hu|cowthink
-source git/git_branch_in_bash_prompt.sh
+source ~/linux/git/git_branch_in_bash_prompt.sh
