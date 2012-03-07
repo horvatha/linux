@@ -23,6 +23,7 @@ alias bzrlastrevisions='bzr log -r -5..'
 alias gitpushmaster="git push -u origin master"
 alias gitstatushead='git status|head -23'
 alias gitlastrevisions='git log @{6}..'
+alias gitls='git ls-files'
 
 #export PYTHONSTARTUP=.pythonrc.py
 #export CDPATH=.:~

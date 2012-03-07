@@ -11,6 +11,7 @@ Segédlet lefordítása
 =====================
 
 ::
+
     cd segedlet
     make
     evince linalk.pdf
