@@ -57,8 +57,8 @@ nevű adatbázist érdemes létrehozni.
 
 Normál felhasználóként::
 
- $ vim bank.sql
- $ psql -f bank.sql
+ $ vim hp/hp.sql
+ $ psql -f hp/hp.sql
 
 Milyen függvényeket és táblázatokat hoztunk létre, és azok mit
 csinálnak?
@@ -80,7 +80,7 @@ Listázzuk a táblákat! ::
 
  \d
 
-Irassuk ki a táblázatok és a "betetesek" nézetmód mezőit! ::
+Irassuk ki a táblázatok és az "adatok" nézet  mezőit! ::
 
  \d <táblanév>
 
@@ -88,15 +88,17 @@ Listázzuk a függvényeinket! ::
 
  \df public.*
 
-Hozzunk létre új betétest!
+Hozzunk létre új személyt!
 
-(Találjuk ki a bank.sql és az előző feladatban szereplő függvények
+(Találjuk ki a hp.sql és az előző feladatban szereplő függvények
 segítségével, hogyan kell.)
 
-Próbáljunk létrehozni nem létező névvel befizetést!
+Próbáljunk létrehozni nem létező személyhez képet!
 
 Próbáljunk törölni olyan sorokat, amelynek valamelyik mezőjére
 REFERENCES hivatkozik.
+
+Futtassuk a hp/alapsql.py fájlt dns="localhost" beállítással.
 
 Hozzunk létre új táblázatot! ::
 

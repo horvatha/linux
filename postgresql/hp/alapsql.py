@@ -14,7 +14,7 @@ print "Content-Type: text/html\n" ## CGI
 
 
 # Itt lehet állítani az adatbázist:
-connection = pgdb.connect(database='diak', user='diak', password='diak', dsn='mail.roik.bmf.hu')
+connection = pgdb.connect(database='diak', user='diak', password='diak', dsn='django.arek.uni-obuda.hu')
 
 cursor = connection.cursor()
 
