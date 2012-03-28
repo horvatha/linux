@@ -14,7 +14,7 @@ almaxalmayalma
 almlmlmlma
 almlmlma
 almlma maaaa
-almmmm maaaaaa
+almmmm maaaaaa alm+
 alalalalalalma
   aa aa aaa 
 alm+  
@@ -27,11 +27,15 @@ mamma
 samu@akarmi.hu
 samu@akarmi.org
 samu@akarmi.kua
+samu@akarmi.co.kua
+samuel
 si.kua
  x@akarmi..hu
  x@akarm+..hu
  @akarmi..hu
 Samu@a.hung
+horvath.arpad@arek.uni-obuda.hu
+.....@gmail.com
      jahu
   x@akarmi
   x@
@@ -109,13 +113,15 @@ vagy kapcsos zárójelre kell illeszteni. Olyankor kell levédeni.
 | \.     pont                                      mindig
 | +      előtte lévő 1 vagy több ismétlődése       Vim-ben
 | +      plussz                                    Pythonban
+| ?      előtte lévő 0 vagy egy ismétlődése        Vimben
+| ?      kérdőjel                                  Pythonban
 | [...]  valamelyikre a benne lévő karakterekből   nem kell
 | [^...] egy olyan karakterre, ami nincs benne     nem kell
 | \[     [-re                                      mindig
-| {n}    előtte lévő n-szeri ismétlése             Vim-ben csak a nyitót
-| {n,m}  előtte lévő n..m-szeri ismétlése          Vim-ben csak a nyitót
-| {,m}   előtte lévő 0..m-szeri ismétlése          Vim-ben csak a nyitót
-| {n,}   előtte lévő min. m-szeri ismétlése        Vim-ben csak a nyitót
+| {n}    előtte lévő n-szeri ismétlése             Vim-ben elég a nyitót
+| {n,m}  előtte lévő n..m-szeri ismétlése          Vim-ben elég a nyitót
+| {,m}   előtte lévő 0..m-szeri ismétlése          Vim-ben elég a nyitót
+| {n,}   előtte lévő min. n-szeri ismétlése        Vim-ben elég a nyitót
 | {      {-re                                      Pythonban
 | ^      sor elejére                               nem kell
 | $      sor végére                                nem kell
