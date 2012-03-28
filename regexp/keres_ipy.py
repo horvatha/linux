@@ -14,6 +14,7 @@ urls = """http://bocs.hu
     http://arek.uni-obuda.hungary
     http://bocs.hu//vimrc
     hhttp://bocs.hu
+    ftp://ftp.sztaki.hu/pub/tex
     """.split()
 
 rendszamok = """ABC-001
@@ -35,7 +36,7 @@ IPs = """192.168.3.26
 
 emails = """horvath.arpad@arek.uni-obuda.hu
     x_ipszilon@gmail.com
-    """
+    """.split()
 
 def keres(regexp, szavak):
     """A regexp reguláris kifejezést keres több szóban.
