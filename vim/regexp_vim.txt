@@ -127,8 +127,8 @@ vagy kapcsos zárójelre kell illeszteni. Olyankor kell levédeni.
 | $      sor végére                                nem kell
 | \^     ^-re                                      mindig
 | \$     $-ra                                      mindig
-| \<     szó elejére
-| \>     szó végére
+| \<     szó elejére                               csak Vimben létezik
+| \>     szó végére                                csak Vimben létezik
 | ()     csoportosítás                             Vimben mindkettőt
 | (      (-re                                      Pythonban
 | )      )-re                                      Pythonban
