@@ -145,13 +145,13 @@ function parse_git_branch {
     s=" "
   fi
 
-  echo " ${branch}${s}${remote}${state}"
+  echo "${branch}${s}${remote}${state}"
 }
 
 function prompt_func() {
   git rev-parse --git-dir > /dev/null 2>&1
   if [ $? -eq 0 ]; then
-    prompt="${TITLEBAR}${BLUE}[${WHITE}\u:\w${GREEN}$(parse_git_branch)${BLUE}]${COLOR_NONE}"
+    prompt="${LIGHT_GRAY}\u:\w ${TITLEBAR}${BLUE}[${GREEN}$(parse_git_branch)${BLUE}]${COLOR_NONE}"
     PS1="${prompt}$ "
   else
     PS1=$PSAVE
