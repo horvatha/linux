@@ -14,7 +14,7 @@ def hangrend(n):
     """ hangrend(n) --> (típus, változat)
 
       Az n egész számot követő rag hangrendjét adja vissza:
-        típus - 'magas','mély','változó'
+        típus - 'magas','mély','vegyes'
         változat - ezek különböző ragú csoportjai
 
     ('magas', 1)  pl. 7-es -szer -nek -én
@@ -24,7 +24,7 @@ def hangrend(n):
     ('mély', 1)  pl. 3-as -szor -nak -án
     ('mély', 2)  6-os!
 
-    ('változó', 1)  2-án  2-szer"""
+    ('vegyes', 1)  2-án  2-szer"""
 
     assert isinstance(n, int), "a számnak egésznek kell lennie"
 
@@ -101,7 +101,6 @@ def example():
     print('Ma %s van.' % ragos(napsorszam, 'e'))
 
 def test():
-    ragok = ['szer','es','nek','nél','én','e']
     ismert_eredmenyek = (
         (1, "1-szer 1-es 1-nek 1-nél 1-jén 1-je"),
         (2, "2-szer 2-es 2-nek 2-nél 2-án 2-a"),
@@ -122,7 +121,7 @@ def test():
 
     for szam, eredmenyek in ismert_eredmenyek:
         for alap, eredmeny in zip(alap_ragok, eredmenyek.split()):
-            visszaadott = ragos(szam, alap) 
+            visszaadott = ragos(szam, alap)
             if  visszaadott != eredmeny:
                 print("Nem egyezik a megadott érték a visszatérésivel:", eredmeny, visszaadott)
             assert ragos(szam, alap) == eredmeny
