@@ -11,7 +11,7 @@
      A feladatok megoldásához 25-30 perc szükséges attól függően,
      mennyit töltünk a kísérletezéssel.
 
-     A leckében szereplő utasítások módosítani fogják a szövegek.
+     A leckében szereplő utasítások módosítani fogják a szöveget.
      Készítsen másolatot erről a fájlról, ha gyakorolni akar.
      (Ha "vimtutor"-ral indította, akkor ez már egy másolat.)
 
@@ -428,7 +428,7 @@ Ugorjunk a következő leckére!
   3. A kifejezés újabb kereséséhez üssük le egyszerűen:  n .
      A kifejezés ellenkező irányban történő kereséséhez ezt üssük be: Shift-N .
 
-  4. Ha visszafelé szeretne keresni, akkor ? kell a ! helyett.
+  4. Ha visszafelé szeretne keresni, akkor ? kell a / helyett.
 
 ---> "hiibaa" nem a helyes módja a hiba leírásának; a hiibaa egy hiba.
 
@@ -462,7 +462,7 @@ Megj: Ez nagyon hasznos, ha olyan programot debugolunk, amelyben a
 		  4.4.  lecke: A HIBÁK KIJAVÍTÁSÁNAK EGY MÓDJA
 
 
-    ** :s/új/régi/g begépelésével az 'új'-ra cseréljük a 'régi'-t. **
+    ** :s/régi/új/g begépelésével az 'új'-ra cseréljük a 'régi'-t. **
 
   1. Menjünk a ---> kezdetű sorra!
 
@@ -579,7 +579,7 @@ Megj: Ha Ön kilépne a Vimből és és visszatérne a TESZT fájlnévvel, akkor
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		   5.4.  lecke: RETRIEVING AND MERGING FILES
+		   5.4.  lecke: FÁJLOK VISSZAÁLLÍTÁSA ÉS ÖSSZEFŰZÉSE
 
 
        ** Egy fájl tartalmának beillesztéséhez írja   :r FÁJLNÉV **
@@ -616,7 +616,7 @@ MEGJ:  A fájl, amit beillesztett a kurzora alatt helyezkedik el.
   2.  :w FÁJLNÉV  kiírja a jelenlegi Vim-fájlt a lemezre FÁJNÉV néven.
 
   3.  :#,#w FÁJLNÉV  kiírja a két sorszám (#) közötti sorokat FÁJLNÉV-be
-      Másik lehetőség, hogy a kezdősornál Ctrl-v-t nyom lemegy az utolsó
+      Másik lehetőség, hogy a kezdősornál Shift-v-t nyom lemegy az utolsó
       sorra, majd ezt üti be  :w FÁJLNÉV
 
   4.  :r FÁJLNÉV  beolvassa a FÁJLNÉV fájlt és behelyezi a jelenlegi fájlba
@@ -629,7 +629,7 @@ MEGJ:  A fájl, amit beillesztett a kurzora alatt helyezkedik el.
 		   6.1.  lecke: A MEGNYITÁS (OPEN) PARANCS
 
 
-** o  beírásával nyithat egy új sort a kurzor alatt és válthat beszúró módba **
+** o  beírásával nyit egy új sort a kurzor alatt és beszúró módba vált **
 
   1. Mozgassuk a kurzort a ---> kezdetű sorra.
 
@@ -641,7 +641,7 @@ MEGJ:  A fájl, amit beillesztett a kurzora alatt helyezkedik el.
 
 ---> Az o lenyomása után a kurzor a következő sor elején áll beszúró módban.
 
-  4. A kurzor FELETTI for megnyitásához egyszerűen a nagy O betűt írjon
+  4. A kurzor FELETTI sor megnyitásához egyszerűen nagy O betűt írjon
 kicsi helyett. Próbálja ki a következő soron!
 Nyisson egy új sort efelett Shift-O megnyomásával, mialatt a kurzor
 ezen a soron áll.
@@ -826,5 +826,5 @@ Megj: A Vimben a sor legvégére is lehet állni, azonban ez elődjében
 
   A Vimhez idomította Bram Moolenaar.
 
-  Magyarította: Horváth Árpád <horvath.arpad@roik.bmf.hu>, 2006-2008
+  Magyarította: Horváth Árpád <horvath.arpad@arek.uni-opbuda.hu>, 2006-2012
 
