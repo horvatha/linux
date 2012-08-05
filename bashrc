@@ -1,5 +1,3 @@
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 # some more ls aliases
 alias lt='ls -ltr'
 alias ll='ls -l'
@@ -10,16 +8,19 @@ alias cr="chmod a+r"
 alias l='ls -CF'
 alias ipythonlab='ipython --pylab'
 alias pylab='ipython --pylab'
-alias ducks='su -cks * | sort -rn|head -11'
 alias ..='cd ..'
-alias ...='cd ~/cxnet/mfng'
-alias aw='antiword   -m 8859-2.txt'
+alias ....='cd ../..'
+alias ...='cd ~/mfng/mfng'
+alias aw='antiword  -m 8859-2.txt'
 alias old="cd $OLDPWD"
 alias vi="vim -u NORC"
 alias up=uptime
 
+export PATH=${PATH}:~/cxnet/scripts:~/mfng/scripts
+
 alias bzrstatushead='bzr status|head -23'
 alias bzrlastrevisions='bzr log -r -5..'
+
 alias gitpushmaster="git push -u origin master"
 alias gitstatushead='git status|head -23'
 alias gitlastrevisions='git log -6'
@@ -32,7 +33,6 @@ export EDITOR="vim"
 #export VISUAL="gvim"
 #alias ssh2="luit -encoding iso-8859-2 -- ssh"
 alias ns="luit -encoding iso-8859-2 -- ssh -p 122 horvatha@ns.arek.uni-obuda.hu"
-alias sshdiak1="ssh -p 122 diak1@mail.roik.bmf.hu"
 
 if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
@@ -52,6 +52,9 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 PATH=$PATH:.:~/bin:~/cxnet/scripts
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
 #fortune de hu|cowthink
 source ~/linux/git/git_branch_in_bash_prompt.sh
