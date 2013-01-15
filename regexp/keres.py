@@ -48,7 +48,7 @@ import re
 urls = """http://bocs.hu
     http://arek.uni-obuda.hu
     https://elearning.uni-obuda.hu
-    )ttp://bocs.hu/ado/index.html
+    http://bocs.hu/ado/index.html
     https://github.com/horvatha/linux/blob/master/regexp/keres_ipy.py
     http://.hu
     http://arek..hu
