@@ -10,28 +10,28 @@
 --
 
 -- Ha már léteznek töröljük ezeket, hogy újra létrehozhassuk:
-DROP VIEW betetesek;
-DROP TABLE egyenleg;
-DROP TABLE naplo;
-DROP TABLE szemelyes_adatok;
+DROP VIEW bank_betetesek;
+DROP TABLE bank_egyenleg;
+DROP TABLE bank_naplo;
+DROP TABLE bank_szemelyes_adatok;
 
 
-CREATE TABLE szemelyes_adatok (
+CREATE TABLE bank_szemelyes_adatok (
 	nev	varchar(30) NOT NULL,
 	cim	varchar(30) NOT NULL,
 	szamlaszam integer PRIMARY KEY
 );
 
-CREATE TABLE egyenleg (
-	szamlaszam integer REFERENCES szemelyes_adatok,
+CREATE TABLE bank_egyenleg (
+	szamlaszam integer REFERENCES bank_szemelyes_adatok,
 	egyenleg   integer DEFAULT 0
        			CONSTRAINT eladósodott
 			CHECK ( EGYENLEG >= -20000 )
 );
 
 
-CREATE TABLE naplo (
-	szamlaszam integer REFERENCES szemelyes_adatok(szamlaszam),
+CREATE TABLE bank_naplo (
+	szamlaszam integer REFERENCES bank_szemelyes_adatok(szamlaszam),
 	penzmozgas integer,
         idopont timestamp
 );
@@ -44,9 +44,9 @@ CREATE TABLE naplo (
 CREATE OR REPLACE FUNCTION uj_szamla(text, text, integer)
   RETURNS boolean
   AS $$
-	  INSERT INTO szemelyes_adatok VALUES (
+	  INSERT INTO bank_szemelyes_adatok VALUES (
 		$1, $2, $3 );
-	  INSERT INTO egyenleg VALUES ( $3 );
+	  INSERT INTO bank_egyenleg VALUES ( $3 );
 	SELECT true;
   $$ LANGUAGE 'SQL';
 
@@ -57,7 +57,7 @@ CREATE OR REPLACE FUNCTION uj_szamla(text, text, integer)
 CREATE OR REPLACE FUNCTION befizet (integer, integer)
   RETURNS boolean
   AS $$
-	  UPDATE egyenleg SET egyenleg= egyenleg+$2
+	  UPDATE bank_egyenleg SET egyenleg= egyenleg+$2
 	    WHERE szamlaszam = $1;
 	  INSERT INTO naplo VALUES ( $1, $2, now() );
 	 
@@ -74,14 +74,14 @@ CREATE OR REPLACE FUNCTION atutal (integer, integer, integer)
   RETURNS boolean
   AS $$
 	-- BEGIN;
-	  UPDATE egyenleg SET egyenleg= egyenleg+$3
+	  UPDATE bank_egyenleg SET egyenleg= egyenleg+$3
 	    WHERE szamlaszam = $2;
 
-	  UPDATE egyenleg SET egyenleg= egyenleg-$3
+	  UPDATE bank_egyenleg SET egyenleg= egyenleg-$3
 	    WHERE szamlaszam = $1;
 
-	  INSERT INTO naplo VALUES ( $1, -1*$3, now() );
-	  INSERT INTO naplo VALUES ( $2, $3, now() );
+	  INSERT INTO bank_naplo VALUES ( $1, -1*$3, now() );
+	  INSERT INTO bank_naplo VALUES ( $2, $3, now() );
 	 
 	-- COMMIT;
 	SELECT true;
@@ -104,12 +104,12 @@ SELECT atutal ( 2, 3, 1000 );
 --
 -- Nézettábla, amelyben látszik a név, cím és az összeg
 --
-CREATE VIEW betetesek AS
-  SELECT nev, cim, egyenleg FROM szemelyes_adatok, egyenleg
-      WHERE szemelyes_adatok.szamlaszam = egyenleg.szamlaszam
+CREATE VIEW bank_betetesek AS
+  SELECT nev, cim, egyenleg FROM bank_szemelyes_adatok, bank_egyenleg
+      WHERE bank_szemelyes_adatok.szamlaszam = bank_egyenleg.szamlaszam
       ORDER BY nev;
 
 SELECT 'Betétesek';
-SELECT * FROM betetesek;
+SELECT * FROM bank_betetesek;
 SELECT 'Napló';
-SELECT * FROM naplo;
+SELECT * FROM bank_naplo;
