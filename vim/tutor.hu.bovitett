@@ -836,6 +836,8 @@ Megj: A Vimben a sor legvégére is lehet állni, azonban ez elődjében
 
  ** téglalap alakú területek kezelése, soreleji, sorvégi beszúrások **
 
+Megj. A Virtualbox alatt gyakran csak a bal Ctrl használható.
+
 >  1. Menjen a legfelső > karakterre normál módban, nyomja meg a Ctrl-v
 >     kombinációt. Menjen az alsó >-tól jobbra levő szóközre! Ekkor a Vim
 >     ablakában látszik egy téglalap. Ezt törölje a d vagy a <delete>
