@@ -27,22 +27,25 @@ python-doc diveintopython
 
 Django
 ----------
-ipython
+ipython (3)
 python-django
 python-psycopg2
+libapache2-mod-wsgi
+libapache2-mod-wsgi-py3
 libapache2-mod-python
 
 Grafikonok, tudományos
 ------------------------
-python-numpy python-matplotlib
+python-numpy (3) python-matplotlib (3 forrásból)
 esetleg: python-scipy python-sympy
 
 Verziókövetés, Python-fejlesztés
 =================================
-git
+git gitk
 
 bzr
 python-pip (python-setuptools helyett jobb)
+python-virtualenv (pip-et felrakja)
 
 esetleg:
 python-paramiko # bzr-tároló frissítés ssh-n keresztül

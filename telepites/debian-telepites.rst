@@ -4,21 +4,33 @@
     
 Kísérletezés céljából érdemes a Linuxot virtuális gépre telepíteni.
 Erre a Virtualbox vagy a VMWare megfelelő. Ezek beszerzéséről és
-beállításáról a fájl végén van szó.
+beállításáról a fájl végén van szó. Mi Debiant fogunk telepíteni, amely
+szervernek nagyon alkalmas. Otthoni használatra talán az Ubuntu
+valamelyik változata ajánlható (Ubuntu, Kubuntu, Xubuntu). A Debian és
+az Ubuntu azonos szoftvercsomag-formátummal rendelkezik, és a
+szoftvercsomag-nevek is általában azonosak.
 
 Telepítés
 ===============
 
 A `debian.org <http://debian.org>`_-on keressük meg, hol lehet letölteni
-képfájlokat, és hol találunk leírásokat. Ez otthoni házi.
+képfájlokat, és hol találunk leírásokat. Ez otthoni házi. Keressük meg,
+milyen verziók vannak, mi a jelenlegi stabil verzió, mit jelentenek a
+stable, testing, unstable és sid szavak.
 
-Gyakorláshoz a helyi szerverről is leszedhetjük::
+Gyakorláshoz a helyi szerverről is leszedhetjük (ez régebbi változat)::
 
  wget http://arek.uni-obuda.hu/repo/linux/extra/debian-6.0.2.1-i386-netinst.iso
 
 Virtuális gépben:
-CD-ROM-nál megfelelő meghatót ki kellett jelölni vagy szedjük le
-linux/telepitesbol a iso filet, és azt állítsuk be.
+
+Hozzunk létre új gépet a következő beállításokkal.
+
+1 GB RAM
+20 GB-os merevlemez
+
+CD-ROM-nál szedjük le linux/telepitesbol a iso filet, és azt állítsuk be
+vagy, ha CD-n van, a megfelelő meghatót ki kell jelölni.
 Indítsuk el a virtuális gépet. Ha van telepítő-CD bent legyen.
 
 Miután megjelent az Debian felirat+csiga lépjünk be az ablakba (katt
@@ -29,42 +41,34 @@ bal-alul mindkettőben ki van írva.)
 
 Válasszunk szakértő módot. (Advanced options/Expert install)
 
-Ha CD-ről telepítünk,
-ellenőrizzük a CD integritását. Lehet, hogy a telepítés
-vége felé derül ki, hogy nem ép és akkor kezdhetjük előről.
+Ha CD-ről telepítünk, ellenőrizzük a CD integritását. Lehet, hogy a
+telepítés vége felé derül ki, hogy nem ép és akkor kezdhetjük előről.
 
 Legyen hu_HU.utf-8 az alapértelmezett nyelvi beállítás.
 Adjunk meg pár más helyi beállítást is: pl. en_GB.utf-8 de_DE.utf-8 a
 későbbi gyakorláshoz.
+Itt az első betű a nyelvre utal, a második két betű az országra. Pl.
+en_GB angol/Egyesült Kirányság, de_CH német/Svájc, de_AT német/Ausztria.
+A pont után (ha van pont) a karakterkódolás van, amely esetünkben UTF-8,
+ami lehetővé teszi nem latin betűs és rengeteg speciális karakter
+megjelenítését.
 
-A telepítendő összetevőket átnézhetjük, most nem kell semmi.
+A betöltendő telepítőrészeknél, ha akarjuk a Windows ntfs fájlrendszerét
+használni, akkor töltsük be az ntfs-modules átnézhetjük, most nem kell semmi.
 
 A hálózat beállítását DHCP-vel végezzük.
 
 gépnévnek mindeni debian<gépsorszám>-ot adjon
 tartomány arek.uni-obuda.hu
 
-Particionálás
----------------
+Árnyékjelszavakat használjunk, különben a jelszavakhoz tartozó kódolt
+"kivonatokat" mindenki láthatja a /etc/passwd fájlban, és könnyebben
+fejtik vissza a jelszavakat. Így a passwd fájlban csak egy x lesz, és
+egy másik, csak az adminisztrátor (root) által megnyitható fájlban
+lesznek a jelszavak kivonatai.
 
-Kézzel particionáljunk, az alábbi partíciókat hozzuk létre:
-
-1. Fat32 terület (5% méret /windowsra csatolva)
-   (képzeletbeli Windows, vagy egy olyan terület, amit
-   közösen használ a Win és Linux adatoknak).
-   (Ha akarjuk kihagyhatjuk, de jegyezzük meg, hogy ilyet is lehet.)
-  
-2. ext3 4 GB,  hely /     Boot "zászlóval"
-  
-3. cserehely (swap) 256 MB (amekkora a RAM)
-  
-4. ext3 maradék  /home
-
-   jellemző_használat beállítása úgy: hogy várhatóan nagy fájlokat - pl.
-   nagyfelbontású képeket és filmeket - tárolnak a felhasználók (csak példa)
-
-Rendszeróra nem UTC szerint jár, ha van Windows, ha csak Linux akkor
-igen.
+A root-ként való bejelentkezést nem muszáj engedélyezni. Ha nem
+engedélyezzük, mindent sudo-val érhetünk el.
 
 Felhasználók:
 
@@ -72,9 +76,45 @@ Felhasználók:
 
 - diak (diak jelszóval; amivel majd beléphetnek a gépünkre másik gépről)
 
-Szoftverválasztás: csak szabvány rendszer
+Rendszeróra nem UTC szerint jár, ha van Windows, ha csak Linux akkor
+igen.
 
-GRUB-ot a  master boot record-ba
+Particionálás
+---------------
+
+Kézzel particionáljunk, az alábbi partíciókat hozzuk létre az alábbi
+sorrendben (a teljes 20 GB):
+
+1. Fat32 terület (5% méret /windowsra csatolva)
+   (képzeletbeli Windows, vagy egy olyan terület, amit
+   közösen használ a Win és Linux adatoknak).
+   (Ha akarjuk kihagyhatjuk, de jegyezzük meg, hogy ilyet is lehet.)
+  
+2. ext4 6 GB,  hely /     Boot "zászlóval"
+  
+3. cserehely (swap) 1 GB (amekkora a RAM)
+  
+4. ext4 maradék  /home
+
+   jellemző_használat beállítása úgy: hogy várhatóan nagy fájlokat - pl.
+   nagyfelbontású képeket és filmeket - tárolnak a felhasználók (csak példa)
+
+Az alaprendszer telepítése eltart nagyjából tíz percig, csak néha kell
+entert ütni.
+
+A csomagkezelőnél válasszunk tetszőlegeseni és ésszerűen, pl. inode.at.
+Használhassunk nem szabad szoftvereket (ilyen pl. az nvidia meghajtó és
+a Java Oracle-es változata). ezek jogtisztán használhatóak, de nem
+elérhető, vagy nem módosítható a forráskódja.
+
+Szoftverválasztás: egyelőre még a szabvány rendszert (standard system
+utilities) sem telepítjük.
+
+GRUB-ot a  master boot record-ba telepítsük
+
+Telepítés befejezése után indítsuk újra. Ilyenkor megtalálnánk minden
+Windowsos indítható partíciót és korábbi Linuxainkat a GRUB menüjében.
+De most nincs ilyen.
 
 Feladatok a kész Linuxon
 ===========================
@@ -92,10 +132,6 @@ Töltsük le a feladatokat a frissen telepített gépre::
 ha ez nem megy, akkor::
 
  wget http://arek.uni-obuda.hu/repo/linux/telepites/debian-telepites.txt
-
-Telepítés befejezése után indítsuk újra. Ilyenkor megtalálnánk minden
-Windowsos indítható partíciót és korábbi linuxainkat a GRUB menüjében.
-De most nincs ilyen.
 
 Rendszergazdává válás és visszatérés
 --------------------------------------
@@ -308,8 +344,10 @@ A legvégén állítsuk le a gépet (root)::
 
   # reboot
 
-Virtualbox beszerzése és beállítása
-===================================
+Virtualbox beszerzése és beállítása Debian/Ubuntu alatt
+============================================================
+
+Lehet, hogy elavult.
 
 Telepítsük Debian/Ubuntu alá a Virtualboxot:
 virtualbox csomag és virtualbox-ose-modules megfelelő változata.
@@ -337,7 +375,7 @@ Linux 2.6 kernel kijelölése
 
 Memóriaméret: 256MB elég karakteres szerverhez, később állítható
 
-6GB merevlemez-méret legyen a változó méretű jó nekünk.
+8GB merevlemez-méret legyen a változó méretű jó nekünk.
 
 Ellenőrizhetjük, hogy mekkora helyünk van a gépünkön::
 
@@ -345,6 +383,8 @@ Ellenőrizhetjük, hogy mekkora helyünk van a gépünkön::
 
 VMWare beszerzése és beállítása
 ===============================
+
+Lehet, hogy elavult.
 
 VMware Workstation-t be tudunk szerezni, azzal is telepíthetünk. A kész
 telepítést a szabadon letölthető VMware Player is elfuttaja.
