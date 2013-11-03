@@ -50,20 +50,22 @@ urls = """http://bocs.hu
     https://elearning.uni-obuda.hu
     http://bocs.hu/ado/index.html
     https://github.com/horvatha/linux/blob/master/regexp/keres_ipy.py
+    ftp://ftp.sztaki.hu/pub/tex
     http://.hu
     http://arek..hu
     http://arek.uni-obuda.hungary
     http://bocs.hu//vimrc
     hhttp://bocs.hu
-    ftp://ftp.sztaki.hu/pub/tex
     """.split()
 
 rendszamok = """ABC-001
 AAA-000
 TRA-548
-KISAPA-01
+FERI-12
+EWING-1
 -01
 AAA-
+KISAPA-01
 KISAPA-0122333
 """.split()
 
@@ -77,9 +79,18 @@ IPs = """192.168.3.26
     """.split()
 
 emails = """
+    joci@csillagasz.at
     horvath.arpad@arek.uni-obuda.hu
     x_ipszilon@gmail.com
+    very.common@example.gov
+    bobebaba13@futrinka.mtv.hu
+    bobe@baba13@futrinka.mtv.hu
+    abc.example.com
+    bobebaba13@futrinka.mtv.
+    bobebaba13@futrinka..hu
     """.split()
+
+print("Példák: rendszamok, IPs, urls, emails")
 
 def keres(regexp, szavak):
     """A regexp reguláris kifejezést keres több szóban.
@@ -100,13 +111,23 @@ def keres(regexp, szavak):
     ilyenkor nem kell levédeni a visszaper (\) karaktereket.
 
     """
+    print('00 egyáltalán nem illeszkedik, -- részére illeszkedik, ++ teljesre illeszkedik')
     for szo in szavak:
-        print(szo, end="\n ")
+        print('  ', szo)
         search = re.search(regexp, szo, re.VERBOSE)
         if search:
-            print(search.group())
+            if search.start() == 0 and search.end() == len(szo):
+                print('++ ', end='')
+            else:
+                print('-- ', end='')
+            print(' '*search.start(), search.group(), sep='', end='')
+            groupdict = search.groupdict()
+            if groupdict:
+                print(" "*(len(szo)-search.end()), ", ".join(["{}={}".format(k, groupdict[k]) for k in groupdict]))
+            else:
+                print()
         else:
-            print("---------")
+            print("00")
 
 if __name__ == '__main__':
     keres(
