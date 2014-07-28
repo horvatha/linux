@@ -288,11 +288,11 @@ rakják össze (GNU projekt, Linux-kernel), addig a BSD-k teljes alaprendszere
 telepítésre, de a forráskódból történő telepítés is nagyon egyszerű, a
 gentoo-hoz hasonló. A hardvergyártók egyelőre még kevésbé veszik
 figyelembe a BSD-seket, ezért a harvertámogatottság kisebb mértékű, mint
-a Linux esetén. Végül két érdekesség: 1) a Mac OS X operációs rendszer, az
+a Linux esetén. Végül három érdekesség: 1) a Mac OS X operációs rendszer, az
 Apple Macintoshának 2002-ben bevezetett operációs rendszere szintén
 BSD alapú; 2) hogy a Debian 2011 februárjában kiadott 6.0-ás
 verziójában választható olyan telepítő is, amely Linux kernel helyett a
-FreeBSD kernelt használja.
+FreeBSD kernelt használja; 3) az Android a Linux leszármazottja.
 
 \newpage
 \section{Vim}
@@ -358,14 +358,13 @@ sorokat vagy téglalap alakú blokkot), hogy azt például töröljük,
 átírjuk, módosítsuk, szűrjük egy szűrőutasítással, cseréljünk benne
 szövegrészeket vagy köré írjunk valami környezetet.
 
-\subsection{A Vim beállítása, sorok kezelése,
-parancsismétlés, kilépés}
+\subsection{A Vim beállítása, sorok kezelése, parancsismétlés, kilépés}
 
 Vegyük végig a vimtutorból az első 3 leckét.
-Lépjünk be a mail.roik.bmf.hu szerverre, futtassuk a vimtutor parancsot.
+Lépjünk be a Linux alá, futtassuk a vimtutor parancsot.
 
 Tanuljuk meg a blokkok kezelését a vimtutorból.
-Lépjünk be a mail.roik.bmf.hu szerverre, futtassuk a vimtutor parancsot,
+Lépjünk be a Linux alá, futtassuk a vimtutor parancsot,
 keressünk rá a téglalap szóra ( \code{/téglalap} ) és hajtsuk végre az
 ott található feladatokat (9. lecke).
 
@@ -377,11 +376,6 @@ vim tmp.sh
 \end{Verbatim}
 
 Állítsuk be, hogy színezzen (syntax highlighting): \code{:syntax on}
-
-Állítsuk be, hogy ne kelljen minden alkalommal megadni! Ha nincs
-\verb+~/.vimrc+ hozzuk létre, és írjuk bele, hogy \code{syntax on},
-esetleg a következő fájlt menthetjük \verb+~/.vimrc+ néven:
-\url{http://www.arek.uni-obuda.hu/linux/vim/vimrc}
 
 Még jobb követni a \url{http://github.com/horvatha/vimrc} oldal alján
 levő leírást a tároló klónozásához, a .vimrc létrehozásához és a hasznos
@@ -691,19 +685,20 @@ Vajon hogyan számolhatjuk meg a sorok számát a passwd fájlban? És
 \code{/home} fájljainak számát (azaz általában a felhasználók számát)?
 
 Szűrők és fontosabb kapcsolóik (minuszt (-) tegyünk a kapcsolók elé):\\
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{lll}
 \hline
-neve& leírás & kapcsoló\\
+\textbf{neve}& \textbf{leírás} & \textbf{kapcsoló}\\
 \hline
-grep & szűri a sorokat egy minta szerint&v r\\
+grep & szűri a sorokat egy minta szerint&v\\
 \hline
-sort &rendezi a sorokat (alapból abc-rendbe)&n u c\\
+sort &rendezi a sorokat (alapból abc-rendbe)&n u\\
 \hline
 wc & szószámláló (word count)&l c w\\
 \hline
-head & csak a fájl elejét írja ki (=fej)&n c\\
+head & csak a fájl elejét írja ki (=fej)&n\\
 \hline
-tail & csak a fájl végét írja ki (=farok)&n c\\
+tail & csak a fájl végét írja ki (=farok)&n\\
+\hline
 \hline
 sed & pl. szócseréket végez a szövegben (stream editor)&\\
 \hline
