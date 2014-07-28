@@ -7,14 +7,17 @@ alias cr="chmod a+r"
 #alias sa="sshmail ahorvath"
 alias l='ls -CF'
 alias ipythonlab='ipython --pylab'
-alias pylab='ipython --pylab'
+alias pylab='ipython3 --pylab'
+alias i3=ipython3
 alias ..='cd ..'
 alias ....='cd ../..'
 alias ...='cd ~/mfng/mfng'
 alias aw='antiword  -m 8859-2.txt'
-alias old="cd $OLDPWD"
+alias old='cd ${OLDPWD}'
 alias vi="vim -u NORC"
 alias up=uptime
+alias ev=evince
+alias ch=chromium-browser
 
 export PATH=${PATH}:~/cxnet/scripts:~/mfng/scripts
 
@@ -57,4 +60,6 @@ PATH=$PATH:.:~/bin:~/cxnet/scripts
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
 #fortune de hu|cowthink
-source ~/linux/git/git_branch_in_bash_prompt.sh
+#source ~/linux/git/git_branch_in_bash_prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
