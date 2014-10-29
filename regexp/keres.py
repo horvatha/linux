@@ -22,7 +22,7 @@ ipython-nal és ipython3-mal vagy a hivatalos python parancsértelmezővel is
 működik, és behívható így, ha abban a könyvtárban indítottuk az ipythont, ahol
 a keres.py fájl van, vagy benne van az elérési útvonalban::
 
-    from keres import keres
+    from keres import *
 
 majd használható így::
 
@@ -51,6 +51,7 @@ urls = """http://bocs.hu
     http://bocs.hu/ado/index.html
     https://github.com/horvatha/linux/blob/master/regexp/keres_ipy.py
     ftp://ftp.sztaki.hu/pub/tex
+    file:///var/www/index.html
     http://.hu
     http://arek..hu
     http://arek.uni-obuda.hungary
@@ -80,7 +81,7 @@ IPs = """192.168.3.26
 
 emails = """
     joci@csillagasz.at
-    horvath.arpad@arek.uni-obuda.hu
+    horvath.arpad@amk.uni-obuda.hu
     x_ipszilon@gmail.com
     very.common@example.gov
     bobebaba13@futrinka.mtv.hu
@@ -91,6 +92,7 @@ emails = """
     """.split()
 
 print("Példák: rendszamok, IPs, urls, emails")
+
 
 def keres(regexp, szavak):
     """A regexp reguláris kifejezést keres több szóban.
@@ -111,7 +113,8 @@ def keres(regexp, szavak):
     ilyenkor nem kell levédeni a visszaper (\) karaktereket.
 
     """
-    print('00 egyáltalán nem illeszkedik, -- részére illeszkedik, ++ teljesre illeszkedik')
+    print('00 egyáltalán nem illeszkedik, -- részére illeszkedik,'
+          ' ++ teljesre illeszkedik')
     for szo in szavak:
         print('  ', szo)
         search = re.search(regexp, szo, re.VERBOSE)
@@ -123,7 +126,11 @@ def keres(regexp, szavak):
             print(' '*search.start(), search.group(), sep='', end='')
             groupdict = search.groupdict()
             if groupdict:
-                print(" "*(len(szo)-search.end()), ", ".join(["{}={}".format(k, groupdict[k]) for k in groupdict]))
+                print(" "*(len(szo)-search.end()),
+                      ", ".join([
+                          "{}={}".format(k, groupdict[k]) for k in groupdict
+                      ])
+                      )
             else:
                 print()
         else:
@@ -131,5 +138,6 @@ def keres(regexp, szavak):
 
 if __name__ == '__main__':
     keres(
-      r"^ http s? :// ([a-z-]+\.)+ [a-z]{2,3} (/[a-z-_\.]+)* $",
-      urls )
+        r"^ http s? :// ([a-z-]+\.)+ [a-z]{2,3} (/[a-z-_\.]+)* $",
+        urls
+    )
