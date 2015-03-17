@@ -122,7 +122,7 @@ vagy kapcsos zárójelre kell illeszteni. Olyankor kell levédeni.
 | {n,m}  előtte lévő n..m-szeri ismétlése          Vim-ben elég a nyitót
 | {,m}   előtte lévő 0..m-szeri ismétlése          Vim-ben elég a nyitót
 | {n,}   előtte lévő min. n-szeri ismétlése        Vim-ben elég a nyitót
-| {      {-re                                      Pythonban
+| \{     {-re                                      Pythonban
 | ^      sor elejére                               nem kell
 | $      sor végére                                nem kell
 | \^     ^-re                                      mindig
