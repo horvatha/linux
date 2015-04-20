@@ -1,4 +1,5 @@
 \documentclass[a4paper]{article}
+\usepackage[top=1in, bottom=1.25in, left=1.05in, right=1.05in]{geometry}
 % 12 (10, 11) pontos betű: \documentclass[a4paper,12pt]{article}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -21,6 +22,13 @@
 \usepackage{html}
 \usepackage[T1]{fontenc}
 \usepackage[utf8x]{inputenc}
+\usepackage{tikz}
+\tikzset{ %inner sep = 0.5mm,
+  >=latex,
+  {entity/.style} ={draw,rectangle, inner sep=3pt},
+  {property/.style} ={},
+  {primaryKey/.style} ={property,font=\bf},
+ }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% A MAGYAR NYELVVEL kapcsolatos csomagok
@@ -72,50 +80,89 @@
 
 \begin{document}
 
-\title{Linux alkalmazása, adatbázis feladatok}
+\title{Linux alkalmazása feladatok}
 \author{Horváth Árpád}
 \maketitle
 
-Az alábbi feladatok mind a főiskolához kapcsolódó adatkezelési
-feladatok. A megoldásuk közös adatbázissal lehet hatékony. A feladat
-megoldásához a mail.roik.bmf.hu szerver PostgreSQL adatbázisát kell
-felhasználni, valamint a felülethez webes oldalt kialakítani a Python
-CGI-vel.
-Az egyes táblázatokat saját jelszó megadása után módosíthatják egyes
-oktatókweben keresztül.
-Az oktatók azonosítója a NEPTUN-kód, de a jelszó szabadon
-megválasztható.
+Az alábbi feladatok mind az egyetemhez kapcsolódó django-s feladatok.
+Adatmodell, admin oldal, valamint template-tel elkészített oldal kell.
+A template-ekkel készített oldal esetén minden egyed listázható legyen,
+felsorolva: hányan vagy mik tartoznak hozzá.
 
-Az oktatók táblázat létrehozását, a weboldalhoz tartozó kinézetet (css)
-és a jogosultság-kezelést közösen kell megoldani.
+Legalább egy idegen kulcs személyenként + több-a-többhöz kapcsolat.
 
-Egyes lekérdezéseket lehessen LaTeX-en keresztül PDF-ben is letölteni.
+Admin oldalnál valamilyen ,,inline''.
 
-\section{Részfeladatok}
+Ékezet nélküli mezőneveket/adatmodell-neveket használjunk, és lehetőleg angolul.
+
+A részt vevő személyek számára lehet alkudni: részletesebb kidolgozás,
+több adatmodell (tábla) esetén több személyé lehet.
+
+\section{Feladatok}
+
+\subsection{Meglévő esemény-nyilvántartó továbbfejlesztése}
+
+\verb!http://django.amk.uni-obuda.hu/django/elft/naptar/!
+
+Megbeszélés szerint. Versenyek, konferenciák beillesztése.
+
+\subsection{Meglévő oktatóoldal továbbfejlesztése}
+
+Megbeszélés szerint. Pl. bejelentkezés hozzáadása.
+
+\subsection{Könyvtári nyilvántartás}
+
+2 fő
+
+A könyveket, szerzőket és könyvtár-felhasználókat és kölcsönzéseket kell
+nyilvántartani.
+
+
+\begin{verbatim}
+Book(author (több-a-többhöz), title, publisher, year, tipus)
+
+Author(first_name, last_name,
+       birth_year, birth_place,
+       death_year, death_place)
+
+User(first_name, last_name,
+     birth_year, birth_place,
+     work_place, email, phone)
+
+Lending(user, book, lending_date)
+
+Book.type:
+ 1m 1 hónapos kölcsönzés
+ 1w 1 hetes kölcsönzés
+ 0w nem kölcsönözhető
+\end{verbatim}
 
 \subsection{Konzultációs időpontok nyilvántartása}
+
+1 fő
+
 Az intézet oktatói konzultációs időpontokat írhatnak ki, melyekhez
 szöveges megjegyzést fűzhetnek. Egy konzultációnak van helye és kezdő és
-végső időpontja. A hely egyelőre szövegesen megadható (nem kell termek
-táblázat).
+végső időpontja. A termekhez férőhely tartozik.
 
-Ehhez a feladathoz tartozik a többi feladat összefogása is.
+\subsection{Garai és műhely-előadások nyilvántartása}
 
-\subsection{Műhely előadások nyilvántartása}
+1 fő
+
 A szerdai napokon általában fix időpontban előadások szerepelnek.
 Ezeknek van előadójuk, címük, esetleg alcímük és rövid leírásuk. Az
 előadónak lehet valamilyen leírása (X cég vagy
 főiskolai tanár)
 
-\subsection{TDK/projekt/szakdolgozat témakörök nyilvántartása}
+\subsection{TDK/projekt/szakdolgozat témakörök és dolgozatok nyilvántartása}
+
+2 fő (ha a záróvizsga-nyilvántartást (jegy, elnök\ldots) is hozzávesszük, 4 fős is lehet)
+
 Bármely oktató írhat ki témaköröket, melynél megjelöl a három
 kategória közül legalább egyet. A hallgatók megtekinthetik szűrve az
 egyes típusokra a kínálatot, és láthatják az e-mailcímet valamilyen
 robottal nem összegyűjthető formában.
 
-Módosíthatja a hozzárendelt oktató.
-
-\subsection{TDK/szakdolgozat dolgozatok nyilvántartása}
 Egy főre az egyik típus elég.
 Már kész dolgozatok tárolására és visszakeresésére szolgál.
 
@@ -128,9 +175,99 @@ főiskolai ill. esetleg országos TDK-n milyen eredményt ért el milyen
 szekcióban. A helyezés lehet 1. 2. 3. vagy különdíj. A helyezéshez
 megjegyzés fűzhető (milyen különdíj, megosztott x. helyezett...).
 
-Módosíthatja a hozzárendelt oktató.
-Mindkét típust lehessen bárki által lekérdezni.
+Lehessen bárki által lekérdezni.
+
+\subsection{Dolgozók nyilvántartása}
+
+1 fő
+
+    \begin{tikzpicture}[xscale=2]
+        \node[entity] (ent1) at (-2.3, 0) {Születési hely};
+        \node[entity] (ent2) at ( 0, 0) {Dolgozó};
+        \node[entity] (ent3) at ( 2, 0) {Végzettség};
+        \draw[<->] (ent1) edge node[near start,above] {1}
+            node[near end,above] {N} (ent2);
+        \draw[<->] (ent2) edge node[near start,above] {N}
+            node[near end,above] {M} (ent3);
+            \foreach \type/\property/\x/\entity in {property/HelyNév/-3.3/ent1,
+            property/Szélesség/-2.3/ent1, property/Hosszúság/-1.3/ent1,
+            property/UtóNév/-.5/ent2, property/CsaládNév/+.3/ent2,
+	    property/SzulDatum/1.2/ent2,
+            property/Szint/2/ent3, property/Vegzettseg/3/ent3}{
+            \node[\type] (\property) at (\x, -1) {\property};
+            \draw[<-] (\property) -- (\entity);
+        }
+    \end{tikzpicture}
+
+    Szint: felsőfokú szakképzés, alap, mester, doktori
+
+\subsection{Óvodai nyilvántartás}
+
+1 fő
+
+    \noindent
+    \begin{tikzpicture}[xscale=2]
+        \node[entity] (szh) at (-2, 0) {Születési hely};
+        \node[entity] (on) at ( 0, 0) {Óvó néni};
+        \node[entity] (o) at ( 2, 0) {Óvodás};
+        \draw[<->] (szh) edge node[near start,above] {1} node[near end,above] {N} (on);
+        \draw[<->] (on) edge node[near start,above] {N} node[near end,above] {M} (o);
+        \foreach \type/\property/\x/\entity in {property/TelepulesNev/-3/szh,
+                            property/Orszag/-2/szh,
+                            property/Nev/-1/on, property/SzuletesiEv/0/on,
+                            property/Nev/1/o,
+                            property/AnyjaNeve/2/o, property/SzulDatum/3/o}{
+            \node[\type] (\property) at (\x, -1) {\property};
+            \draw[<-] (\property) -- (\entity);
+        }
+    \end{tikzpicture}
+
+\subsection{Számla-nyilvántartás}
+
+1 fő
+
+    \begin{tikzpicture}[xscale=2]
+        \node[entity] (Ugyfel) at (-2, 0) {Ügyfél};
+        \node[entity] (Szamla) at ( 0, 0) {Számla};
+        \node[entity] (NaploBejegyzes) at ( 2, 0) {NaplóBejegyzés};
+        \draw[<->] (Ugyfel) edge node[near start,above] {N} node[near end,above] {M} (Szamla);
+        \draw[<->] (Szamla) edge node[near start,above] {1} node[near end,above] {N} (NaploBejegyzes);
+        \foreach \type/\property/\x/\entity in {property/ÜgyfKód/-3/Ugyfel,
+                            property/Név/-2.3/Ugyfel,
+                            property/Cím/-1.8/Ugyfel,
+                            property/Számlaszám/-1/Szamla,
+                            property/Egyenleg/0/Szamla,
+                            property/Üzenet/1/NaploBejegyzes,
+                            property/Időpont/2/NaploBejegyzes,
+                            property/PénzMozgás/3/NaploBejegyzes}{
+            \node[\type] (\property) at (\x, -1) {\property};
+            \draw[<-] (\property) -- (\entity);
+        }
+    \end{tikzpicture}
+
+\subsection{Csillagda-látogatás foglalása}
+
+1 fő
+
+    \begin{tikzpicture}[xscale=2]
+        \node[entity] (ent1) at (-2.3, 0) {Előadók};
+        \node[entity] (ent2) at ( 0, 0) {Alkalmak};
+        \node[entity] (ent3) at ( 2, 0) {Intézmény};
+        \draw[<->] (ent1) edge node[near start,above] {M}
+            node[near end,above] {N} (ent2);
+        \draw[<->] (ent2) edge node[near start,above] {N}
+            node[near end,above] {1} (ent3);
+            \foreach \type/\property/\x/\entity in {property/név/-3.3/ent1,
+            property/foglalkozás/-2.3/ent1, property/telefonszám/-1.3/ent1,
+            property/dátum/-.5/ent2, property/kezdet/+.3/ent2,
+	    property/név/1.0/ent3,
+            property/kontaktszemély/1.82/ent3, property/telefonszám/3/ent3}{
+            \node[\type] (\property) at (\x, -1) {\property};
+            \draw[<-] (\property) -- (\entity);
+        }
+    \end{tikzpicture}
 
 \section{Határidő}
-A BMF-es moodle oldalon (https://elearnig.bmf.hu).
+A egyetem moodle oldalán (https://elearnig.uni-obuda.hu) található
+követelményrendszer szerint.
 \end{document}
