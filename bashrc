@@ -63,3 +63,4 @@ PATH=$PATH:.:~/bin:~/cxnet/scripts
 #source ~/linux/git/git_branch_in_bash_prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+export PGBINDIR=/usr/bin  # for shp2pgsql-gui installed by qgis

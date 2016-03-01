@@ -57,7 +57,7 @@ Pár reguláris kifejezés, amiket megvizsgáltunk.
 (per után kell beírni, pl. parancs módban /am*u )::
 
   am*u
-  a\+
+  ma\+
   [a-k]\+
   [0-9A-F]\+
   \d\+
