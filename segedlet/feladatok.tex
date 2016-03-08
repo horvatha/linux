@@ -104,11 +104,95 @@ több adatmodell (tábla) esetén több személyé lehet.
 
 \verb!http://django.amk.uni-obuda.hu/django/elft/naptar/!
 
-Megbeszélés szerint. Versenyek, konferenciák beillesztése.
+Megbeszélés szerinti létszámban: versenyek, konferenciák beillesztése.
+
+Mindkettőnél:
+
+A konferencia egészére lehessen tárolni a kezdés és befejezés dátumát
+kötelezően, az időpontokat esetlegesen.
+Lehessen tárolni az egyes előadásokat,
+az előadások:
+\begin{itemize}
+    \item szerzőit,
+    \item az előadások is besorolhatóak legyenek kategóriákba,
+	Nem kötelezőként:
+    \item az előadások kezdőidőpontját, és befejezési
+	időpontját. Mentéskor az adatmodell ellenőrizze, hogy ezek az időpontok
+	a konferencia időpontján belül vannak-e.
+    \item az előadás kivonatát (absztraktját).
+\end{itemize}
+
+A versenyeknél:
+Dátumot, időpontot, mint a konferenciáknál.
+Nem kötelezőként
+\begin{itemize}
+    \item a zsűrielnököt,
+    \item zsűritagokat,
+    \item résztvevőket lehessen tárolni, résztvevőknél a helyezéseket is.
+\end{itemize}
+
+Át lehet dolgozni, hogy az adatmodellek nevei angolul legyenek, de a
+honlapon magyarul jelenjenek meg a feliratok, vagy úgy, hogy nyelv
+választásától függően az adott nyelven jelenjen meg minden.
+
+\subsection{Tananyag-nyilvántartó}
+
+Az egyes tananyagok tartalmazhatnak egy tetszőleges típusú fájlt. Egy
+leírást (ez is tetszőleges fájl, de a .pdf, .docx vagy .doc
+kiterjesztést ellenőrzi, esetleg csupa nagybetűvel).
+
+A tananyag további jellemzői:
+\begin{itemize}
+    \item szerző (több-a-többhöz)
+    \item kategória (több-a-többhöz)
+    \item feltöltés dátuma
+\end{itemize}
+
+Minden tananyaghoz rendelhető kategória. Minden kategóriához
+szülőkategóriák is rendelhetőek, így tetszőleges mélységű hierarchia
+hozható létre. (Ha lehet, mentéskor ellenőrizze, hogy valami nem lesz-e
+saját maga ,,leszármazottja'', azaz irányított körmentes gráfot
+alkossanak a kategóriák.)
+
+Az oldalon listázni lehessen a legkésőbb feltöltött tananyagokat.
+Szerzők és kategóriák szerint kereshetőek legyenek a tananyagok.
+
+A tananyagok feltölthetőek legyenek legalább az admin oldalon.
+
+A tananyagok mellett esetleg lehetnének oktatáshoz hasznos URL-ek
+tárolva, amelyekhez az előzőekben már ismertetet kategóriákat szintén
+hozzá lehetne rendelni.
+
+\subsection{Környezetvédelmi nyilvántartó}
+
+Ez még pontosításra szorul.
+
+Egy vállalkozó tárolhassa a telephelyek
+\begin{itemize}
+    \item nevét,
+    \item címét,
+    \item irányítószámát,
+    \item adószámát,
+    \item környezetvédelmi engedélyeit???
+    \item telefonszámát,
+\end{itemize}
+
+nem kötelezőként:
+\begin{itemize}
+    \item földrajzi szélességet és hosszúságot (ellenőrizze, az intervallumokat,
+	hogy Magyarországon belül legyen),
+\end{itemize}
 
 \subsection{Meglévő oktatóoldal továbbfejlesztése}
 
-Megbeszélés szerint. Pl. bejelentkezés hozzáadása.
+\verb+http://pyedu-dev.amk.uni-obuda.hu/course/about/+
+
+A Pythonos quizkérdésekhez az ACE integrálása a programkód szerkesztés
+megkönnyítésére.
+
+\verb+https://ace.c9.io/+
+
+A unittesztek eredményeinek átrendezése, áttekinthetőbbé tétele.
 
 \subsection{Könyvtári nyilvántartás}
 
