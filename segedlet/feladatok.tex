@@ -100,6 +100,28 @@ több adatmodell (tábla) esetén több személyé lehet.
 
 \section{Feladatok}
 
+\subsection{Meglévő oktatóoldal továbbfejlesztése}
+
+\verb+http://pyedu-dev.amk.uni-obuda.hu/course/about/+
+A két videót érdemes megnézni: pyEdu ill. udacity.
+
+\verb+git clone ssh://git@django.amk.uni-obuda.hu:122/home/git/pyEdu.git+
+(jelszó kell hozzá)
+
+A Pythonos quizkérdésekhez az ACE integrálása a programkód szerkesztés
+megkönnyítésére.
+
+\verb+https://ace.c9.io/+
+
+Esetleg ez is hasznos lehet:
+
+\verb+https://pypi.python.org/pypi/django-ace-overlay/0.3+
+
+A unittesztek eredményeinek átrendezése, áttekinthetőbbé tétele.
+
+És egy halom feladat, ami a TODO-kban van. TDK-munkának, szakdolgozatnak
+jó.
+
 \subsection{Meglévő esemény-nyilvántartó továbbfejlesztése}
 
 \verb!http://django.amk.uni-obuda.hu/django/elft/naptar/!
@@ -108,7 +130,7 @@ Megbeszélés szerinti létszámban: versenyek, konferenciák beillesztése.
 
 Mindkettőnél:
 
-A konferencia egészére lehessen tárolni a kezdés és befejezés dátumát
+A \emph{konferencia} egészére lehessen tárolni a kezdés és befejezés dátumát
 kötelezően, az időpontokat esetlegesen.
 Lehessen tárolni az egyes előadásokat,
 az előadások:
@@ -122,7 +144,7 @@ az előadások:
     \item az előadás kivonatát (absztraktját).
 \end{itemize}
 
-A versenyeknél:
+A \emph{versenyeknél}:
 Dátumot, időpontot, mint a konferenciáknál.
 Nem kötelezőként
 \begin{itemize}
@@ -134,6 +156,80 @@ Nem kötelezőként
 Át lehet dolgozni, hogy az adatmodellek nevei angolul legyenek, de a
 honlapon magyarul jelenjenek meg a feliratok, vagy úgy, hogy nyelv
 választásától függően az adott nyelven jelenjen meg minden.
+
+\subsection{Környezetvédelmi nyilvántartó}
+
+A Juglans Alba Mérnöki Iroda által használt adatok tárolása. A
+vezetőjének a levele:
+
+\begin{verbatim}
+Feladat: 
+
+Termelő vállalatok hulladék nyilvántartásának vezetése, illetve éves
+adatszolgáltatási kötelezettség teljesítéséhez segítség nyújtása. A
+bevalláshoz csatoltam egy mintát, ez éles adat
+így kezeljétek légyszíves bizalmasan, de látjátok, hogy élő példáról van
+szó.
+
+Szükséges adatok:
+
+Vállalat adatai
+termelő vállalat neve,
+termelő címe (székhely)
+termelő vállalat KÜJ száma (Környezetvédelmi Ügyfél Jel) 9 számjegyű
+vállalat KSH száma
+cégvezető neve(i)
+telefon/fax/email-cím
+
+Telephelyek adatai
+telephelyek ahol a hulladékok keletkeznek (a nyilvántartást mindegyik
+telephelyre külön-külön kell megcsinálni)
+Telephely címe
+Telephely KTJ száma (Környezetvédelmi Területi Jel) mindegyik telephelynek
+önálló KTJ száma van, ez is 9 számjegyből álló azonosító
+
+Telephelyeken végzett tevékenységek azonosítása
+minden olyan tevékenység, amelyből hulladék keletkezik, egy telephelyen több
+különböző tevékenység is folyhat (pl. fémek bevonatolása és gépkarbantartás,
+valamint irodai tevékenység is)
+a tevékenységeket célszerű TEÁOR számmal azonosítani
+
+Keletkező hulladékok adatai
+Nyilvántartás rendszere: Napi nyilvántartás (keletkezés és átadás
+kezelőknek)
+A keletkezett hulladék
+megnevezése (lásd melléklet excel)
+azonosító kódja (lásd mellékelt excel 2+2+2 számjegyű azonosító kódok)
+hulladék megjelenési formája (S-szilárd, F-folyékony, I-iszap)
+Keletkezett mennyiség (kg-ban)
+keletkezés dátuma
+kezelőnek átadott mennyiség (kg-ban)
+Gyűjtőhelyen lévő aktuális mennyiség (kg-ban)
+
+Hulladék átvevők adatai (kezelők)
+Hulladékkezelő neve
+Székhelye
+Kezeléssel érintett telephely címe (ilyen több is lehet a kezelőnek,
+mindegyiket külön-külön kell azonosítani, itt a KTJ szám különbözteti meg az
+egyes kezelő telephelyeket)
+KÜJ száma
+KTJ száma, ahol majd a kezelés megtörténik.
+Adott hulladékra vonatkozó kezelés kódja (kezelési kódok forrása: 2012. évi
+CXXXLV törvény utolsó szakasza és 439/2012 (XII. 29.) Korm. rendelet
+mellékletei
+Kezelésre átvett hulladék mennyisége (kg) FIGYELEM akár egy hulladék fajtát
+is lehet több különböző kezelési kódra meg egy telephelyen belül is
+Átadása dátuma
+\end{verbatim}
+
+Saját kitalálás. Tárolja a telephelyek esetén:
+\begin{itemize}
+    \item Lekérdezés hulladék szerint.
+    \item Hulladékátvevők listája.
+    \item \ldots
+    \item földrajzi szélességet és hosszúságot (ellenőrizze, az intervallumokat,
+	hogy Magyarországon belül legyen),
+\end{itemize}
 
 \subsection{Tananyag-nyilvántartó}
 
@@ -162,37 +258,6 @@ A tananyagok feltölthetőek legyenek legalább az admin oldalon.
 A tananyagok mellett esetleg lehetnének oktatáshoz hasznos URL-ek
 tárolva, amelyekhez az előzőekben már ismertetet kategóriákat szintén
 hozzá lehetne rendelni.
-
-\subsection{Környezetvédelmi nyilvántartó}
-
-Ez még pontosításra szorul.
-
-Egy vállalkozó tárolhassa a telephelyek
-\begin{itemize}
-    \item nevét,
-    \item címét,
-    \item irányítószámát,
-    \item adószámát,
-    \item környezetvédelmi engedélyeit???
-    \item telefonszámát,
-\end{itemize}
-
-nem kötelezőként:
-\begin{itemize}
-    \item földrajzi szélességet és hosszúságot (ellenőrizze, az intervallumokat,
-	hogy Magyarországon belül legyen),
-\end{itemize}
-
-\subsection{Meglévő oktatóoldal továbbfejlesztése}
-
-\verb+http://pyedu-dev.amk.uni-obuda.hu/course/about/+
-
-A Pythonos quizkérdésekhez az ACE integrálása a programkód szerkesztés
-megkönnyítésére.
-
-\verb+https://ace.c9.io/+
-
-A unittesztek eredményeinek átrendezése, áttekinthetőbbé tétele.
 
 \subsection{Könyvtári nyilvántartás}
 
