@@ -85,6 +85,7 @@ emails = """
     x_ipszilon@gmail.com
     very.common@example.gov
     bobebaba13@futrinka.mtv.hu
+    BobeBaba13@futrinka.MTV.hu
     bobe@baba13@futrinka.mtv.hu
     abc.example.com
     bobebaba13@futrinka.mtv.
