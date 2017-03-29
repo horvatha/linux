@@ -102,14 +102,21 @@ több adatmodell (tábla) esetén több személyé lehet.
 
 \subsection{Meglévő oktatóoldal továbbfejlesztése}
 
-\verb+http://pyedu-dev.amk.uni-obuda.hu/course/about/+
+Pillanatnyilag (2017 március) nem elérhető az oldal szerverköltözés
+miatt,\\ várható helye \verb+http://pyedu.hu/kurzusok+ és/vagy
+\verb+http://kurzusok.pyedu.hu+ .
+
 A két videót érdemes megnézni: pyEdu ill. udacity.
 
-\verb+git clone ssh://git@django.amk.uni-obuda.hu:122/home/git/pyEdu.git+
+\verb+http://django.amk.uni-obuda.hu/segedletek/pyedu/pyEdu_pycodes.ogv+
+
+\verb+http://arek.uni-obuda.hu/~horvatha/pyEdu_video/pyEdu/udacity_introduction.ogv+
+
+\verb+git clone ssh://git@django.arek.uni-obuda.hu:122/home/git/pyEdu.git+
 (jelszó kell hozzá)
 
-A Pythonos quizkérdésekhez az ACE integrálása a programkód szerkesztés
-megkönnyítésére.
+A Pythonos programozó feladatokhoz az ACE integrálása a programkód
+szerkesztés megkönnyítésére.
 
 \verb+https://ace.c9.io/+
 
@@ -124,7 +131,7 @@ jó.
 
 \subsection{Meglévő esemény-nyilvántartó továbbfejlesztése}
 
-\verb!http://django.amk.uni-obuda.hu/django/elft/naptar/!
+\verb!http://django.arek.uni-obuda.hu/django/elft/naptar/!
 
 \verb!git clone https://github.com/horvatha/elft!
 (ez csak az alkalmazás, projekt kell köré)
@@ -159,6 +166,24 @@ Nem kötelezőként
 Át lehet dolgozni, hogy az adatmodellek nevei angolul legyenek, de a
 honlapon magyarul jelenjenek meg a feliratok, vagy úgy, hogy nyelv
 választásától függően az adott nyelven jelenjen meg minden.
+
+\subsection{Énekkaros alapoldal}
+
+Cél olyan oldal kifejlesztése, amely az énekkarok igényeit kis
+átalakítással kielégíti.
+
+Főbb szolgáltatások.
+
+\begin{itemize}
+    \item repertoár tárolása, keresése szerző, szerző nemzetisége, cím szavai, kor, stílus szerint
+    \item események (elnevezés, hely, nap, kezdésidő, műsor) megjelenítése
+    \item eseménynaptár megjelenítése,
+    \item az egyes művekhez a kotta, felvétel és egyéb fájlok feltöltési
+	lehetősége
+    \item bemutatkozás
+    \item keresés hangfelvételek között
+    \item fogalomtár, lexikon\ldots
+\end{itemize}
 
 \subsection{Környezetvédelmi nyilvántartó}
 
@@ -225,13 +250,14 @@ is lehet több különböző kezelési kódra meg egy telephelyen belül is
 Átadása dátuma
 \end{verbatim}
 
-Saját kitalálás. Tárolja a telephelyek esetén:
+Saját továbbfejlesztési ötletek. Tárolja a telephelyek esetén:
 \begin{itemize}
     \item Lekérdezés hulladék szerint.
     \item Hulladékátvevők listája.
     \item \ldots
     \item földrajzi szélességet és hosszúságot (ellenőrizze, az intervallumokat,
-	hogy Magyarországon belül legyen),
+	hogy Magyarországon belül legyen), esetleg a PostGIS
+	használatával.
 \end{itemize}
 
 \subsection{Tananyag-nyilvántartó}
