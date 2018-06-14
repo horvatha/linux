@@ -18,6 +18,7 @@ alias vi="vim -u NORC"
 alias up=uptime
 alias ev=evince
 alias ch=chromium-browser
+alias youtube-dl-hanggal="youtube-dl -k --extract-audio"
 
 export PATH=${PATH}:~/cxnet/scripts:~/mfng/scripts
 
