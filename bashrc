@@ -10,17 +10,18 @@ alias ipythonlab='ipython --pylab'
 alias pylab='ipython3 --pylab'
 alias i3=ipython3
 alias ..='cd ..'
-alias ....='cd ../..'
-alias ...='cd ~/mfng/mfng'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias p='pwd'
 alias aw='antiword  -m 8859-2.txt'
 alias old='cd ${OLDPWD}'
 alias vi="vim -u NORC"
 alias up=uptime
-alias ev=evince
+alias ee=evince
 alias ch=chromium-browser
 alias youtube-dl-hanggal="youtube-dl -k --extract-audio"
 
-export PATH=${PATH}:~/cxnet/scripts:~/mfng/scripts
+# export PATH=${PATH}:~/cxnet/scripts
 
 alias bzrstatushead='bzr status|head -23'
 alias bzrlastrevisions='bzr log -r -5..'

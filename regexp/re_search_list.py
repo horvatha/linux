@@ -1,40 +1,17 @@
 #!/usr/bin/env python
 # coding: utf-8
 """
-
-Lefuttatva
--------------
-
-Lefuttatás előtt az utolsó három sort érdemes változtatgatni, vigyázva, hogy a
-keres kezdete beljebb legyen húzva az if kezdetű sornál. A lefuttatásnak két
-módja szerepel alább.
-
-1. Elindítható parancssorból::
+1. You can start from command line::
 
     python keres.py
 
-2. Megnyitható IDLE-ből (vagy IDLE3-ból) és az F5 gombbal elindítható.
-
-Parancsértelmezőből
----------------------
-
-ipython-nal és ipython3-mal vagy a hivatalos python parancsértelmezővel is
-működik, és behívható így, ha abban a könyvtárban indítottuk az ipythont, ahol
-a keres.py fájl van, vagy benne van az elérési útvonalban::
+2. You can import it e.g in Jupyter notebook.
 
     from keres import *
-
-majd használható így::
 
     keres(
       r"^ http s? :// ([a-z-]+\.)+ [a-z]{2,3} (/[a-z-_\.]+)* $",
       urls )
-
-A keres függvény pontos használatát megtudhatjuk az alábbi paranccsal::
-
-    help(keres)
-
-vagy ipythonban akár így is::
 
     keres?
 
@@ -59,7 +36,7 @@ urls = """http://bocs.hu
     hhttp://bocs.hu
     """.split()
 
-rendszamok = """ABC-001
+cars_number = """ABC-001
 AAA-000
 TRA-548
 FERI-12
@@ -80,9 +57,10 @@ IPs = """192.168.3.26
     """.split()
 
 emails = """
+    SuperPandas@WesMcKinney.com
+    horvaarp@morganstanley.com
     joci@csillagasz.at
-    horvath.arpad@amk.uni-obuda.hu
-    x_ipszilon@gmail.com
+    x_ypsilon@gmail.com
     very.common@example.gov
     bobebaba13@futrinka.mtv.hu
     BobeBaba13@futrinka.MTV.hu
@@ -93,49 +71,50 @@ emails = """
     """.split()
 
 passwords = """AlMA99
-7mAkAcsKa
-7EsztenDO
-7esztendo
-7ESZTENDO
-EsztenDO""".split()
+7DonaldDuck
+Game4Of2Thrones7
+7years
+7YEARS
+Univers42Question
+UniversQuestion""".split()
 
 
-print("Példák: rendszamok, IPs, urls, emails")
+print("Examples: cars_number, IPs, urls, emails")
 
 
-def keres(regexp, szavak):
-    """A regexp reguláris kifejezést keres több szóban.
+def search_list(regexp, words):
+    """It searches a regular expression in more strings.
 
     regexp:
-        A reguláris kifejezés, amit keresünk.
-        Több sorba szétszedhető (lásd re.VERBOSE).
-    szavak:
-        Szavak listája, amiben keres.
+        The regular expression we are searching in.
+        You can split into more lines (see re.VERBOSE).
+    words:
+        The list a words it searches in.
 
     Példa::
 
-        keres(
+        search_list(
           r"^ http s? :// ([a-z-]+\.)+ [a-z]{2,3} (/[a-z-_\.]+)* $",
           urls )
 
-    Az első paraméter érdemes r-rel kezdeni r"kifejezés" alakban, mert
-    ilyenkor nem kell levédeni a visszaper (\) karaktereket.
+    There might be useful to start the string by r in the form of
+    r"pattern" because you don't need to excape the backslash (\) characters.
 
     """
-    print('00 egyáltalán nem illeszkedik, -- részére illeszkedik,'
-          ' ++ teljesre illeszkedik')
-    for szo in szavak:
-        print('  ', szo)
-        search = re.search(regexp, szo, re.VERBOSE)
+    print('00 does not match at all, -- match a part,'
+          ' ++ match the whole')
+    for word in words:
+        print('  ', word)
+        search = re.search(regexp, word, re.VERBOSE)
         if search:
-            if search.start() == 0 and search.end() == len(szo):
+            if search.start() == 0 and search.end() == len(word):
                 print('++ ', end='')
             else:
                 print('-- ', end='')
             print(' '*search.start(), search.group(), sep='', end='')
             groupdict = search.groupdict()
             if groupdict:
-                print(" "*(len(szo)-search.end()),
+                print(" "*(len(word)-search.end()),
                       ", ".join([
                           "{}={}".format(k, groupdict[k]) for k in groupdict
                       ])
@@ -146,7 +125,7 @@ def keres(regexp, szavak):
             print("00")
 
 if __name__ == '__main__':
-    keres(
+    search_list(
         r"^ http s? :// ([a-z-]+\.)+ [a-z]{2,3} (/[a-z-_\.]+)* $",
         urls
     )
