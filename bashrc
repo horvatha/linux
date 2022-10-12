@@ -6,7 +6,7 @@ alias cx="chmod a+x"
 alias cr="chmod a+r"
 #alias sa="sshmail ahorvath"
 alias l='ls -CF'
-alias ipythonlab='ipython --pylab'
+alias ipythonlab='ipython3 --pylab'
 alias pylab='ipython3 --pylab'
 alias i3=ipython3
 alias ..='cd ..'
@@ -20,6 +20,7 @@ alias up=uptime
 alias ee=evince
 alias ch=chromium-browser
 alias youtube-dl-hanggal="youtube-dl -k --extract-audio"
+alias lttail='ls -trl| tail'
 
 # export PATH=${PATH}:~/cxnet/scripts
 
@@ -64,5 +65,6 @@ PATH=$PATH:.:~/bin:~/cxnet/scripts
 #fortune de hu|cowthink
 #source ~/linux/git/git_branch_in_bash_prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
-export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \D{%H:%M:%S}\$\[\033[00m\] '
+#export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]\[\033[01;34m\] \$\[\033[00m\] '
 export PGBINDIR=/usr/bin  # for shp2pgsql-gui installed by qgis
