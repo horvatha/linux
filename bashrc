@@ -25,6 +25,8 @@ alias up=uptime
 alias ee=evince
 alias ch=chromium-browser
 alias dumax='du . -h --max-depth'
+alias duSort='du --max-depth=1 . | sort -n'
+alias duSorth='du -h --max-depth=1 . | sort -h'
 
 alias tb="nc termbin.com 9999"
 alias wttr='curl https://www.wttr.in/Szekesfehervar'
@@ -41,6 +43,8 @@ alias gitlog1='git log --oneline'
 alias gitls='git ls-files'
 alias gitco='git checkout'
 alias gitbranches='git branch -a'
+
+alias yt-dlp-best-m4a="yt-dlp -f 'bestaudio[ext=m4a]'"
 
 #export PYTHONSTARTUP=.pythonrc.py
 #export CDPATH=.:~
