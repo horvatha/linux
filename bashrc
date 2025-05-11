@@ -83,4 +83,4 @@ export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\
 #export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]\[\033[01;34m\] \$\[\033[00m\] '
 export PGBINDIR=/usr/bin  # for shp2pgsql-gui installed by qgis
 
-function cd() { if [ $# -eq 2 ]; then builtin cd ${PWD/$1/$2}; else builtin cd $1; fi }
+function cd() { if [ "$#" -eq 0 ]; then builtin cd "${HOME}"; if [ "$#" -eq 2 ]; then builtin cd "${PWD/$1/$2}"; else builtin cd "$1"; fi }
